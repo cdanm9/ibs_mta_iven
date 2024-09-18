@@ -29,6 +29,7 @@ sap.ui.define(
           localStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session);  
           this.handleRouteMatched();      
           that._getUserID();
+          that._getRoleCollections();
 
         },
         _getUserID:function(){
@@ -81,6 +82,54 @@ sap.ui.define(
       
 
         },
+        _getRoleCollections:function(){
+          var appId = this.getOwnerComponent().getManifestEntry("/sap.app/id");
+          var appPath = appId.replaceAll(".", "/");
+          that.appModulePath = jQuery.sap.getModulePath(appPath);
+          var attr = that.appModulePath + "/sap/rest/authorization/v2/rolecollections";      
+  
+          // that._sUserName = "Sanjay Shah And Associates";
+          // that._sUserID = "sanjayshah@testmail.com";
+          // that._sCode = "8300894";
+          // var oModel = new JSONModel({
+          //   userId: that._sUserID,
+          //   userName: that._sUserName,
+          //   code: that._sCode
+          // });   
+          // context.getOwnerComponent().setModel(oModel, "userAttriJson");
+
+
+          return new Promise(function (resolve, reject) {
+            $.ajax({
+              url: attr,
+              type: 'GET',
+              contentType: 'application/json',
+              success: function (data, response) {
+              
+                // that._sUserName = data.firstname;
+                // that._sFLetter = data.firstname[0];
+                // that._sSLetter = data.lastname[0];
+                // that._sInitials=that._sFLetter+that._sSLetter
+                // that._sFullName=data.firstname + " " + data.lastname  
+                // that.getOwnerComponent().getModel("appInfo").setProperty("/UserInitials",that._sInitials)  
+                // that.getOwnerComponent().getModel("appInfo").setProperty("/UserFullName",that._sFullName)     
+                // that._sUserID = data.email.toLowerCase().trim();
+                // that._sCode = data.name;
+  
+                var oModel = new JSONModel({
+                  // userId: that._sUserID,
+                  // userName: that._sUserName,
+                  // code: that._sCode         
+                });
+                that.getOwnerComponent().setModel(oModel, "roleCollectionJson");   
+              },
+              error: function (oError) {
+                MessageBox.error("Error while reading Role Collections");
+              }
+            });
+          });  
+
+        },
         handleRouteMatched: function (oEvent) {
           
           // debugger
@@ -122,7 +171,7 @@ sap.ui.define(
         },
         onItemSelect: function(oEvent){
           debugger
-          var userSelected = oEvent.getParameter("item").getkey();   
+          var userSelected = oEvent.getParameter("item").getKey();       
           // var userSelected = oEvent.mParameters.item.mProperties.key;      
           this.getOwnerComponent().getRouter().navTo(userSelected);
         },

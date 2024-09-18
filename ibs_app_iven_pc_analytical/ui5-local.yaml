@@ -28,6 +28,9 @@ server:
           - path: /DOC_INFO_EXT
             url: https://xsc7eb9cb36.ap1.hana.ondemand.com
             destination: HanaDB  
+          - path: /sap/rest/authorization/v2     
+            url: https://api.authentication.us10.hana.ondemand.com  
+            destination: ROLE_CONFIG       
           - path: /sap
             url: https://portal.intellectbizware.com:80
             client: '009'

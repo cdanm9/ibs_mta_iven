@@ -19,7 +19,7 @@
 			<tnt:ToolHeader>      
 				<Image height="1.5rem"
 					   class="sapUiSmallMarginBegin"   
-					   src="image/Intellect.png" />                      
+					   src="image/Nihilent.png" />                              
 				<Title level="H1" text="iVen (Vendor Management)" wrapping="false" id="idiVenPO">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="Disappear"/>
@@ -40,7 +40,7 @@
         <tnt:sideContent>   
             <tnt:SideNavigation itemSelect="onItemSelect">
                 <tnt:NavigationList items="{appInfo>/AppList}">
-                    <tnt:NavigationListItem icon="{appInfo>AppIcon}" text="{appInfo>AppText}" key="{appInfo>AppKey}" items="{appInfo>SubApps}">
+                    <tnt:NavigationListItem icon="{appInfo>AppIcon}" text="{appInfo>AppText}" key="{appInfo>AppKey}" items="{appInfo>SubApps}" expanded="false">   
                         <tnt:items>   
                             <tnt:NavigationListItem  icon="{appInfo>AppIcon}" text="{appInfo>AppText}" key="{appInfo>AppKey}"/>        
                         </tnt:items>

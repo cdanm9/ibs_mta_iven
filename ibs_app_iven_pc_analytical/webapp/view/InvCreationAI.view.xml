@@ -6,7 +6,7 @@
     xmlns:mvc="sap.ui.core.mvc"    
     displayBlock="true"   
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}" titleAlignment="Center">
+    <Page id="page" title="Invoice Creation AI" titleAlignment="Center">      
         <Table id="idProductsTable"
 		inset="false"
 		keyboardMode="Navigation"

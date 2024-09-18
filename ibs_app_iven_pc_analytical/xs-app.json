@@ -5,7 +5,14 @@
     "logoutEndpoint": "/do/logout",  
     "logoutPage": "/logout-page.html"                
   },
-  "routes": [
+  "routes": [  
+    {
+      "source": "^/sap/rest/authorization/v2/(.*)$",
+      "target": "/sap/rest/authorization/v2/$1",           
+      "destination": "ROLE_CONFIG",
+      "authenticationType": "xsuaa",              
+      "csrfProtection": false
+    },
     {
       "source": "^/sap/(.*)$",
       "target": "/sap/$1",

@@ -123,6 +123,15 @@
           "localUri": "localService/doc-info-ext/metadata.xml",
           "odataVersion": "4.0"
         }
+      },
+      "roleConfigService": {
+        "uri": "/sap/rest/authorization/v2/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],   
+          "localUri": "localService/role-config/metadata.xml",
+          "odataVersion": "2.0"
+        }
       }
     }
   },

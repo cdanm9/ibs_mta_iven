@@ -13,7 +13,7 @@ function (JSONModel, Device) {
 			var oAppDetails = {
 				UserFullName:"",
 				UserInitials:"",   
-				AppList: [
+				AppList: [   
 					{
 						AppKey: "Page1",
 						AppText: "Order Dashboard",

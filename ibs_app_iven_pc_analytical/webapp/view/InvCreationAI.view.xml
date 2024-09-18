@@ -11,7 +11,7 @@
 		inset="false"
 		keyboardMode="Navigation"
 		items="{
-			path: 'fileDetails>/results',
+			path: 'fileDetails>/results',   
 			sorter: {
 				path: 'FILE_ID'
 			}

@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="Service PO Details" contentWidth="55%">
+		<Table mode="MultiSelect" id="idProductsTable" noDataText="No Data Available" inset="false" items="{copyData>/results}">
+			<columns>
+				<Column hAlign="Center">
+					<Label design="Bold" text="Line Number" wrapping="true"/>
+				</Column>
+				<Column hAlign="Center">
+					<Label design="Bold" text="Short Text"/>
+				</Column>
+				<Column hAlign="Center">
+					<Label design="Bold" text="Quantity"/>
+				</Column>
+				<Column hAlign="Center">
+					<Label design="Bold" text="Pending Qty" wrapping="true"/>
+				</Column>
+				<Column hAlign="Right">
+					<Label design="Bold" text="Unit Price"/>
+				</Column>
+				<Column hAlign="Right">
+					<Label design="Bold" text="Net Amount"/>
+				</Column>
+				<!--<Column hAlign="Right">-->
+				<!--	<Label design="Bold" text="VAT"/>-->
+				<!--</Column>-->
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{copyData>Extrow}"/>
+						<Text text="{copyData>Ktext1}"/>
+						<ObjectNumber number="{copyData>Quantity}" unit="{copyData>Uom}"/>
+						<ObjectNumber number="{copyData>PendingQty}" unit="{copyData>Uom}"/>
+						<ObjectNumber unit="{detailmodel>/Currency}"
+							number="{ parts:[{path:'copyData>NetPrice'},{path:'detailmodel>/Currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>
+						<ObjectNumber unit="{detailmodel>/Currency}"
+							number="{ parts:[{path:'copyData>Amount'},{path:'detailmodel>/Currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>
+						<!--<ObjectNumber unit="{hData>/Currency}"-->
+						<!--	number="{ parts:[{path:'copyData>Vat'},{path:'hData>/Currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>-->
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<buttons>
+			<Button text="Close" icon="sap-icon://decline" type="Reject" press="closeSrvPODialog"/>
+			<Button text="Copy" type="Emphasized" press="copyLineItems"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

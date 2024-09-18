@@ -1,0 +1,67 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>ChangePOFragTitle}" titleAlignment="Center" contentWidth="100%" contentHeight="50%">
+		<Table id="id_ChnPo" visible="true" sticky="ColumnHeaders" items="{chgData>/}" selectionChange="onSelectionChange">
+						<columns>
+							<Column id="col1">
+								<Label text="PO Number" design="Bold"/>
+							</Column>
+							<Column id="col2" width="5rem">
+								<Label text="Item" design="Bold"/>
+							</Column>
+							<Column id="col4">
+								<Label text="Material Description" design="Bold" wrapping="true"/>
+							</Column>
+							<Column id="col5">
+								<Label text="Delivery Date" design="Bold"/>
+							</Column>
+							<Column id="col6" width="5rem">
+								<Label text="Plant" design="Bold"/>
+							</Column>
+							<Column id="col7">
+								<Label text="Quantity" design="Bold"/>
+							</Column>
+							<Column id="col8">
+								<Label text="Pending Qty" design="Bold" wrapping="true"/>
+							</Column>
+							<Column id="col9">
+								<Label text="Confirmed Qty" design="Bold" wrapping="true"/>
+							</Column>
+							<Column id="col10">
+								<Label text="New Proposed Qty" design="Bold" required="true" wrapping="true"/>
+							</Column>
+							<Column id="col11" width="13%">
+								<Label text="New Proposed Date" design="Bold" required="true" wrapping="true"/>
+							</Column>
+							<Column id="col12">
+								<Label text="Action" design="Bold" wrapping="true"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{chgData>PoNumber}"/>
+									<Text text="{chgData>PoItem}"/>
+									<!--<Text text="{ path: 'chgData>Acckey', formatter: '.formatter.formatAcckey' }"/>-->
+									<Text text="{chgData>MaterialDes}"/>
+									<Text text="{path:'chgData>DeliveryDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+									<Text text="{chgData>Plant}"/>
+									<ObjectNumber number="{chgData>Quantity}" unit="{chgData>Uom}"/>
+									<ObjectNumber number="{chgData>PendingQty}" unit="{chgData>Uom}"/>
+									<ObjectNumber number="{chgData>ConfQty}" unit="{chgData>Uom}"/>
+									<Input id="newQty" value="{chgData>NewQuantity}" liveChange="onInputChange"/>
+									<DatePicker id="newDate1minmax" minDate="{oPropertyModel>/minDate}" dateValue="{chgData>NewDelDate}" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" placeholder="dd.mm.yyyy" change="onChangeDate"/>
+									<HBox>
+										<Button icon="sap-icon://positive" tooltip="Add" press="addRow" type="Transparent"/>
+										<Button icon="sap-icon://negative" tooltip="Delete" press="removeRow" type="Transparent"/>
+									</HBox>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+			<buttons>
+				<!--<Button type="Back" text="Back" press="onBackNav"/>-->
+				<Button icon="sap-icon://accept"  id="idApprove" type="Accept" text="Submit" press="onChangeSubmit"/>
+				<Button icon="sap-icon://decline" text="Cancel" type="Reject" press="closeMatDialog1"/>
+		   </buttons>
+	</Dialog>
+</core:FragmentDefinition>

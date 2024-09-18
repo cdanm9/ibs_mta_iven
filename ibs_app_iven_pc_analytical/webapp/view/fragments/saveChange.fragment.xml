@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Are you sure you want to submit?" class="sapUiSizeCompact" draggable="true" resizable="true"
+	state="Information" titleAlignment="Center" busy="{oPropertyModel>/setSubmitBusy}" busyIndicatorSize="Medium">
+		<f:SimpleForm id="simpleform2" editable="false" labelSpanL="3" emptySpanL="4" columnsL="1" width="100%" layout="ResponsiveGridLayout">
+			<f:content>
+				<HBox justifyContent="SpaceAround">
+				<VBox>
+					<Label design="Bold" text="Comments" required="true"/>
+					<TextArea value="{oPropertyModel>/SaveFragmentComment}" placeholder="Comments" change="validateComments" maxLength="300" showExceededText="true" rows="5" width="600px"></TextArea>
+				</VBox>
+				</HBox>
+			</f:content>
+		</f:SimpleForm>
+		<buttons>
+			<Button text="Yes" icon="sap-icon://accept" press="onSubmit_Yes" type="Emphasized"/>
+			<Button text="No" icon="sap-icon://decline" press="closeSaveFragment" type="Ghost"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

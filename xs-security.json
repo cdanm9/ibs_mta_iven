@@ -1,0 +1,26 @@
+{
+  "xsappname": "ibs_mta_iven_po",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",   
+  "scopes": [
+    {
+      "name": "uaa.user",
+      "description": "UAA"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Token_Exchange",
+      "description": "UAA",
+      "scope-references": [
+        "uaa.user"
+      ]
+    }
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "http://localhost:5000/",  
+      "https://9da603b4trial-dev-ibs-mta-iven-po-approuter.cfapps.us10-001.hana.ondemand.com/"
+    ]
+  }
+}

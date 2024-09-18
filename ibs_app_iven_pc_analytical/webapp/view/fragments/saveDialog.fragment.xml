@@ -1,0 +1,14 @@
+<!-- Scheduler Agreement App Fragment-->   
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog id="DeleteDialog" title="Confirmation" titleAlignment="Center" state="Information">
+		<f:SimpleForm>
+   			<f:content>
+   				<Title text="Are you sure you to confirm?"/>
+   			</f:content>
+   		</f:SimpleForm>
+		<buttons>
+			<Button icon="sap-icon://accept" text="Yes" type="Emphasized" press="onSubmit"/>
+			<Button icon="sap-icon://decline" text="No" press="closeMatDialog" type="Ghost"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

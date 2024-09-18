@@ -1,0 +1,89 @@
+<mvc:View controllerName="com.ibs.ibsappivenpcanalytical.controller.RFQView1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:fb="sap.ui.comp.filterbar" xmlns:svm="sap.ui.comp.smartvariants" xmlns:core="sap.ui.core">
+	<!--<Shell id="shell">-->
+	<!--<App id="app">-->
+		<Page id="page" showHeader="false" title="{i18n>title}" class="sapUiSizeCompact">
+			<content>
+				<fb:FilterBar id="filterBar" search="onGoClick" showRestoreButton="true" showClearButton="true" showFilterConfiguration="false"
+							filterContainerWidth="14rem" position="Right" hSpacing="2rem" showGoOnFB="true" class="sapUiResponsiveContentPadding">
+					<fb:filterGroupItems>
+						<fb:FilterGroupItem name="Supplier Quotation" label="Supplier Quotation" groupName="Group1" visibleInFilterBar="true">
+							<fb:control>
+								<Input valueHelpRequest="onValueHelpRequest" id="" showValueHelp="true" placeholder=""/>
+							</fb:control>
+						</fb:FilterGroupItem>
+						
+						<fb:FilterGroupItem name="RFQ" label="RFQ" groupName="Group1" visibleInFilterBar="true">
+							<fb:control>
+								<Input valueHelpRequest="onValueHelpRequest" id="yy" showValueHelp="true" placeholder=""/>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem name="RFQ Type" label="RFQ Type" groupName="Group1" visibleInFilterBar="true">
+							<fb:control>
+								<Input valueHelpRequest="onValueHelpRequest" id="yyyyy" showValueHelp="true" placeholder=""/>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem name="Quotation Date" label="Quotation Date" groupName="Group1" visibleInFilterBar="true">
+							<fb:control>
+								<Input valueHelpRequest="onValueHelpRequest" id="yyyyyy" showValueHelp="true" placeholder=""/>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<!--<fb:FilterGroupItem name="Status" label="Status" groupName="Group1" visibleInFilterBar="true">-->
+						<!--	<fb:control>-->
+						<!--		<Input valueHelpRequest="onValueHelpRequest" id="yyyyyyu" showValueHelp="true" placeholder=""/>-->
+						<!--	</fb:control>-->
+						<!--</fb:FilterGroupItem>-->
+					</fb:filterGroupItems>
+				</fb:FilterBar>
+				<!--<Panel backgroundDesign="Transparent" class="sapUiSizeCompact">-->
+					<Table id="table" selectionChange="onSelectionChange" mode="SingleSelectMaster" items="{itemlist3>/results}" width="auto"
+						class="sapUiResponsiveMargin">
+						<headerToolbar>
+							<Toolbar>
+								<Title level="H1" text="Quotations"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Supplier Quotation"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Supplier"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="RFQ"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Quotation Date"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Payment Days"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Company Code"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Status"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation">
+								<cells>
+									<ObjectIdentifier title="{itemlist3>Supplierquotation}"/>
+									<Text text="{itemlist3>Supplier}"/>
+									<Text text="{itemlist3>Requestforquotation}"/>
+									<Text text="{path:'itemlist3>Quotationsubmissiondate'}"/>
+									<Text text="{itemlist3>Netpaymentdays}"/>
+									<Text text="{itemlist3>Companycode}"/>
+									<ObjectStatus inverted="true" text="{ path: 'itemlist3>Qtnlifecyclestatus', formatter: '.formatter.formatStateText' }"
+												state="{ path: 'itemlist3>Qtnlifecyclestatus', formatter: '.formatter.formatState' }"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				<!--</Panel>-->
+			</content>
+		</Page>
+	<!--</App>-->
+	<!--</Shell>-->
+</mvc:View>

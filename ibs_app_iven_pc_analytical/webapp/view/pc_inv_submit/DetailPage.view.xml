@@ -1,0 +1,193 @@
+<mvc:View controllerName="com.ibs.ibsappivenpcanalytical.controller.pc_inv_submit.DetailPage"   
+    xmlns="sap.uxap" xmlns:c="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m"    
+	xmlns:f="sap.f" xmlns:v="sap.ui.table" xmlns:form="sap.ui.layout.form" 
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:semantic="sap.f.semantic"
+	xmlns:commons="sap.suite.ui.commons" xmlns:html="http://www.w3.org/1999/xhtml" 	
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"    
+	xmlns:u="sap.ui.unified"  xmlns:p="sap.ui.table"  xmlns:q="sap.ui.table">
+   <semantic:SemanticPage 	id="mySemanticPage" headerPinnable="true" toggleHeaderOnTitleClick="true"
+		preserveHeaderStateOnScroll="false" titleAreaShrinkRatio="1:1.6:1.6" showFooter="false">
+   		<semantic:titleHeading>
+			<m:Title text="Invoice Details" />          
+		</semantic:titleHeading>    
+
+		<semantic:headerContent>
+  			<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
+				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd" visible="false">
+					<m:Link text="Currency Code:"/>
+					<m:Text text="{path:'headerLineItems>/value/0/CURRENCYCODE', formatter:'.formatter.getDataNullValue'}"         
+						id="three"/>
+				</m:VBox>
+				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd" visible="false">
+					<m:Link text="Document Date:"/>
+					<m:Text text="{path: 'headerLineItems>/value/0/DOCUMENTDATE',formatter:'.formatter.formatDate', formatOptions: { style: 'medium' }}" id="four"/>
+				</m:VBox>
+                <m:VBox justifyContent="Center" class="sapUiLargeMarginEnd">
+					<m:Link text="Vendor Invoice No.:"/>
+					<m:Text text="{path:'headerLineItems>/value/0/DOCUMENTNUMBER', formatter:'.formatter.getDataNullValue'}"
+						id="five"/>
+				</m:VBox>
+                <m:VBox justifyContent="Center" class="sapUiLargeMarginEnd">
+					<m:Link text="Gross Amount:"/>
+					<m:Text text="{path:'headerLineItems>/value/0/GROSSAMOUNT',formatter:'.formatter.formatterAmount'}" id="two" />
+				</m:VBox>
+				<m:VBox justifyContent="Center" class="sapUiLargeMarginEnd" >
+					<m:Link text="Vendor Name:"/>
+					<m:Text text="({headerLineItems>/value/0/VENDORCODE}) {headerLineItems>/value/0/VENDORNAME}" id="seven" wrapping="true" />
+				</m:VBox>
+				<m:VBox justifyContent="Center" class="sapUiLargeMarginEnd">
+					<m:Link text="Business Place/Section:"/>
+					<m:Text text="MH01/1000" id="eigth" />
+				</m:VBox>
+				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd" visible="{path:'headerLineItems>/value/0/SAPNUMBER',formatter:'.formatter.SAPNumberVisibility'}">
+					<m:Link text="SAP Number:"/>
+					<m:Text text="{path:'headerLineItems>/value/0/SAPNUMBER', formatter:'.formatter.getDataNullValue'}" />
+				</m:VBox>
+				
+            </m:FlexBox>
+		</semantic:headerContent>
+
+		<semantic:titleCustomTextActions>
+            <m:Button text="Cancel" id="onclose" press="OnClosePdf" visible="false"/>
+	   	    <m:Button text="Save" press="OnSave" type="Emphasized" id="onSave" visible="false"></m:Button>
+            <m:Button text="Cancel" press="onCancel" type="Emphasized" id="cancel" visible="false"></m:Button>
+        </semantic:titleCustomTextActions>
+
+    	<semantic:content>
+    		<m:VBox>
+		  		<v:Table rows="{headerLineItems>/value/0/TO_LINEITEM}" id="tablerowvisible"  ariaLabelledBy="title"
+               		selectionMode="None" paste="onPaste" rowSelectionChange="RowSelector">
+					<v:extension>
+						<m:OverflowToolbar style="Clear">
+							<m:Title id="title" text="Products"/>
+						</m:OverflowToolbar>
+					</v:extension>
+					<v:columns>
+						<v:Column width="16rem">
+							<m:Label text="Description" />
+							<v:template>
+								<m:Text text="{path:'headerLineItems>DESCRIPTION', formatter:'.formatter.getDataNullValue'}" wrapping="true" />
+							</v:template>
+						</v:Column>
+						<v:Column width="8rem" hAlign="End">
+							<m:Label text="Net Amount" />
+							<v:template>
+								<m:Text text="{path:'headerLineItems>NETAMOUNT',formatter:'.formatter.formatterAmount'}" wrapping="true"/>
+							</v:template>
+						</v:Column>
+						<v:Column width="8rem" hAlign="End">
+							<m:Label text="Quantity" />
+							<v:template>
+								<m:Label text="{path:'headerLineItems>QUANTITY',formatter:'.formatter.formatterAmount'}" wrapping="true"/>
+							</v:template>
+						</v:Column>
+						<v:Column width="9rem">
+							<m:Label text="Unit Of Measure" />
+							<v:template>
+								<m:ObjectStatus text="{headerLineItems>UNITOFMEASURE}" state="{path: 'Available', formatter: '.formatAvailableToObjectState'}" />
+							</v:template>
+						</v:Column>
+						<v:Column width="9rem" hAlign="End">
+							<m:Label text="Unit Price" />
+							<v:template>
+								<m:Text text="{path:'headerLineItems>UNITPRICE',formatter:'.formatter.formatterAmount'}" wrapping="true" />
+							</v:template>
+						</v:Column>
+						<v:Column width="10rem">
+							<m:Label text="GL Account" />
+							<v:template>
+								<m:Text text="{path:'headerLineItems>GL_ACCOUNT', formatter:'.formatter.getDataNullValue'}" wrapping="true"/>
+							</v:template>
+						</v:Column>
+						<v:Column width="10rem">
+							<m:Label text="Cost Center" />
+							<v:template>
+								<m:Text text="{path:'headerLineItems>COST_CENTER', formatter:'.formatter.getDataNullValue'}" wrapping="true" />
+							</v:template>
+						</v:Column>
+						<v:Column width="10rem">
+							<m:Label text="TAX Code" />
+							<v:template>
+								<m:Text text="{path:'headerLineItems>TAXCODE_DESCRIPTION', formatter:'.formatter.getDataNullValue'}" wrapping="true" />
+							</v:template>
+						</v:Column>
+					</v:columns>
+				</v:Table>
+
+       			<v:Table rows="{headerLineItems>/value/TO_LINEITEM}" visible="false"
+					selectionMode="MultiToggle" paste="onPaste1" id="tablerowvisible1" ariaLabelledBy="title">
+					<v:extension>
+						<m:OverflowToolbar style="Clear">
+							<m:Title  text="Products"/>
+						</m:OverflowToolbar>
+					</v:extension>
+					<v:columns>
+						<v:Column width="11rem">
+							<m:Label text="DESCRIPTION" />
+							<v:template>
+								<m:Input value="{headerLineItems>DESCRIPTION}" liveChange="Ondescription" id="DESCRIPTION"/>
+							</v:template>
+						</v:Column>
+						<v:Column width="11rem">
+							<m:Label text="NETAMOUNT" />
+							<v:template>
+								<m:Input value="{headerLineItems>NETAMOUNT}" liveChange="Ondescription" id="NETAMOUNT" type="Number"/>
+							</v:template>
+						</v:Column>
+						<v:Column width="6rem" hAlign="End">
+							<m:Label text="QUANTITY" />
+							<v:template>
+								<m:Input value="{headerLineItems>QUANTITY}" liveChange="Ondescription" id="QUANTITY" type="Number"/>
+							</v:template>
+						</v:Column>
+						<v:Column width="9rem">
+							<m:Label text="Unit Of Measure" />
+							<v:template>
+								<m:Input value="{headerLineItems>UNITOFMEASURE}" />
+							</v:template>
+						</v:Column>
+						<v:Column width="9rem">
+							<m:Label text="Unit Price" />
+							<v:template>
+									<m:Input value="{headerLineItems>UNITPRICE}" liveChange="Ondescription" id="UNITPRICE" type="Number"/>
+							</v:template>
+						</v:Column>
+					</v:columns>
+				</v:Table>
+
+				<m:PDFViewer id="pdfViewer" isTrustedSource="true" source="{atfile>/Source}" title="{atfile>/Title}" 
+					class="sapUiTinyMarginTopBottom" width="100%" height="500px" visible="false"/>
+			</m:VBox>
+		</semantic:content>
+
+		<semantic:closeAction>
+      		<semantic:CloseAction id="closeColumn" press=".onCloseDetailPress"/>
+    	</semantic:closeAction>
+
+		<semantic:fullScreenAction>
+            <semantic:FullScreenAction id="enterFullScreen" press=".toggleFullScreen"
+                visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}"/>
+        </semantic:fullScreenAction>
+
+        <semantic:exitFullScreenAction>
+            <semantic:ExitFullScreenAction id="exitFullScreen" press=".toggleFullScreen"
+                visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}"/>
+        </semantic:exitFullScreenAction>
+
+		<semantic:customShareActions>
+			<m:Button icon="sap-icon://pdf-attachment" text="" id="pdfviewr" press="onGeneratePDFPress"/>
+		</semantic:customShareActions>
+
+		<semantic:positiveAction>
+			<semantic:PositiveAction text="Approve" press="OnApprove" id="savebtn"/>
+		</semantic:positiveAction>
+
+		<semantic:negativeAction>
+			<semantic:NegativeAction text="Reject" press="OnReject" id="reject"/>
+		</semantic:negativeAction>
+
+		<semantic:footerCustomActions>
+			<m:Button text="Delete" type="Reject"  id="deleteaction" visible="false"/>
+		</semantic:footerCustomActions>
+	</semantic:SemanticPage>
+</mvc:View>

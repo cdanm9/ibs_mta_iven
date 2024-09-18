@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>ServicePOFragTitle}" titleAlignment="Center" contentWidth="50%">
+		<Table width="auto" id="idProductsTable" inset="false" items="{servicePOData>/results}" class="sapUiResponsiveMargin">
+			<columns>
+				<Column hAlign="Center">
+					<Label design="Bold" text="{i18n>ServicePOFragTableCol1}"/>   
+				</Column>
+				<Column hAlign="Center">
+					<Label design="Bold" text="{i18n>ServicePOFragTableCol2}"/>
+				</Column>
+				<Column hAlign="Center">
+					<Label design="Bold" text="{i18n>ServicePOFragTableCol3}"/>
+				</Column>
+				<Column hAlign="Center">
+					<Label design="Bold" text="{i18n>ServicePOFragTableCol4}"/>
+				</Column>
+				<Column hAlign="Right">
+					<Label design="Bold" text="{i18n>ServicePOFragTableCol5}"/>
+				</Column>
+				<Column hAlign="Right">
+					<Label design="Bold" text="{i18n>ServicePOFragTableCol6}"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{servicePOData>PoItem}"/>
+						<Text text="{servicePOData>Description}"/>
+						<Text text="{servicePOData>SerQuantity}"/>
+						<Text text="{servicePOData>BaseUnit}"/>
+						<Text text="{servicePOData>GrossValue}"/>
+						<Text text="{servicePOData>NetValue}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<buttons>
+			<Button text="{i18n>ServicePOFragButton1}" press="closeSPODialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

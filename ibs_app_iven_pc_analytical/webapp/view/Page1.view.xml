@@ -1,0 +1,246 @@
+<!-- <mvc:View controllerName="com.ibs.ibsappivenpcanalytical.controller.Page1"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page title="Page1">
+    <content>
+    <Text text = "page1"/>
+    </content>
+    </Page>
+</mvc:View> -->
+
+<mvc:View controllerName="com.ibs.ibsappivenpcanalytical.controller.Page1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" xmlns:f="sap.f" xmlns:layout="sap.ui.layout"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:grid="sap.ui.layout.cssgrid" xmlns:card="sap.f.cards" xmlns:core="sap.ui.core"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<html:style>
+		.sapUiSizeCompact .sapMInputBaseHasEndIcons .sapMInputBaseContentWrapper, .sapUiSizeCompact .sapMInputBaseHasBeginIcons
+		.sapMInputBaseContentWrapper { min-width: 15.33rem; }
+	</html:style>
+	<!--<Shell id="shell">-->
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}" showHeader="false" class="sapUiSizeCompact">
+					<content>
+						<f:GridList class="sapUiSmallMargin" growing="true" growingThreshold="4">
+							<f:customLayout>
+								<grid:GridBoxLayout boxWidth="19rem"/>
+							</f:customLayout>
+							<f:GridListItem>
+								<VBox height="100%">
+									<VBox justifyContent="SpaceBetween">
+										<layoutData>
+											<FlexItemData growFactor="1" shrinkFactor="0"/></layoutData>
+										<HBox class="sapUiSmallMargin">
+											<VBox>
+												<Title text="Open PO" wrapping="true" width="100%"/>
+												<Label text="in INR"/>
+												<NumericContent truncateValueTo="10" value="52,00,00" withMargin="false"/>
+												<Title text="" wrapping="true" width="100%"/>
+												<HBox>
+													<Label text="Count: " class="sapUiTinyMarginRight" design="Bold"/>
+													<Title text=" 46" wrapping="true" width="100%"/>
+												</HBox>
+											</VBox>
+										</HBox>
+									</VBox>
+								</VBox>
+							</f:GridListItem>
+							<f:GridListItem>
+								<VBox height="100%">
+									<VBox justifyContent="SpaceBetween">
+										<layoutData>
+											<FlexItemData growFactor="1" shrinkFactor="0"/></layoutData>
+										<HBox class="sapUiSmallMargin">
+											<VBox>
+												<Title text="Open GR" wrapping="true" width="100%"/>
+												<Label text="in INR"/>
+												<NumericContent truncateValueTo="10" value="72,00,00" withMargin="false" tooltip=""/>
+												<Title text="" wrapping="true" width="100%"/>
+												<HBox>
+													<Label text="Count: " design="Bold" class="sapUiTinyMarginRight"/>
+													<Title text="83" wrapping="true" width="100%" class="sapUiTinyMarginRight"/>
+												</HBox>
+											</VBox>
+										</HBox>
+									</VBox>
+								</VBox>
+							</f:GridListItem>
+							<f:GridListItem>
+								<VBox height="100%">
+									<VBox justifyContent="SpaceBetween">
+										<layoutData>
+											<FlexItemData growFactor="1" shrinkFactor="0"/></layoutData>
+										<HBox class="sapUiSmallMargin">
+											<VBox>
+												<Title text="Open Invoice" wrapping="true" width="100%"/>
+												<Label text="in INR"/>
+												<NumericContent truncateValueTo="10" value="92,00,00" withMargin="false" tooltip=""/>
+												<Title text="" wrapping="true" width="100%"/>
+												<HBox>
+													<Label text="Count: " design="Bold" class="sapUiTinyMarginRight"/>
+													<Title text="93" wrapping="true" width="100%" class="sapUiTinyMarginRight"/>
+												</HBox>
+											</VBox>
+										</HBox>
+									</VBox>
+								</VBox>
+							</f:GridListItem>
+						</f:GridList>
+						<HBox height="70%">
+							<f:Card class="sapUiMediumMargin" width="500px" height="400px">
+								<f:header>
+									<card:Header title="Supplier Performance Monitoring" subtitle=""/>
+								</f:header>
+								<f:content>
+									<VBox height="100px" width="100px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+										<ComboBox  selectedKey="A">
+											<core:Item key="A" text="Supplier Performance Monitoring"></core:Item>
+										</ComboBox>
+										<viz:VizFrame id="idVizFrame" height='300px' width="500px" vizType='bubble'>
+											<viz:dataset>
+												<viz.data:FlattenedDataset data="{/milk}">
+													<viz.data:dimensions>
+														<viz.data:DimensionDefinition name="PO Net Amount" value="{Week}"/>
+													</viz.data:dimensions>
+													<viz.data:measures>
+														<viz.data:MeasureDefinition name="Operational Score" value="{Revenue}"/>
+														<viz.data:MeasureDefinition name="Cost" value="{Cost}"/>
+														<viz.data:MeasureDefinition name="Consumption" value="{Consumption}"/>
+													</viz.data:measures>
+												</viz.data:FlattenedDataset>
+											</viz:dataset>
+											<viz:feeds>
+												<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Operational Score"/>
+												<viz.feeds:FeedItem uid="valueAxis2" type="Measure" values="Cost"/>
+												<viz.feeds:FeedItem uid="bubbleWidth" type="Measure" values="Consumption"/>
+											</viz:feeds>
+										</viz:VizFrame>
+									</VBox>
+								</f:content>
+							</f:Card>
+							<f:Card class="sapUiMediumMargin" width="500px" height="400px">
+								<f:header>
+									<card:Header title="Monitor Purchase Order Items" subtitle="Sorted by delivery date and value"/>
+								</f:header>
+								<f:content>
+									<VBox height="100px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+										<Select forceSelection="true">
+											<core:Item key="" text="In Approval"></core:Item>
+										</Select>
+										<List showSeparators="None" items="{ path: 'products>/productItems' }">
+											<CustomListItem>
+												<HBox alignItems="Center" justifyContent="SpaceBetween">
+													<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+														<Label design="Bold" text="{products>title}"/>
+														<Text text="{products>number}"/>
+														<Text text="{products>subtitle}"/>
+													</VBox>
+													<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+														<Label text="{products>year}" design="Bold"/>
+														<Text text="{products>amt}"/>
+														<Text text="{products>unit}"/>
+													</VBox>
+												</HBox>
+											</CustomListItem>
+										</List>
+									</VBox>
+								</f:content>
+							</f:Card>
+						</HBox>
+						<HBox height="70%">
+							<f:Card class="sapUiMediumMargin" width="500px" height="400px">
+								<f:header>
+									<card:Header title="Monitor Purchase Requisition Items" subtitle="Sorted by delivery date and value"/>
+								</f:header>
+								<f:content>
+									<VBox height="100px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+										<Select forceSelection="true">
+											<core:Item key="" text="Unsourced"></core:Item>
+										</Select>
+										<List showSeparators="None" items="{ path: 'purchase>/productItems' }">
+											<CustomListItem>
+												<HBox alignItems="Center" justifyContent="SpaceBetween">
+													<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+														<Label design="Bold" text="{purchase>title}"/>
+														<Text text="{purchase>number}"/>
+														<!--<Text text="{purchase>subtitle}"/>-->
+													</VBox>
+													<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+														<ObjectStatus text="{purchase>year}" state="Warning" class="fontThick"/>
+														<Text text="{purchase>unit}"/>
+														<Text text="{purchase>amt}"/>
+													</VBox>
+												</HBox>
+											</CustomListItem>
+										</List>
+									</VBox>
+								</f:content>
+							</f:Card>
+							<f:Card class="sapUiMediumMargin" width="500px" height="400px">
+								<f:header>
+									<card:Header title="Non-Managed Spend" subtitle="As % of total spend"/>
+								</f:header>
+								<f:content>
+									<VBox height="100px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+										<Select forceSelection="true">
+											<core:Item key="" text="By Supplier"></core:Item>
+										</Select>
+										<List showSeparators="None" items="{ path: 'managed>/productItems' }">
+											<CustomListItem>
+												<HBox alignItems="Center" justifyContent="SpaceBetween">
+													<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+														<Label design="Bold" text="{managed>title}"/>
+														<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="50" showValue="false" state="Success"/>
+														<!--<Text text="{purchase>subtitle}"/>-->
+													</VBox>
+													<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+														<ObjectStatus text="{managed>amt}" state="Warning" class="fontThick"/>
+													</VBox>
+													<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+														<Text text="0%"/>
+													</VBox>
+												</HBox>
+											</CustomListItem>
+										</List>
+									</VBox>
+								</f:content>
+							</f:Card>
+						</HBox>
+						<HBox height="70%">
+							<f:Card class="sapUiMediumMargin" width="530px" height="400px">
+								<f:header>
+									<card:Header title="Purchasing Spend" subtitle=""/>
+								</f:header>
+								<f:content>
+									<VBox height="100px" width="100px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+										<ComboBox selectedKey="B">
+											<core:Item key="B" text="Purchasing Spend Trend"></core:Item>
+										</ComboBox>
+										<viz:VizFrame id="idVizFrame1" height='300px' width="500px" vizType='line'>
+											<viz:dataset>
+												<viz.data:FlattenedDataset data="{dataline>/milk1}">
+													<viz.data:dimensions>
+														<viz.data:DimensionDefinition name="Years" value="{dataline>Week}"/>
+													</viz.data:dimensions>
+													<viz.data:measures>
+														<viz.data:MeasureDefinition name="PO Net Amount" value="{dataline>Revenue}"/>
+														<!-- <viz.data:MeasureDefinition name="Cost" value="{Cost}" /> -->
+													</viz.data:measures>
+												</viz.data:FlattenedDataset>
+											</viz:dataset>
+											<viz:feeds>
+												<viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="PO Net Amount"/>
+												<viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension" values="Years"/>
+											</viz:feeds>
+										</viz:VizFrame>
+									</VBox>
+								</f:content>
+							</f:Card>
+						</HBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	<!--</Shell>-->
+</mvc:View>

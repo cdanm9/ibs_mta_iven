@@ -1,0 +1,139 @@
+<!-- <mvc:View controllerName="com.ibs.ibsappivenpcanalytical.controller.Page2"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page title="Page2">
+    <content></content>
+    </Page>
+</mvc:View> -->
+
+<mvc:View controllerName="com.ibs.ibsappivenpcanalytical.controller.Page2" height="100%" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:f="sap.f" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:vm="sap.ui.comp.variants">
+	<Page showHeader="false">
+		<content>
+			<IconTabBar id="idIconTabBar" select="onFilterSelect" selectedKey="{viewModel>/iconTabFilterSelected}" upperCase="true"
+				class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter icon="sap-icon://pending" iconColor="Critical" text="Open" key="Open"/>
+					<IconTabSeparator/>
+					<IconTabFilter icon="sap-icon://accept" iconColor="Positive" text="Submitted" key="Submitted"/>
+					<!--<IconTabSeparator/>-->
+					<!--<IconTabFilter icon="sap-icon://delete" iconColor="Negative" text="Deleted" key="Deleted"/>-->
+				</items>
+				<content>
+					<Table id="idMainReport" inset="false" sticky="ColumnHeaders" growing="true" growingThreshold="100" growingDirection="Downwards" growingScrollToLoad="true" noDataText="No Records Found" updateFinished="onUpdateFinished" 
+						 mode="SingleSelectMaster" selectionChange="onItemPress" visible="{viewModel>/Table1Visible}"
+						items="{path :'headerModel>/', sorter:[ { path: 'PoNumber', descending: 'true' } ]}">
+						<headerToolbar>
+							<OverflowToolbar >
+								<Title id="idTitleCount" text="Orders ({viewModel>/mainTableCount})" level="H1"/>
+								<ToolbarSpacer/>
+								<SearchField id="idsearchField" placeholder="Search PO" liveChange="onSearch" width="15rem"/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column mergeDuplicates="false" width="7rem" hAlign="Center">
+								<Label text="Order Number" design="Bold" wrapping="true"/>
+							</Column>
+							<Column hAlign="Center" width="7rem">
+								<Label text="Creation Date" design="Bold" wrapping="true"/>
+							</Column>
+							<!--<Column hAlign="Center">-->
+							<!--	<Label text="{i18n>Table1Col3}" design="Bold" wrapping="true"/>-->
+							<!--</Column>-->
+							<Column hAlign="Center" width="9.2rem">
+								<Label text="Amount" design="Bold" wrapping="true"/>
+							</Column>
+							<Column hAlign="Center" width="10.2rem">
+								<Label text="Buyer" design="Bold" wrapping="true"/>
+							</Column>
+							<!--<Column hAlign="Center" width="15rem">-->
+							<!--	<Label design="Bold" text="Header Text"/>-->
+							<!--</Column>-->
+							<!--<Column hAlign="Center" width="15rem">-->
+							<!--	<Label design="Bold" text="Note"/>-->
+							<!--</Column> -->
+							<Column hAlign="Center" width="6rem">
+								<Label design="Bold" text="Status"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation">
+								<cells>
+									<Label text="{headerModel>PoNumber}" design="Bold"/>
+									<Text text="{path: 'headerModel>PoDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+									<!--<Text text="{headerModel>Potypedec}"/>-->
+									<ObjectNumber state="None" unit="{headerModel>Currency}"
+										number="{path:'headerModel>PoAmount', formatter: '.formatter.formatAmount'}"/>
+									<Text text="{headerModel>BuyerName}"/>
+									<!--<Text text="{headerModel>HeaderText}" maxLines="2"/>-->
+								 <!--   <Text text="{headerModel>NoteToSupp}" maxLines="2"/>-->
+									<ObjectStatus inverted="true" text="{ path: 'headerModel>Status', formatter: '.formatter.formatStateText1' }"
+												state="{ path: 'headerModel>Status', formatter: '.formatter.formatState1' }"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<Table id="idMainReport1" inset="false" sticky="ColumnHeaders" noDataText="No Records Found" updateFinished="onUpdateFinished"
+						growing="true" growingScrollToLoad="true" mode="SingleSelectMaster" selectionChange="onItemPress" visible="{viewModel>/Table2Visible}"
+						items="{path :'headerModel>/', sorter:[ { path: 'PoNumber', descending: 'true' } ]}">
+						<headerToolbar>
+							<OverflowToolbar >
+								<Title id="idTitleCount1" text="ASN ({viewModel>/mainTableCount})" level="H1"/>
+								<ToolbarSpacer/>
+								<SearchField id="idsearchField1" placeholder="Search PO" liveChange="onSearch" width="15rem"/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column mergeDuplicates="true" width="7rem" hAlign="Center">
+								<Label text="PO Number" design="Bold" wrapping="true"/>
+							</Column>
+							<Column hAlign="Center" width="7rem">
+								<Label text="ASN No." design="Bold" wrapping="true"/>
+							</Column>
+							<Column hAlign="Center" width="7rem">
+								<Label text="Creation Date" design="Bold" wrapping="true"/>
+							</Column>
+							<Column hAlign="Center" width="9.2rem">
+								<Label text="Amount" design="Bold" wrapping="true"/>
+							</Column>
+							<Column hAlign="Center" width="10rem">
+								<Label text="Buyer" design="Bold" wrapping="true"/>
+							</Column>
+							<!--<Column hAlign="Center">-->
+							<!--	<Label text="{i18n>Table1Col3}" design="Bold" wrapping="true"/>-->
+							<!--</Column>-->
+							<!--<Column hAlign="Center" width="15rem">-->
+							<!--	<Label design="Bold" text="Header Text"/>-->
+							<!--</Column>-->
+							<!--<Column hAlign="Center" width="15rem">-->
+							<!--	<Label design="Bold" text="Note"/>-->
+							<!--</Column>-->
+							<Column hAlign="Center" width="6rem">
+								<Label design="Bold" text="Status"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation">
+								<cells>
+									<Label text="{headerModel>PoNumber}" design="Bold"/>
+									<Text text="{headerModel>Asnno}"/>
+									<Text text="{path: 'headerModel>PoDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+								    <ObjectNumber state="None" unit="{headerModel>Currency}"
+										number="{path:'headerModel>PoAmount', formatter: '.formatter.formatAmount'}"/>
+									<!--<Text text="{headerModel>User}"/>-->
+									<Text text="{headerModel>BuyerName}"/>
+									<!--<Text text="{headerModel>HeaderText}" maxLines="2"/>-->
+								 <!--   <Text text="{headerModel>NoteToSupp}" maxLines="2"/>-->
+									<ObjectStatus inverted="true" text="{ path: 'headerModel>Status', formatter: '.formatter.formatStateText1' }"
+												state="{ path: 'headerModel>Status', formatter: '.formatter.formatState1' }"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</IconTabBar>
+		</content>
+	</Page>
+</mvc:View>

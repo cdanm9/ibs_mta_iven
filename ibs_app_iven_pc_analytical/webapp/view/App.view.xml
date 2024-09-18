@@ -1,0 +1,79 @@
+<!-- <mvc:View controllerName="com.ibs.ibsappivenpcanalytical.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <App id="app">
+    </App>
+</mvc:View> -->
+
+<mvc:View
+    controllerName="com.ibs.ibsappivenpcanalytical.controller.App"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    xmlns:f="sap:f"
+    height="100%"
+> 
+    <tnt:ToolPage id="toolPage">
+        <tnt:header>
+			<tnt:ToolHeader>      
+				<Image height="1.5rem"
+					   class="sapUiSmallMarginBegin"   
+					   src="image/Intellect.png" />                      
+				<Title level="H1" text="iVen (Vendor Management)" wrapping="false" id="idiVenPO">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Disappear"/>
+					</layoutData>
+				</Title>
+				<ToolbarSpacer />  
+                <Link text="Log Out" href="/do/logout" press="onLogout" />                 
+				<ToolbarSpacer width="1.125rem"/>  
+                <Avatar id="myAvatar"    
+                    initials="{appInfo>/UserInitials}" 
+                    displaySize="XS"
+                    showBorder="true"
+                    class="sapUiTinyMargin"          
+                    press="onPress">     
+                </Avatar> 
+			</tnt:ToolHeader>    
+		</tnt:header>      
+        <tnt:sideContent>   
+            <tnt:SideNavigation itemSelect="onItemSelect">
+                <tnt:NavigationList items="{appInfo>/AppList}">
+                    <tnt:NavigationListItem icon="{appInfo>AppIcon}" text="{appInfo>AppText}" key="{appInfo>AppKey}" items="{appInfo>SubApps}">
+                        <tnt:items>   
+                            <tnt:NavigationListItem  icon="{appInfo>AppIcon}" text="{appInfo>AppText}" key="{appInfo>AppKey}"/>        
+                        </tnt:items>
+                    </tnt:NavigationListItem>
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+
+        </tnt:sideContent>
+        <tnt:mainContents>
+        <App id="myPage">
+        </App>
+    	<NavContainer id="pageContainer" initialPage="page2">
+				<pages>
+					<ScrollContainer
+						id="root1"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+						class="sapUiContentPadding">
+						<Text text="This is the root page" />
+					</ScrollContainer>
+                    
+                    <ScrollContainer
+						id="root5"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+						class="sapUiContentPadding">
+						<Text text="This is" />
+					</ScrollContainer>
+                    </pages>
+                    </NavContainer>
+		</tnt:mainContents>   
+    </tnt:ToolPage>   
+</mvc:View>
+

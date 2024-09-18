@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="{oPropertyModel>/dialogTitle}"  state="{oPropertyModel>/dialogState}" titleAlignment="Center" contentWidth="50%" class="sapUiSizeCompact">
+		<!--<Table width="auto" id="idError" inset="false" items="{errorhandler>/}" class="sapUiResponsiveMargin">-->
+		<!--	<columns>-->
+		<!--		<Column hAlign="Center">-->
+		<!--			<Label design="Bold" text=""/>-->
+		<!--		</Column>-->
+		<!--		<Column hAlign="Center">-->
+		<!--			<Label design="Bold" text="Error"/>-->
+		<!--		</Column>-->
+		<!--	</columns>-->
+		<!--	<items>-->
+		<!--		<ColumnListItem>-->
+		<!--			<cells>-->
+		<!--				<Text text="{}"/>-->
+		<!--				<Text text="{errorhandler>message}"/>-->
+		<!--			</cells>-->
+		<!--		</ColumnListItem>-->
+		<!--	</items>-->
+		<!--</Table>-->
+		
+		<List id="idError" items="{path: 'errorhandler>/'}" width="auto" class="sapUiResponsiveMargin">
+		<StandardListItem title="{errorhandler>message}"/>
+	   </List>
+		<buttons>
+			<Button text="Close" press="closeErrorDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,463 @@
+<mvc:View controllerName="com.ibs.ibsappivenpcanalytical.controller.DetailASN" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form"
+	xmlns="sap.uxap" xmlns:m="sap.m" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:layout="sap.ui.layout"
+	xmlns:u="sap.ui.unified" xmlns:t="sap.suite.ui.commons">
+	<!--<m:App id="app">-->
+	<m:Page showHeader="false" showNavButton="false" navButtonPress="onBack">
+		<m:content>
+			<layout:DynamicSideContent id="DynamicSideContent" class="sapUiSizeCompact" containerQuery="true" sideContentFallDown="BelowM"
+				breakpointChanged="handleBreakpointChangeEvent" showSideContent="{viewModel>/ShowSideContent}">
+				<ObjectPageLayout id="ObjectPageLayout" preserveHeaderStateOnScroll="true" upperCaseAnchorBar="true">
+					<headerTitle>
+						<ObjectPageDynamicHeaderTitle>
+							<expandedHeading>
+								<m:Title text="PO Number : {detailmodel>/PoNumber}" wrapping="true"/>
+							</expandedHeading>
+							<actions>
+								<!--<m:Button text="PO Events" press="handleEvents" type="Emphasized"/>-->
+							</actions>
+						</ObjectPageDynamicHeaderTitle>
+					</headerTitle>
+					<!--<headerContent>-->
+					<!--	<layout:HorizontalLayout>-->
+					<!--		<layout:VerticalLayout class="sapUiSmallMarginEnd">-->
+					<!--			<m:Label text="{i18n>AddressFrom}:"/>-->
+					<!--			<m:Label text="{detailmodel>/ShipFrom}" design="Bold"/>-->
+					<!--		</layout:VerticalLayout>-->
+					<!--		<m:HBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd"></m:HBox>-->
+					<!--		<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd">-->
+					<!--			<m:Label text="{i18n>AddressTo}:"/>-->
+					<!--			<m:Label text="{detailmodel>/ShipTo}" design="Bold"/>-->
+					<!--		</layout:VerticalLayout>-->
+					<!--	</layout:HorizontalLayout>-->
+					<!--</headerContent>-->
+					<sections>
+						<ObjectPageSection titleUppercase="false" title="Details">
+						<subSections>
+							<ObjectPageSubSection title="Details" mode="Expanded" titleUppercase="true">
+								<blocks>
+									<!--<layout:VerticalLayout width="100%">-->
+									<!--	<layout:Grid defaultSpan="L4" containerQuery="true">-->
+											<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="DETAILS" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+						                          labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false">
+												<f:content>
+													<core:Title/>
+													<m:Label text="Order Date" design="Bold"/>
+													<m:Text text="{path:'detailmodel>/PoDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+													<m:Label text="Vendor Name" design="Bold"/>
+													<m:Text text="{detailmodel>/VendorName}"/>
+													<!--<m:Label text="{i18n>AddressFrom}" design="Bold"/>-->
+								     <!--               <m:Label text="{detailmodel>/ShipFrom}" wrapping="true"/>-->
+													<!--<m:Label text="Down Payment %" design="Bold"/>-->
+													<!--<m:Text text="{detailmodel>/DpPerc}"/>-->
+								                    <m:Label text="Ship From" design="Bold"/>
+							                       	<m:Text text="{detailmodel>/ShipFrom}" wrapping="true"/>
+													<m:Label text="Header Text" design="Bold"/>
+													<m:Text text="{detailmodel>/HeaderText}"/>
+											<!--	</f:content>-->
+											<!--</f:SimpleForm>-->
+											<!--<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"-->
+						     <!--                     labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false">-->
+											<!--	<f:content>-->
+											        <core:Title/>
+													<m:Label text="{Buyer}" design="Bold"/>
+													<m:Text text="{detailmodel>/BuyerName}({detailmodel>/Buyer})"/>
+													<!--<m:Label text="{i18n>SubSection1Label5}" design="Bold"/>-->
+													<!--<m:Text text="{detailmodel>/PurGroupDes}"/>-->
+													<m:Label text="Purchase Org" design="Bold"/>
+													<m:Text text="{detailmodel>/PurOrgDes}"/>
+													<!--<m:Label text="{i18n>AddressTo}" design="Bold"/>-->
+								     <!--               <m:Label text="{detailmodel>/ShipTo}" wrapping="true"/>-->
+													<!--<m:Label text="Down Pay. Amt" design="Bold"/>-->
+													<!--<m:ObjectNumber unit="{detailmodel>/Currency}"-->
+									    <!--                number="{ parts:[{path:'detailmodel>/DpAmount'},{path:'detailmodel>/Currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>-->
+													<m:Label text="Deliver To" design="Bold"/>
+								                    <m:Text text="{detailmodel>/ShipTo}" wrapping="true"/>
+											<!--	</f:content>-->
+											<!--</f:SimpleForm>-->
+											<!--<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"-->
+						     <!--                     labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false">-->
+											<!--	<f:content>-->
+											        <core:Title/>
+													<m:Label text="Amount" design="Bold"/>
+													<m:ObjectNumber state="Success" unit="{detailmodel>/Currency}"
+									                    number="{path:'detailmodel>/PoAmount', formatter: '.formatter.formatAmount'}"/>
+													<!--<m:Text text="{ path: 'detailmodel>/PoAmount', formatter: '.formatter.formatAmount' } {detailmodel>/Currency}"/>-->
+													<m:Label text="Purchase Group" class="sapUiTinyMarginTop" design="Bold"/>
+													<m:Text text="{detailmodel>/PurOrgDes}" class="sapUiTinyMarginTop"/>
+													<m:Label text="Note To Supp." design="Bold"/>
+													<m:Text text="{detailmodel>/NoteToSupp}"/>
+													<!--<m:Label text="Down Payment Due Date" design="Bold"/>-->
+													<!--<m:Text text="{path:'detailmodel>/DpDueDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+											  <!--      <m:Label text="Reference No" design="Bold"/>-->
+													<!--<m:Text text="{detailmodel>/RefNo}"/>-->
+												</f:content>
+											</f:SimpleForm>
+									<!--	</layout:Grid>-->
+									<!--</layout:VerticalLayout>-->
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+						<ObjectPageSection titleUppercase="true" title="Ship Notice Header" visible="{= ${viewModel>/Table1Visible}}" importance="Medium">
+							<subSections>
+								<ObjectPageSubSection title="Ship Notice Header" titleUppercase="true">
+								  <blocks>
+									<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" labelSpanXL="5" labelSpanL="5" labelSpanM="5"
+						                           adjustLabelSpan="false" columnsXL="4" columnsL="3" columnsM="2" singleContainerFullSize="false">
+										<f:content>
+											<!--<core:Title/>-->
+											<!--<m:Label text="{i18n>HeaderField1}" required="true"/>-->
+											<!--<m:Input value="{detailModel>/Packingid}" width="20rem" maxLength="10"/>-->
+											<!--<m:Label text="{i18n>HeaderField2}"/>-->
+											<!--<m:DatePicker id="idShipdate" width="20rem" change="onShipChange" dateValue="{detailModel>/Shippingdate}" valueFormat="yyyy-MM-dd"-->
+											<!--	displayFormat="long"/>-->
+											<!--<m:Label text="{i18n>HeaderField3}"/>-->
+											<!--<m:DatePicker id="idEstmdate" width="20rem" change="onEstimateChange" dateValue="{detailModel>/Estimateddate}" valueFormat="yyyy-MM-dd"-->
+											<!--	displayFormat="long"/>-->
+											<!--<core:Title/>-->
+											<!--<m:Label text="{i18n>HeaderField4}" required="true"/>-->
+											<!--<m:Input value="{detailModel>/Trackingno}" width="20rem" maxLength="10"/>-->
+											<!--<m:Label text="{i18n>HeaderField5}" required="true"/>-->
+											<!--<m:Input value="{detailModel>/Carrname}" width="20rem" maxLength="50"/>-->
+											<core:Title/>
+											    <m:Label text="Tracking No" design="Bold" required="true"/>
+											    <m:Input value="{viewModel>/Trackingno}" width="13rem" maxLength="10"/>
+											    <m:Label text="Packing Slip ID" design="Bold" required="true"/>
+											    <m:Input value="{viewModel>/Packingid}" width="13rem" maxLength="10"/>
+											<core:Title/>
+												<m:Label text="Shipping Date" design="Bold" required="true"/>
+											    <m:DatePicker id="idShipdate" width="10rem" change="onShipChange" minDate="{viewModel>/minDate}" dateValue="{viewModel>/Shippingdate}" placeholder="dd.mm.yyyy" displayFormat="dd.MM.yyyy" valueFormat="dd.MM.yyyy"/>
+												<m:Label text="Carrier Name" design="Bold" visible="false"/>
+											    <m:Input value="{viewModel>/Carrname}" width="13rem" visible="false" maxLength="50"/>
+											<core:Title/>
+											    <m:Label text="Est. Delivery Date" design="Bold" required="true" wrapping="true"/>
+											    <m:DatePicker id="idEstmdate" width="10rem" change="onEstimateChange" minDate="{viewModel>/minDate}" dateValue="{viewModel>/Estimateddate}" placeholder="dd.mm.yyyy" displayFormat="dd.MM.yyyy" valueFormat="dd.MM.yyyy"/>
+										</f:content>
+									</f:SimpleForm>
+								  </blocks>	
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+						<ObjectPageSection titleUppercase="false" title="Ship Notice Header" visible="{= ${viewModel>/Table2Visible}}" importance="Medium">
+							<subSections>
+								<ObjectPageSubSection title="Ship Notice Header" titleUppercase="false">
+								  <blocks>	
+									<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" labelSpanXL="5" labelSpanL="5" labelSpanM="5"
+						                           adjustLabelSpan="false" columnsXL="4" columnsL="3" columnsM="2" singleContainerFullSize="false">
+									  <f:content>	
+										<!--<core:Title/>-->
+										<!--<m:Label text="{i18n>HeaderField1}"/>-->
+										<!--<m:Text text="{detailModel>/Packingid}"/>-->
+										<!--<m:Label text="{i18n>HeaderField2}"/>-->
+										<!--<m:Text text="{path: 'detailModel>/Shippingdate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+										<!--<m:Label text="{i18n>HeaderField3}"/>-->
+										<!--<m:Text text="{path: 'detailModel>/Estimateddate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+										<!--<core:Title/>-->
+										<!--<m:Label text="ASN Number"/>-->
+										<!--<m:ObjectStatus text="{detailModel>/SapAsnNo}" state="Success"/>-->
+										<!--<m:Label text="{i18n>HeaderField4}"/>-->
+										<!--<m:Text text="{detailModel>/Trackingno}"/>-->
+										<!--<m:Label text="{i18n>HeaderField5}"/>-->
+										<!--<m:Text text="{detailModel>/Carrname}"/>-->
+										<core:Title/>
+										    <m:Label text="ASN Number" design="Bold"/>
+										    <m:ObjectStatus text="{detailmodel>/Asnno}" state="Success"/>
+										    <m:Label text="Shipping Date" design="Bold"/>
+										    <m:Text text="{path: 'detailmodel>/Shippingdate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+										<core:Title/>
+										    <m:Label text="Packing Slip ID" design="Bold"/>
+										    <m:Text text="{detailmodel>/Packingid}"/>
+											<m:Label text="Est. Delivery Date" design="Bold"/>
+										    <m:Text text="{path: 'detailmodel>/Estimateddate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+										<core:Title/>
+										    <m:Label text="Carrier Name" design="Bold" visible="false"/>
+										    <m:Text text="{detailmodel>/Carrname}" visible="false"/>
+										    <m:Label text="Tracking No" design="Bold"/>
+										    <m:Text text="{detailmodel>/Trackingno}"/>
+									  </f:content>	
+									</f:SimpleForm>
+								  </blocks>	
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+						<ObjectPageSection title="Order Items" visible="{= ${viewModel>/Table1Visible}}">
+							<subSections>
+								<ObjectPageSubSection title="Order Items" mode="Expanded">
+									<layout:VerticalLayout>
+										<m:Table id="idItemsTable" mode="None" selectionChange="onItemPress" items="{path :'detailmodel>/NavHeaderToItem/results'}">
+											<m:columns>
+												<m:Column hAlign="Left" width="2.1rem" demandPopin="true">
+												   <m:CheckBox id="check" select="onSelectAll"></m:CheckBox>
+										     	</m:Column>
+												<m:Column hAlign="Center" demandPopin="true">
+													<m:Label text="Item-Material" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<m:Column  hAlign="Center" demandPopin="true">
+													<m:Label text="PO Quantity" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<m:Column  hAlign="Center" demandPopin="true">
+													<m:Label text="Pending Qty" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<m:Column  hAlign="Center" demandPopin="true">
+													<m:Label text="Delivery Qty" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<m:Column hAlign="Center" demandPopin="true">
+													<m:Label text="Delivery Date" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<m:Column hAlign="Center" demandPopin="true">
+													<m:Label text="Unit Price" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<m:Column hAlign="Center" width="4.5rem" demandPopin="true">
+													<m:Label design="Bold" text="Tax(%)"/>
+												</m:Column>
+												<m:Column hAlign="Center" width="5rem" demandPopin="true">
+													<m:Label design="Bold" text="Discount"/>
+												</m:Column>
+												<m:Column hAlign="Center" demandPopin="true">
+													<m:Label text="Total (Incl. Tax)" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<m:Column hAlign="Center" demandPopin="true">
+													<m:Label text="Status" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<!--<m:Column hAlign="Center">-->
+												<!--	<m:Label text="{i18n>Table2Col11}" design="Bold" wrapping="true"></m:Label>-->
+												<!--</m:Column>-->
+												<!--<m:Column hAlign="Center" visible="{= ${viewModel>/EditDeleteBtnVisible}}">-->
+												<!--	<m:Label text="Action" design="Bold" wrapping="true"></m:Label>-->
+												<!--</m:Column>-->
+											</m:columns>
+											<m:items>
+												<m:ColumnListItem press="onTablePress" type="Active">
+													<m:cells>
+														<m:CheckBox id="c1" select="onSelect" visible="{= ${detailmodel>Status} === '01' || ${detailmodel>Status} === '06'}"></m:CheckBox>
+														<m:Text text="{detailmodel>PoItem}-{detailmodel>MaterialDes}"/>
+														<m:ObjectNumber number="{detailmodel>Quantity}" unit="{detailmodel>Uom}"/>
+														<m:ObjectNumber number="{detailmodel>PendingQty}" unit="{detailmodel>Uom}"/>
+														<m:Input value="{path: 'detailmodel>ConfQty', type: 'sap.ui.model.type.Integer', constraints:{minimum:0}}" liveChange="onQtylivechange"
+															editable="true" textAlign="Right"/>
+														<m:Text text="{path: 'detailmodel>DeliveryDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+														<m:ObjectNumber unit="{detailmodel>/Currency}"
+															number="{ parts:[{path:'detailmodel>Amount'},{path:'detailmodel>/Currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>
+														<m:Text text="{ path: 'detailmodel>TaxPercent', formatter: '.formatter.formatAmount' }"/>
+														<m:Text text="{ path: 'detailmodel>Discount', formatter: '.formatter.formatAmount' }"/>
+														<m:ObjectNumber unit="{detailmodel>/Currency}"
+															number="{ parts:[{path:'detailmodel>NetPrice'},{path:'detailmodel>/Currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>
+														<!--<m:DatePicker dateValue="{detailModel>Shippingdate}" change="onShipChange" editable="false"/>-->
+														<!--<m:DatePicker dateValue="{detailModel>Estimateddate}" change="onEstimateChange" editable="false"/>-->
+														<m:ObjectStatus text="{ path: 'detailmodel>Status', formatter: '.formatter.formatStateText2' }"
+											                 	state="{ path: 'detailmodel>Status', formatter: '.formatter.formatState2' }"/>
+														<!--<m:SegmentedButton selectedButton="none" selectionChange="onSegBtnSelChange">-->
+														<!--	<m:items>-->
+														<!--		<m:SegmentedButtonItem icon="sap-icon://edit" key="U"/>-->
+														<!--		<m:SegmentedButtonItem icon="sap-icon://delete" key="D"/>-->
+														<!--	</m:items>-->
+														<!--</m:SegmentedButton>-->
+													</m:cells>
+												</m:ColumnListItem>
+											</m:items>
+										</m:Table>
+									</layout:VerticalLayout>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+						<ObjectPageSection title="Order Items" visible="{= ${viewModel>/Table2Visible}}">
+							<subSections>
+								<ObjectPageSubSection title="Order Items" mode="Expanded">
+									<layout:VerticalLayout>
+										<m:Table id="idItemsTable1" mode="None" selectionChange="onItemPress" items="{path :'detailmodel>/NavAsntoItem/results'}">
+											<m:columns>
+												<!--<m:Column hAlign="Left" width="2rem">-->
+												<!--   <m:CheckBox id="check1" select="onSelectAll"></m:CheckBox>-->
+										  <!--   	</m:Column>-->
+												<m:Column hAlign="Center" width="10rem" demandPopin="true">
+													<m:Label text="Item-Material" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<m:Column hAlign="Center" demandPopin="true">
+													<m:Label text="PO Quantity" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<!--<m:Column  hAlign="Center">-->
+												<!--	<m:Label text="{i18n>Table2Col12}" design="Bold" wrapping="true"></m:Label>-->
+												<!--</m:Column>-->
+												<m:Column hAlign="Center" demandPopin="true">
+													<m:Label text="Delivery Qty" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<m:Column hAlign="Center" demandPopin="true">
+													<m:Label text="Delivery Date" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<m:Column hAlign="Center" demandPopin="true">
+													<m:Label text="Unit Price" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<m:Column hAlign="Center" demandPopin="true">
+													<m:Label design="Bold" text="Tax(%)"/>
+												</m:Column>
+												<m:Column hAlign="Center" demandPopin="true">
+													<m:Label design="Bold" text="Discount"/>
+												</m:Column>
+												<m:Column hAlign="Center" demandPopin="true">
+													<m:Label text="Total (Incl. Tax)" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+												<!--<m:Column hAlign="Center">-->
+												<!--	<m:Label text="Status" design="Bold" wrapping="true"></m:Label>-->
+												<!--</m:Column>-->
+												<!--<m:Column hAlign="Center">-->
+												<!--	<m:Label text="{i18n>Table2Col11}" design="Bold" wrapping="true"></m:Label>-->
+												<!--</m:Column>-->
+												<m:Column hAlign="Center" demandPopin="true" visible="{= ${viewModel>/EditDeleteBtnVisible}}">
+													<m:Label text="Action" design="Bold" wrapping="true"></m:Label>
+												</m:Column>
+											</m:columns>
+											<m:items>
+												<m:ColumnListItem>
+													<m:cells>
+														<!--<m:CheckBox select="onSelect" visible="{= ${detailmodel>Status} === '01' || ${detailmodel>Status} === '06'}"></m:CheckBox>-->
+														<m:Text text="{detailmodel>PoItem}-{detailmodel>Materialdes}"/>
+														<m:ObjectNumber number="{detailmodel>Poqty}" unit="{detailmodel>Uom}"/>
+														<!--<m:ObjectNumber number="{detailmodel>PendingQty}" unit="{detailmodel>Uom}"/>-->
+														<m:Input value="{path: 'detailmodel>Deliveryqty', type: 'sap.ui.model.type.Integer', constraints:{minimum:0}}" liveChange="onQtylivechange"
+															editable="false" width="5.8rem" textAlign="Right"/>
+														<m:Text text="{path: 'detailmodel>Deliverydate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+														<m:ObjectNumber unit="{detailmodel>/Currency}"
+															number="{ parts:[{path:'detailmodel>Netprice'},{path:'detailmodel>/Currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>
+														<m:Text text="{ path: 'detailmodel>TaxPercent', formatter: '.formatter.formatAmount' }"/>
+														<m:Text text="{ path: 'detailmodel>Discount', formatter: '.formatter.formatAmount' }"/>
+														<m:ObjectNumber unit="{detailmodel>/Currency}"
+															number="{ parts:[{path:'detailmodel>Amount'},{path:'detailmodel>/Currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>
+														<!--<m:DatePicker dateValue="{detailModel>Shippingdate}" change="onShipChange" editable="false"/>-->
+														<!--<m:DatePicker dateValue="{detailModel>Estimateddate}" change="onEstimateChange" editable="false"/>-->
+														<!--<m:ObjectStatus text="{ path: 'detailmodel>Status', formatter: '.formatter.formatStateText2' }"-->
+											   <!--              	state="{ path: 'detailmodel>Status', formatter: '.formatter.formatState2' }"/>-->
+														<m:SegmentedButton id="segBtn" selectedButton="none" selectionChange="onSegBtnSelChange">
+															<m:items>
+																<m:SegmentedButtonItem icon="sap-icon://edit" key="U"/>
+																<m:SegmentedButtonItem icon="sap-icon://delete" key="D"/>
+																<m:SegmentedButtonItem icon="" visible="false" key="X"/>
+															</m:items>
+														</m:SegmentedButton>
+													</m:cells>
+												</m:ColumnListItem>
+											</m:items>
+										</m:Table>
+									</layout:VerticalLayout>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+						<ObjectPageSection titleUppercase="true" title="my section" visible="{= ${viewModel>/Table1Visible}}">
+							<subSections>
+								<ObjectPageSubSection title="Item Details" mode="Expanded" titleUppercase="true">
+									<blocks>
+										<m:Table id="table4" visible="true" sticky="ColumnHeaders" noDataText="No data available for the item" items="{table4Data>/results}"
+											selectionChange="onSelectionChange">
+											<m:headerToolbar>
+												<m:Toolbar height="1.5rem">
+													<m:ObjectStatus text="(Click on the Line Item from above table for particular item data)" state="Error"/>
+													<m:ToolbarSpacer/>
+												</m:Toolbar>
+											</m:headerToolbar>
+											<m:columns>
+												<m:Column id="col3" hAlign="Center">
+												<m:Label text="Item" design="Bold"/>
+											</m:Column>
+											<m:Column id="col4" hAlign="Center">
+												<m:Label text="Material" design="Bold"/>
+											</m:Column>
+											<m:Column id="col5" hAlign="Center">
+												<m:Label text="Quantity" design="Bold"/>
+											</m:Column>
+											<!--<m:Column id="col6" hAlign="Center">-->
+											<!--	<m:Label text="New Quantity" design="Bold" wrapping="true"/>-->
+											<!--</m:Column>-->
+											<m:Column id="col7" hAlign="Center">
+												<m:Label text="Delivery Date" design="Bold"/>
+											</m:Column>
+											<!--<m:Column id="col8" hAlign="Center">-->
+											<!--	<m:Label text="New Delivery Date" design="Bold" wrapping="true"/>-->
+											<!--</m:Column>-->
+											<!--<m:Column id="col9" hAlign="Center">-->
+											<!--	<m:Label text="SES Number" design="Bold" wrapping="true"/>-->
+											<!--</m:Column>-->
+											<m:Column id="col10" hAlign="Center">
+												<m:Label text="ASN Number" design="Bold" wrapping="true"/>
+											</m:Column>
+											<m:Column id="col11" hAlign="Center">
+												<m:Label text="Status" design="Bold" wrapping="true"/>
+											</m:Column>
+											</m:columns>
+											<m:items>
+												<m:ColumnListItem>
+													<m:cells>
+														<m:Text text="{table4Data>PoItem}"/>
+														<m:Text text="{table4Data>MaterialDes}"/>
+														<m:ObjectNumber number="{table4Data>Quantity}"/>
+														<!--<m:ObjectNumber number="{table4Data>NewQuantity}" state="Information"/>-->
+														<m:Text text="{path:'table4Data>DelyDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+														<!--<Text text="{path:'ChgPOData>NewDelDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+														<!--<m:ObjectNumber number="{path:'table4Data>NewDelDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" state="Warning"/>-->
+														<!--<m:Text text="{table4Data>SesNo}"/>-->
+														<m:Text text="{table4Data>AsnNo}"/>
+														<m:ObjectStatus text="{ path: 'table4Data>Reason'}" state="{ path: 'table4Data>Reason', formatter: '.formatter.formatState' }" />
+													</m:cells>
+												</m:ColumnListItem>
+											</m:items>
+										</m:Table>
+									</blocks>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+						<ObjectPageSection title="Attachments">
+							<subSections>
+								<ObjectPageSubSection title="Attachments" mode="Expanded">
+									<m:VBox>
+										<m:MessageStrip visible="{= ${viewModel>/Table1Visible}}" text="Supported Attachment Types: txt, jpg, docx, pdf, zip, xlsx and Attachment Size upto: 5MB" type="Information" showIcon="true"></m:MessageStrip>
+										<m:UploadCollection id="UploadCollection" multiple="true" noDataText="{viewModel>/NoAttachText}" sameFilenameAllowed="false" instantUpload="false" change="onChangeA"
+											filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch"
+											uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts" maximumFilenameLength="150" maximumFileSize="5"
+											uploadUrl="{viewModel>/AttachURL}/sap/opu/odata/sap/ZIVN_ASN_CREATION_SRV/ASNATTACHSet" items="{attachModel>/results}"
+											uploadButtonInvisible="{= ${viewModel>/Table2Visible}}" noDataDescription="{viewModel>/NoAttachDesc}">
+											<!--fileType="txt, jpg, docx, pdf, zip, xlsx"-->
+											<m:items>
+												<m:UploadCollectionItem documentId="{attachModel>DocumentId}" fileName="{attachModel>FileName}" visibleEdit="false"
+													visibleDelete="{= ${viewModel>/Table1Visible}}"
+													url="{viewModel>/AttachURL}/sap/opu/odata/sap/ZIVN_ASN_CREATION_SRV/ASNATTACHSet(ObjectId='{attachModel>ObjectId}',DocumentId='{attachModel>DocumentId}')/$value"/>
+											</m:items>
+										</m:UploadCollection>
+									</m:VBox>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+					</sections>
+				</ObjectPageLayout>
+				<layout:sideContent>
+					<m:Toolbar>
+						<m:Title text="Events"/>
+						<m:ToolbarSpacer/>
+						<m:Button text="Close" type="Transparent" press="handleSideContentHide"/>
+					</m:Toolbar>
+					<layout:VerticalLayout width="100%">
+						<t:Timeline id="idTimeline" showHeaderBar="false" showSearch="false" showSort="false" sortOldestFirst="true" sort="false"
+							enableScroll="false" lazyLoading="false" growingThreshold="0" content="{tData>/results}" showIcons="false"
+							noDataText="No Events are currently available" width="100%">
+							<t:content>
+								<t:TimelineItem
+									userName="{tData>CnfLogStatusMasterRef/results/0/StatusDesc}, {path:'tData>EventDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+									text="{tData>EventText}" dateTime="{tData>Comments}"></t:TimelineItem>
+							</t:content>
+						</t:Timeline>
+					</layout:VerticalLayout>
+				</layout:sideContent>
+			</layout:DynamicSideContent>
+		</m:content>
+		<m:footer>
+			<m:Bar>
+				<m:contentRight>
+					<m:Button text="Back" type="Back" press="onBack"/>
+					<m:Button text="Create" type="Success"  press="openSaveFragment" enabled="{viewModel>/btnEnable}" visible="{= ${viewModel>/Table1Visible}}"/>
+					<m:Button text="Edit" type="Emphasized" icon="sap-icon://edit" press="onEditPress" visible="{viewModel>/ChangeButtonVisible}"/>
+					<m:Button text="Submit Changes" type="Success" press="openSaveFragment"
+						visible="{= ${viewModel>/EditDeleteBtnVisible}}"/>
+					<m:Button text="Delete" type="Reject" icon="sap-icon://delete" press="onDelete" visible="{= ${viewModel>/Table2Visible}}"/>	
+				</m:contentRight>
+			</m:Bar>
+		</m:footer>
+	</m:Page>
+	<!--</m:App>-->
+</mvc:View>

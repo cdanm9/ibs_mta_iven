@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<Dialog id="idUploadDialog" title="File Upload" draggable="true" resizable="true" titleAlignment="Center" contentWidth="30rem" class="sapUiSizeCompact">
+    <VBox id="id_vbox" alignContent="Center" alignItems="Center" justifyContent="Center">
+		<u:FileUploader
+			id="fileUploader"
+			name="myFileUpload"   
+			uploadUrl="upload/"
+			tooltip="Upload your file to the local server"
+			uploadComplete="handleUploadComplete"/>
+    </VBox>
+		<buttons>
+			<Button text="Upload" id="id_upload" press="handleUploadPress" icon="sap-icon://upload"></Button>
+			<!-- <Button text="GetApi" id="id_get" press="handleGetApi"></Button> -->
+			<Button id="id_close" text="Close" press="closeDialog" icon="sap-icon://cancel"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,28 @@
+{
+    "productItems":[
+    {
+    "title":"Cold Cream",
+    "subtitle":"Tq Services A Division of data",
+    "number":"4700000474/00010",
+    "year":"4 years ago",
+    "amt":"36K INR",
+    "unit":"1 AU"
+    },
+    {
+    "title":"Glycerine USP",
+    "subtitle":"Godrej Industries Ltd",
+    "number":"4700000036/00030",
+    "year":"2 years ago",
+    "amt":"275K INR",
+    "unit":"4K KG"
+    },
+    {
+    "title":"CAPS 03",
+    "subtitle":"ssf Plastics Converts",
+    "number":"4700000266/00020",
+    "year":"3 years ago",
+    "amt":"97K INR",
+    "unit":"84 K NOS"
+    }
+    ]
+    }

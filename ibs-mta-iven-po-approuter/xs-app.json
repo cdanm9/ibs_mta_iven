@@ -1,0 +1,11 @@
+{
+  "authenticationMethod": "none",
+  "logout": {
+    "logoutEndpoint": "/do/logout",  
+    "logoutPage": "/logout-page.html"            
+  },   
+  "routes": [
+    
+  ],
+  "welcomeFile": "/comibsibsappivenpcanalytical"
+}

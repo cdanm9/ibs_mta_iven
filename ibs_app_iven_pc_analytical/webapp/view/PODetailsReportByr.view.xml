@@ -1,0 +1,367 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap" xmlns:m="sap.m"   
+	controllerName="com.ibs.ibsappivenpcanalytical.controller.PODetailsReportByr" xmlns:layout="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:t="sap.suite.ui.commons" xmlns:html="http://www.w3.org/1999/xhtml">
+	<m:Page id="PageId1" showHeader="false" showFooter="true" title="{i18n>title}">   
+		<m:content>
+		   <layout:DynamicSideContent id="DynamicSideContent" class="sapUiSizeCompact" containerQuery="true" sideContentFallDown="BelowM"
+				breakpointChanged="handleBreakpointChangeEvent" showSideContent="false">
+			  <ObjectPageLayout enableLazyLoading="true" preserveHeaderStateOnScroll="true" upperCaseAnchorBar="true">
+				<headerTitle>
+					<ObjectPageDynamicHeaderTitle>
+						<heading>
+							<m:Title text="{oPropertyModel>/POPageTitle}"/>
+						</heading>
+						<actions>
+							<m:Button icon="sap-icon://comment" text="Messenger" press="handleEvents" type="Emphasized"/>
+						</actions>
+					</ObjectPageDynamicHeaderTitle>
+				</headerTitle>
+				<!--<headerContent>-->
+				<!--	<layout:HorizontalLayout>-->
+				<!--		<layout:VerticalLayout class="sapUiSmallMarginEnd">-->
+				<!--			<m:Label text="{i18n>HeaderContentLabel1}:" design="Bold"/>-->
+							<!--<m:Label/>-->
+				<!--			<m:Label text="{hData>/Shiptoname}" design="Bold"/>-->
+				<!--			<m:ObjectStatus text="{hData>/Shiptocity}, {hData>/Shiptocountry}, {hData>/SpostCode1}"/>-->
+				<!--			<m:ObjectStatus text="{hData>/Shiptoadd1}"/>-->
+				<!--			<m:ObjectStatus text="{hData>/Shiptoadd2}"/>-->
+				<!--		</layout:VerticalLayout>-->
+				<!--		<m:HBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd"></m:HBox>-->
+				<!--		<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd">-->
+							<!--<m:Link text="Update Address"/>-->
+				<!--		</layout:VerticalLayout >-->
+				<!--		<m:HBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd"></m:HBox>-->
+				<!--		<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd">-->
+				<!--			<m:Label text="{i18n>HeaderContentLabel2}:" design="Bold"/>-->
+							<!--<m:Label/>-->
+				<!--			<m:Label text="{hData>/Billtoname}" design="Bold"/>-->
+				<!--			<m:ObjectStatus text="{hData>/Billtocity}, {hData>/Billtocountry}, {hData>/BpostCode1}"/>-->
+				<!--			<m:ObjectStatus text="{hData>/Billtoadd1}"/>-->
+				<!--			<m:ObjectStatus text="{hData>/Billtoadd2}"/>-->
+				<!--		</layout:VerticalLayout>-->
+				<!--		<m:HBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd"></m:HBox>-->
+						<!--<m:HBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd"></m:HBox>-->
+				<!--		<layout:VerticalLayout class="sapUiSmallMarginBegin">-->
+							<!--<m:Label/>-->
+							<!--<m:Label/>-->
+				<!--			<m:Label text="Amount:" design="Bold"/>-->
+				<!--			<m:ObjectStatus text="{ path: 'hData>/Netwr', formatter: '.formatter.formatAmount' } {hData>/Waers}"/>-->
+				<!--		</layout:VerticalLayout>-->
+				<!--	</layout:HorizontalLayout>-->
+				<!--</headerContent>-->
+				<sections>
+					<ObjectPageSection titleUppercase="true" title="my section.">
+						<subSections>
+							<ObjectPageSubSection title="{i18n>SubsectionTitle1}" mode="Expanded" titleUppercase="true">
+								<blocks>
+									<!--<layout:VerticalLayout width="100%">-->
+									<!--	<layout:Grid defaultSpan="L4" containerQuery="true">-->
+											<!--<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"-->
+						     <!--                     labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false">-->
+											<f:SimpleForm editable="true" layout="ResponsiveGridLayout" backgroundDesign="Solid" title="DETAILS" labelSpanXL="5" labelSpanL="5" labelSpanM="5"
+						                           adjustLabelSpan="false" columnsXL="4" columnsL="3" columnsM="2" singleContainerFullSize="false">	
+												<f:content>
+													<core:Title/>
+													<m:Label text="{i18n>SubSection1Label1}" design="Bold"/>
+													<m:Text text="{path:'hData>/PoDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+													<m:Label text="{i18n>SubSection1Label2}" design="Bold"/>
+													<m:Text text="{hData>/VendorName}"/>
+													<m:Label text="Down Pay. %" design="Bold"/>
+													<m:Text text="{hData>/DpPerc}"/>
+													<m:Label text="{i18n>SubSection1Label7}" design="Bold"/>
+													<m:Text text="{hData>/HeaderText}"/>
+											<!--	</f:content>-->
+											<!--</f:SimpleForm>-->
+											<!--<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"-->
+						     <!--                     labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false">-->
+											<!--	<f:content>-->
+											        <core:Title/>
+													<m:Label text="{i18n>SubSection1Label3}" design="Bold"/>
+													<m:Text text="{hData>/BuyerName}({hData>/Buyer})"/>
+													<!--<m:Label text="{i18n>SubSection1Label5}" design="Bold"/>-->
+													<!--<m:Text text="{hData>/PurGroupDes}"/>-->
+													<m:Label text="{i18n>SubSection1Label6}" design="Bold"/>
+													<m:Text text="{hData>/PurOrgDes}"/>
+													<m:Label text="Down Pay. Amt" design="Bold"/>
+													<m:ObjectNumber unit="{hData>/Currency}"
+									                    number="{ parts:[{path:'hData>/DpAmount'},{path:'hData>/Currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>
+													<m:Label text="Note To Supp." design="Bold" class="sapUiTinyMarginTop"/>
+													<m:Text text="{hData>/NoteToSupp}" class="sapUiTinyMarginTop"/>
+											<!--	</f:content>-->
+											<!--</f:SimpleForm>-->
+											<!--<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"-->
+						     <!--                     labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false">-->
+											<!--	<f:content>-->
+											        <core:Title/>
+													<m:Label text="{i18n>SubSection1Label4}" design="Bold"/>
+													<m:ObjectNumber state="Success" unit="{hData>/Currency}"
+									                    number="{path:'hData>/PoAmount', formatter: '.formatter.formatAmount'}"/>
+													<!--<m:Text text="{ path: 'hData>/PoAmount', formatter: '.formatter.formatAmount' } {hData>/Currency}"/>-->
+													<m:Label text="Retention %" design="Bold" class="sapUiTinyMarginTop"/>
+													<m:Text text="{hData>/RetentionPerc}" class="sapUiTinyMarginTop"/>
+													<m:Label text="Down Pay. Due" design="Bold" />
+													<m:Text text="{path:'hData>/DpDueDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+											        <m:Label text="Reference No" design="Bold"/>
+													<m:Text text="{hData>/RefNo}"/>
+												</f:content>
+											</f:SimpleForm>
+									<!--	</layout:Grid>-->
+									<!--</layout:VerticalLayout>-->
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection titleUppercase="true" title="my section">
+						<subSections>
+							<ObjectPageSubSection title="{i18n>SubsectionTitle2}" mode="Expanded" titleUppercase="true">
+								<blocks>
+								  <m:ScrollContainer height="100%" horizontal="true">
+									<m:Table id="table3" width="auto" sticky="ColumnHeaders" mode="None" items="{hData>/NavHeaderToItem/results}">
+										<m:columns>
+											<!--<m:Column hAlign="Left" visible="{= ${oPropertyModel>/PO_Status} !== '03'}" width="2rem">-->
+											<!--<m:Column hAlign="Left" width="2rem">-->
+												<!--<m:Label design="Bold" text="" wrapping="true"/>-->
+											<!--	<m:CheckBox id="check" select="onSelectAll"></m:CheckBox>-->
+											<!--</m:Column>-->
+											<m:Column hAlign="Left" width="4.5rem" demandPopin="true" minScreenWidth="tablet">
+												<m:Label design="Bold" text="Type" wrapping="true"/>
+											</m:Column>
+											<!--<m:Column visible="false" width="7rem" hAlign="Center" demandPopin="true">-->
+											<!--	<m:Label design="Bold" text="Material" wrapping="true"/>-->
+											<!--</m:Column>-->
+											<m:Column hAlign="Center" width="7rem" demandPopin="true" minScreenWidth="tablet">
+												<m:Label design="Bold" text="{i18n>SubSection2TableCol1}" wrapping="true"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="6.8rem" demandPopin="true" minScreenWidth="tablet">
+												<m:Label design="Bold" text="{i18n>SubSection2TableCol2}"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="4.5rem" demandPopin="true" minScreenWidth="tablet">
+												<m:Label design="Bold" text="Plant"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="6rem" demandPopin="true" minScreenWidth="tablet">
+												<m:Label design="Bold" text="{i18n>SubSection2TableCol3}"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="6.2rem" demandPopin="true" minScreenWidth="tablet">
+												<m:Label design="Bold" text="Pending Qty" wrapping="true"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="6.5rem" demandPopin="true" minScreenWidth="tablet">
+												<m:Label design="Bold" text="Confirmed Qty" wrapping="true"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="5.1rem" demandPopin="true" minScreenWidth="tablet">
+												<m:Label design="Bold" text="{i18n>SubSection2TableCol4}"/>
+											</m:Column>
+											<m:Column hAlign="End" width="4.9rem" demandPopin="true" minScreenWidth="tablet">
+												<m:Label design="Bold" text="{i18n>SubSection2TableCol5}"/>
+											</m:Column>
+											<m:Column hAlign="End" width="6.5rem"  minScreenWidth="tablet">
+												<m:Label design="Bold" text="{i18n>SubSection2TableCol7}" wrapping="true"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="6rem"  minScreenWidth="tablet">
+												<m:Label design="Bold" text="{i18n>SubSection2TableCol6}"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="4.9rem" demandPopin="true" minScreenWidth="tablet">
+												<m:Label design="Bold" text="Discount"/>
+											</m:Column>
+											<m:Column hAlign="Center" demandPopin="true" width="6.8rem" minScreenWidth="tablet">
+												<m:Label design="Bold" text="{i18n>SubSection2TableCol8}" wrapping="true"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="6.8rem" demandPopin="true" minScreenWidth="tablet">
+												<m:Label design="Bold" text="{i18n>SubSection2TableCol10}"/>
+											</m:Column>
+											<!--<m:Column visible="{= ${oPropertyModel>/PO_Status} === '03'}" hAlign="Center" width="4.2rem">-->
+											<!--	<m:Label wrapping="true" design="Bold" text="Change PO Details"/>-->
+											<!--</m:Column>-->
+										</m:columns>
+										<m:items>
+											<m:ColumnListItem press="onTablePress" type="Active">
+												<m:cells>
+													<!--<m:CheckBox id="c1" select="onSelect" visible="{= ${hData>Status} === '01' || ${hData>Status} === '06'}"></m:CheckBox>-->
+													<!--<m:Link press="showServiceItem" enabled="{= ${hData>Acckey} !== ''}" text="{ path: 'hData>Acckey', formatter: '.formatter.formatAcckey' }"/>-->
+													<!--<m:Text text="{hData>Material}"/>-->
+														<m:HBox>
+													<m:ObjectStatus text="{ path: 'hData>Acckey', formatter: '.formatter.formatAcckey' }" visible="{= ${hData>Acckey} !== 'D'}" state="Warning" inverted="true"/>
+													<m:Link press="showServiceItem" visible="{= ${hData>Acckey} === 'D'}" text="{ path: 'hData>Acckey', formatter: '.formatter.formatAcckey' } "/>
+													</m:HBox>
+													<m:Text text="{hData>PoItem}-{hData>MaterialDes}"/>
+													<m:Text text="{path:'hData>DeliveryDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+													<!--<m:DatePicker dateValue="{hData>Deliverydate}"/>-->
+													<m:Text text="{hData>Plant}"/>
+													<m:ObjectNumber number="{hData>Quantity}" unit="{hData>Uom}"/>
+													<m:ObjectNumber number="{hData>PendingQty}" unit="{hData>Uom}"/>
+													<m:ObjectNumber number="{hData>ConfQty}" unit="{hData>Uom}"/>
+													<m:Text text="{ path: 'hData>NetPrice', formatter: '.formatter.formatAmount' }"/>
+													<m:Text text="{ path: 'hData>TaxPercent', formatter: '.formatter.formatAmount' }"/>
+													<m:Text text="{ path: 'hData>Vat', formatter: '.formatter.formatAmount' }"/>
+													<m:Text text="{ path: 'hData>Amount', formatter: '.formatter.formatAmount' }"/>
+													<m:Text text="{ path: 'hData>Discount', formatter: '.formatter.formatAmount' }"/>
+													<m:Text text="{ path: 'hData>TotalAmt', formatter: '.formatter.formatAmount' }"/>
+													<m:ObjectStatus text="{ path: 'hData>Status', formatter: '.formatter.formatStateText1' }"
+												          state="{ path: 'hData>Status', formatter: '.formatter.formatState1' }"/>
+													<!--<m:Button icon="sap-icon://show" type="Transparent" press="showchngPoItem" visible="{= ${hData>Status} === '04'}"/>-->
+												</m:cells>
+											</m:ColumnListItem>
+										</m:items>
+									</m:Table>
+								  </m:ScrollContainer>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					
+					<ObjectPageSection titleUppercase="true" title="my section">
+						<subSections>
+							<ObjectPageSubSection  title="{i18n>SubsectionTitle3}" mode="Expanded" titleUppercase="true">
+								<blocks>
+									<m:Table id="table4" visible="true" sticky="ColumnHeaders" noDataText="No data available for the item" items="{table4Data>/results}" selectionChange="onSelectionChange">
+										<m:headerToolbar>
+											<m:Toolbar height="1.5rem">
+												<m:ObjectStatus text="(Click on the Line Item from above table for particular item data)" state="Error"/>
+												<m:ToolbarSpacer/>
+												<!--<Button tooltip="Sort" icon="sap-icon://sort" press="handleSortButtonPressed"/>-->
+												<!--<Button tooltip="Filter" icon="sap-icon://filter" press="handleFilterButtonPressed"/>-->
+												<!--<m:SearchField placeholder="{i18n>SearchFieldPlaceholder}" value="{oPropertyModel>/searchFieldValue}" width="200px" liveChange="onSearch"/>-->
+											</m:Toolbar>
+										</m:headerToolbar>
+										<m:columns>
+											<!--<m:Column id="col1" hAlign="Center">-->
+											<!--	<m:Label text="PO Number" design="Bold"/>-->
+											<!--</m:Column>-->
+											<!--<m:Column id="col2" hAlign="Center">-->
+											<!--	<m:Label text="Item Sequence" design="Bold"/>-->
+											<!--</m:Column>-->
+											<m:Column id="col3" hAlign="Center">
+												<m:Label text="Item" design="Bold"/>
+											</m:Column>
+											<m:Column id="col4" hAlign="Center">
+												<m:Label text="Material" design="Bold"/>
+											</m:Column>
+											<m:Column id="col5" hAlign="Center">
+												<m:Label text="Quantity" design="Bold"/>
+											</m:Column>
+											<!--<m:Column id="col6" hAlign="Center">-->
+											<!--	<m:Label text="New Quantity" design="Bold" wrapping="true"/>-->
+											<!--</m:Column>-->
+											<m:Column id="col7" hAlign="Center">
+												<m:Label text="Delivery Date" design="Bold"/>
+											</m:Column>
+											<!--<m:Column id="col8" hAlign="Center">-->
+											<!--	<m:Label text="New Delivery Date" design="Bold" wrapping="true"/>-->
+											<!--</m:Column>-->
+											<m:Column id="col9" hAlign="Center">
+												<m:Label text="SES Number" design="Bold" wrapping="true"/>
+											</m:Column>
+											<m:Column id="col10" hAlign="Center">
+												<m:Label text="ASN Number" design="Bold" wrapping="true"/>
+											</m:Column>
+											<m:Column id="col11" hAlign="Center">
+												<m:Label text="Status" design="Bold" wrapping="true"/>
+											</m:Column>
+										</m:columns>
+										<m:items>
+											<m:ColumnListItem>
+												<m:cells>
+													<!--<m:ObjectIdentifier title="{table4Data>PoNumber}"/>-->
+													<!--<m:Text text="{table4Data>ItemSeq}"/>-->
+													<m:Text text="{table4Data>PoItem}"/>
+													<m:Text text="{table4Data>MaterialDes}"/>
+													<m:ObjectNumber number="{table4Data>Quantity}"/>
+													<!--<m:ObjectNumber number="{table4Data>NewQuantity}" state="Information"/>-->
+													<m:Text text="{path:'table4Data>DelyDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+													<!--<Text text="{path:'ChgPOData>NewDelDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+													<!--<m:ObjectNumber number="{path:'table4Data>NewDelDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" state="Warning"/>-->
+													<m:Text text="{table4Data>SesNo}"/>
+													<m:Text text="{table4Data>AsnNo}"/>
+													<m:ObjectStatus text="{ path: 'table4Data>Reason'}" state="{ path: 'table4Data>Reason', formatter: '.formatter.formatState' }" />
+												</m:cells>
+											</m:ColumnListItem>
+										</m:items>
+									</m:Table>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+
+					<!--<ObjectPageSection titleUppercase="true" title="my section">-->
+					<!--	<subSections>-->
+					<!--		<ObjectPageSubSection title="{i18n>SubsectionTitle5}" mode="Expanded" titleUppercase="true">-->
+					<!--			<blocks>-->
+					<!--				<m:VBox class="sapUiNoContentPadding">-->
+										<!--<m:Text text="{i18n>SubSection5Text1}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text2}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text3}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text4}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text5}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text6}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text7}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text8}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text9}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text10}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text11}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text12}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text13}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text14}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text15}"/>-->
+										<!--<m:Text text="{i18n>SubSection5Text16}"/>-->
+					<!--				</m:VBox>-->
+					<!--			</blocks>-->
+					<!--		</ObjectPageSubSection>-->
+					<!--	</subSections>-->
+					<!--</ObjectPageSection>-->
+					<ObjectPageSection visible="true" titleUppercase="true" title="my section">
+						<subSections>
+							<ObjectPageSubSection title="{i18n>SubsectionTitle4}" mode="Expanded" titleUppercase="true">
+								<blocks>
+									<m:UploadCollection id="UploadCollection" multiple="true" sameFilenameAllowed="false" beforeUploadStarts="onBeforeUploadStarts" maximumFilenameLength="50"
+										uploadUrl="/sap/opu/odata/sap/ZIVN_PO_CONFIRMATION_SRV/AttachmentSet" items="{attachData>/results}" uploadButtonInvisible="true"
+										noDataDescription="There are no attached files!">
+										<m:items>
+											<m:UploadCollectionItem documentId="{attachData>DocumentId}" fileName="{attachData>FileName}" visibleEdit="false" visibleDelete="false"
+												url="/sap/opu/odata/sap/ZIVN_PO_CONFIRMATION_SRV/AttachmentSet(ObjectId='{attachData>ObjectId}',DocumentId='{attachData>DocumentId}')/$value"/>
+										</m:items>
+									</m:UploadCollection>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+				</sections>
+			</ObjectPageLayout>
+			<layout:sideContent>
+					<m:Toolbar>
+						<m:Title text="Events"/>
+						<m:ToolbarSpacer/>
+						<m:Button text="Close" type="Transparent" press="handleSideContentHide"/>
+					</m:Toolbar>
+					<layout:VerticalLayout width="100%">
+					   <!--<m:VBox height="31.5rem">	-->
+					     <m:ScrollContainer id="oscroll" height="100%" vertical="true">
+							<t:Timeline id="idTimeline" showHeaderBar="false" showSearch="false" showSort="false" sortOldestFirst="false" sort="false"
+								enableScroll="false" lazyLoading="false" growingThreshold="0" content="{tData>/results}" showIcons="true"
+								noDataText="No Events are currently available" width="100%">
+								<t:content>
+									<t:TimelineItem  
+										userName="{tData>UserName}" userNameClickable="true" title="{ path: 'tData>Action' }"
+										text="{tData>Message}" dateTime="{path:'tData>MDate', type: 'sap.ui.model.type.DateTime', formatOptions: { style : 'medium', UTC: true }}"></t:TimelineItem>
+								</t:content>
+							</t:Timeline>
+						  </m:ScrollContainer>
+						<!--</m:VBox>-->
+						<!--<m:FeedInput id="emailTextId" post="onPost" showIcon="false" placeholder="Enter comments"/>-->
+					</layout:VerticalLayout>
+			 </layout:sideContent>
+		  </layout:DynamicSideContent>	
+		</m:content>
+		<m:footer>
+			<m:OverflowToolbar>
+				<!--<m:Button id="messagePopoverBtn" icon="sap-icon://decline" type="Reject" text="2" press=".handleMessagePopoverPress" visible="false"/>-->
+				<m:ToolbarSpacer/>
+				<m:Button type="Back" text="{i18n>FooterButton1}" press="onBackNav"/>
+				<!--<m:Button icon="sap-icon://accept"  id="idApprove" type="Accept" text="{i18n>FooterButton2}" press="onActionPO"/>-->
+				<!--<m:Button icon="sap-icon://decline" id="idReject" type="Reject" text="{i18n>FooterButton3}" press="onActionPO"/>-->
+				<!--<m:Button icon="sap-icon://journey-change" id="idChangePo" type="Ghost" text="{i18n>FooterButton4}" press="onChangePO"/>	-->
+				<!--<m:Button icon="sap-icon://accept"  id="idApprove" visible="{= ${oPropertyModel>/PO_Status} !== '03'}" type="Accept" text="{i18n>FooterButton2}" press="onActionPO"/>-->
+				<!--<m:Button icon="sap-icon://decline" id="idReject" visible="{= ${oPropertyModel>/PO_Status} !== '03'}" type="Reject" text="{i18n>FooterButton3}" press="onActionPO"/>-->
+				<!--<m:Button icon="sap-icon://journey-change" id="idChangePo" visible="{= ${oPropertyModel>/PO_Status} !== '03'}" type="Ghost" text="{i18n>FooterButton4}" press="onChangePO"/>	-->
+			</m:OverflowToolbar>
+		</m:footer>
+	</m:Page>
+</mvc:View>

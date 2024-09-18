@@ -1,0 +1,15 @@
+{
+  "name": "mta-project",
+  "version": "0.0.1",
+  "description": "Build and deployment scripts",
+  "scripts": {
+    "clean": "rimraf resources mta_archives mta-op*",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/ibs_mta_iven_po_0.0.1.mtar --retries 1",   
+    "undeploy": "cf undeploy ibs_mta_iven_po --delete-services --delete-service-keys --delete-service-brokers"
+  },  
+  "devDependencies": {
+    "mbt": "^1.2.27",
+    "rimraf": "^5.0.5"
+  }
+}

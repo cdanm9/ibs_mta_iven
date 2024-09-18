@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog id="loginDialog" type="Message" contentWidth="50px" afterClose="onDialogClose">
+        <customHeader>
+            <Bar>
+                <contentRight>  
+                    <core:Icon src="sap-icon://decline" useIconTooltip="false" hoverColor="#f33334" press="onClosePress"/>
+                </contentRight>
+                <contentMiddle>
+                    <core:Icon src="sap-icon://account" useIconTooltip="false" />
+                    <Title text="Login Details" />
+                </contentMiddle>
+            </Bar>
+        </customHeader>
+        <content>
+            <Label text="Login ID:" design="Bold" labelFor="eventInput" />
+            <Input id="eventInput" value="{/userId}" change="onLoginIdChange" width="100%" required="true" />
+
+            <Label text="Login ID 1:" visible="false" />
+            <Text width="100%" />
+
+            <Label text="Login Type:" design="Bold" labelFor="eventType" />
+            <ComboBox id="eventType" selectedKey="{/userType}" selectionChange="onLoginTypeChange" width="100%" required="true" placeholder="Select Login Type">
+                <items>
+                    <core:Item key="employee" text="employee" />
+                    <core:Item key="partner" text="partner" />
+                </items>
+            </ComboBox>
+        </content>
+        <beginButton>
+            <Button text="Submit" type="Emphasized" enabled="true" press="onSubmitPress"/>
+        </beginButton>
+        <endButton>
+            <Button text="Clear" type="Reject" press="onClearPress"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>   

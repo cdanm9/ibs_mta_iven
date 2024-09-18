@@ -1,0 +1,13 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.ibs.ibsappivenpcanalytical.controller.ServiceMsg" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page showHeader="false">
+				<content>
+					<MessagePage text="You can't access the application right now" icon="sap-icon://message-warning" 
+					description="Required services failed to load."/>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

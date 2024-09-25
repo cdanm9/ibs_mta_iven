@@ -43,32 +43,33 @@ sap.ui.define(
           that._navigationListItem();
 
         },
-        _navigationListItem:function(oEvent){
-
+        _navigationListItem:function(oEvent){      
 
           that.idNavigationList.onAfterRendering = function () {
             sap.tnt.NavigationList.prototype.onAfterRendering.apply(this, arguments);
-            var iRowCount = 0;     
             that.idNavigationList.getItems().forEach(function (oItem) {
-                // $("#" + oItem.getId()).css({     
-                //   "background-color": "yellow"  
-                // });           
-                // var div = document.getElementById(oItem.getId()); 
-                // div.style.backgroundColor = "blue";         
-                // $("#" + oItem.getId() + '-a').attr("style", "background-color: cornflowerblue !important;"); 
-                
-                if(iRowCount%2==0) {
-                  oItem.$().find("a").css("background-color", "cornflowerblue");  
-                }else{
-                  oItem.$().find("a").css("background-color", "mediumblue");                   
-                }    
-                iRowCount++   
-                // document.getElementById(""+oItem.getId()+"-a")         
-                // oItem.getItems().$().find("a").css("background-color", "red");   
+                if (oItem.getItems && oItem.getItems().length > 0) {
+                    var iRowCount = 0;
+                    oItem.getItems().forEach(function (oSubItem) {  
+                      oSubItem.$().css("background-color", "cornflowerblue");  
+                    });
+                }
             });
-          };
+          };   
+            
 
-
+          // that.idNavigationList.onAfterRendering = function () {
+          //   sap.tnt.NavigationList.prototype.onAfterRendering.apply(this, arguments);
+          //   var iRowCount = 0;     
+          //   that.idNavigationList.getItems().forEach(function (oItem) {
+          //       if(iRowCount%2==0) {
+          //         oItem.$().find("a").css("background-color", "cornflowerblue");  
+          //       }else{
+          //         oItem.$().find("a").css("background-color", "mediumblue");                   
+          //       }    
+          //       iRowCount++     
+          //   });
+          // };
         },
         _getUserID:function(){
           var appId = this.getOwnerComponent().getManifestEntry("/sap.app/id");

@@ -124,13 +124,22 @@
           "odataVersion": "4.0"
         }
       },
-      "roleConfigService": {
-        "uri": "/sap/rest/authorization/v2/",
+      "POStatusReportServiceFE": {
+        "uri": "/sap/opu/odata/sap/ZIVN_PO_RPT_STATUS_SRV/",
         "type": "OData",
         "settings": {
-          "annotations": [],   
-          "localUri": "localService/role-config/metadata.xml",   
+          "annotations": [   
+            "annotation"
+          ],
+          "localUri": "localService/ZIVN_PO_RPT_STATUS_SRV.xml",  
           "odataVersion": "2.0"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
         }
       }
     }
@@ -312,6 +321,18 @@
         "dataSource": "oDataModelNPOInvCreateService",
         "preload": true,
         "settings": {}
+      },
+      "POStatusReportFE": {   
+        "dataSource": "POStatusReportServiceFE",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
       }
     },
     "resources": {

@@ -18,9 +18,10 @@
     }
   ],
   "oauth2-configuration": {
-    "redirect-uris": [
-      "http://localhost:5000/",  
-      "https://9da603b4trial-dev-ibs-mta-iven-po-approuter.cfapps.us10-001.hana.ondemand.com/"
+    "redirect-uris": [   
+      "http://localhost:5000/",        
+      "https://9da603b4trial-dev-ibs-mta-iven-po-approuter.cfapps.us10-001.hana.ondemand.com/",
+      "https://ibs-portal-dev-ibs-portal-dev-ibs-mta-iven-po-approuter.cfapps.us10.hana.ondemand.com/"
     ]
   }
 }

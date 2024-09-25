@@ -23,12 +23,12 @@ server:
             url: https://api.authentication.us10.hana.ondemand.com  
             destination: ROLE_CONFIG        
           - path: /sap
-            url: https://portal.intellectbizware.com:80
+            url: http://a17.hana.com  
             client: '009'
-            destination: A17
-          - path: /odata    
+            destination: S4_HANA_Z     
+          - path: /odata       
             url: https://ibs-portal-dev-ibs-portal-dev-vendor-portal-srv.cfapps.us10.hana.ondemand.com/
-            destination: IVEN_DATA
+            destination: IVEN_DATA  
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

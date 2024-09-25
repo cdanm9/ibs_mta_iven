@@ -13,7 +13,16 @@ sap.ui.define(
       return BaseController.extend("com.ibs.ibsappivenpcanalytical.controller.App", {
         onInit: function() {  
           that=this
-          that.oDataModel = this.getOwnerComponent().getModel("checkServiceAvailibilty") 
+          that.oDataModel = this.getOwnerComponent().getModel("checkServiceAvailibilty")    
+          that.idNavigationList=this.getView().byId("idNavigationList"); 
+          
+          let oAppDetails = {    
+            UserFullName:"",    
+            UserInitials:"",      
+            AppList: []  
+          };
+          let oAppInfoModel = new JSONModel(oAppDetails);
+          that.getOwnerComponent().setModel(oAppInfoModel,"appInfo")  
 
           this.oView = this.getView();
           this.oMyAvatar = this.oView.byId("myAvatar");
@@ -27,9 +36,38 @@ sap.ui.define(
           }.bind(this));
           jQuery.sap.require("jquery.sap.storage");
           localStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session);  
-          this.handleRouteMatched();      
+          this.handleRouteMatched();     
+
+          that._getAppInfo();
           that._getUserID();
-          that._getRoleCollections();
+          that._navigationListItem();
+
+        },
+        _navigationListItem:function(oEvent){
+
+
+          that.idNavigationList.onAfterRendering = function () {
+            sap.tnt.NavigationList.prototype.onAfterRendering.apply(this, arguments);
+            var iRowCount = 0;     
+            that.idNavigationList.getItems().forEach(function (oItem) {
+                // $("#" + oItem.getId()).css({     
+                //   "background-color": "yellow"  
+                // });           
+                // var div = document.getElementById(oItem.getId()); 
+                // div.style.backgroundColor = "blue";         
+                // $("#" + oItem.getId() + '-a').attr("style", "background-color: cornflowerblue !important;"); 
+                
+                if(iRowCount%2==0) {
+                  oItem.$().find("a").css("background-color", "cornflowerblue");  
+                }else{
+                  oItem.$().find("a").css("background-color", "mediumblue");                   
+                }    
+                iRowCount++   
+                // document.getElementById(""+oItem.getId()+"-a")         
+                // oItem.getItems().$().find("a").css("background-color", "red");   
+            });
+          };
+
 
         },
         _getUserID:function(){
@@ -82,62 +120,25 @@ sap.ui.define(
       
 
         },
-        _getRoleCollections:function(){
-          var appId = this.getOwnerComponent().getManifestEntry("/sap.app/id");
-          var appPath = appId.replaceAll(".", "/");
-          that.appModulePath = jQuery.sap.getModulePath(appPath);
-          var attr = that.appModulePath + "/sap/rest/authorization/v2/rolecollections";      
-  
-          // that._sUserName = "Sanjay Shah And Associates";
-          // that._sUserID = "sanjayshah@testmail.com";
-          // that._sCode = "8300894";
-          // var oModel = new JSONModel({
-          //   userId: that._sUserID,
-          //   userName: that._sUserName,
-          //   code: that._sCode
-          // });   
-          // context.getOwnerComponent().setModel(oModel, "userAttriJson");
-
-
-          return new Promise(function (resolve, reject) {
-            $.ajax({
-              url: attr,
-              type: 'GET',
-              contentType: 'application/json',
-              success: function (data, response) {
-              
-                // that._sUserName = data.firstname;
-                // that._sFLetter = data.firstname[0];
-                // that._sSLetter = data.lastname[0];
-                // that._sInitials=that._sFLetter+that._sSLetter
-                // that._sFullName=data.firstname + " " + data.lastname  
-                // that.getOwnerComponent().getModel("appInfo").setProperty("/UserInitials",that._sInitials)  
-                // that.getOwnerComponent().getModel("appInfo").setProperty("/UserFullName",that._sFullName)     
-                // that._sUserID = data.email.toLowerCase().trim();
-                // that._sCode = data.name;
-  
-                var oModel = new JSONModel({
-                  // userId: that._sUserID,
-                  // userName: that._sUserName,
-                  // code: that._sCode         
-                });
-                that.getOwnerComponent().setModel(oModel, "roleCollectionJson");   
-              },
-              error: function (oError) {
-                MessageBox.error("Error while reading Role Collections");
-              }
-            });
-          });  
+        _getAppInfo: function(){
+          let sBindingFnPath="/getAllAppInfo(...)"
+          let oAppODataPath = that.oDataModel.bindContext(sBindingFnPath);   
+          oAppODataPath.execute().then(function (exec) {       
+            let oAppInfoData = oAppODataPath.getBoundContext().getObject(); 
+            that.getOwnerComponent().getModel("appInfo").setProperty("/AppList",oAppInfoData?.value)  
+          }.bind(this), function (oError) { 
+            MessageBox.error("Failed to read "+sBindingFnPath+" function");
+          });    
 
         },
-        handleRouteMatched: function (oEvent) {
+        handleRouteMatched: function (oEvent) {       
           
           // debugger
           var that = this;
           var oCloud = true;  
-          var oPremise = true;   
+          var oPremise = false;   
           // var url = that.appModulePath + "/odata/v4/addtional-process/checkServiceAvailability(cloudSrv=" + oCloud + ",onPremiseSrv=" + oPremise + ")";
-          var ContextBinding = that.oDataModel.bindContext("/checkServiceAvailability(...)");       
+          var ContextBinding = that.oDataModel.bindContext("/checkServiceAvailability(...)");               
           ContextBinding.setParameter("cloudSrv", oCloud) 
           ContextBinding.setParameter("onPremiseSrv", oPremise) 
           ContextBinding.execute().then( 
@@ -165,10 +166,15 @@ sap.ui.define(
           var oUserListModel = new JSONModel(oUserMenuData);              
           this.getView().setModel(oUserListModel,"uLMenu");
         },
-        onLogout:function(oEvent){   
+        onLogout:function(oEvent){      
           // sap.m.URLHelper.redirect("https://9da603b4trial.launchpad.cfapps.us10.hana.ondemand.com/a22d66b3-3e78-4e57-ba53-762df11839fe.comibsibsappivenpcanalytical.comibsibsappivenpcanalytical-0.0.1/logout-page.html", false); 
           sap.m.URLHelper.redirect("/logout-page.html", false);                
         },
+        onSideNavButtonPress: function() {
+          var oToolPage = this.getView().byId("toolPage");
+          var bSideExpanded = oToolPage.getSideExpanded();
+          oToolPage.setSideExpanded(!oToolPage.getSideExpanded());   
+        },     
         onItemSelect: function(oEvent){
           debugger
           var userSelected = oEvent.getParameter("item").getKey();       
@@ -177,7 +183,7 @@ sap.ui.define(
         },
         onPress: function(oEvent) {
           var oEventSource = oEvent.getSource(),
-          bActive;        
+          bActive;           
     
           if (bActive) {
             this._oPopover.close();
@@ -196,12 +202,7 @@ sap.ui.define(
           else if(sTitle=='Sign Out'){
             // sap.m.URLHelper.redirect("/logoff.html", false);         
             sap.m.URLHelper.redirect("/do/logout", false);        
-          }
-                                    
-            // sap.m.URLHelper.redirect("https://9da603b4trial.launchpad.cfapps.us10.hana.ondemand.com/a22d66b3-3e78-4e57-ba53-762df11839fe.comibsibsappivenpcanalytical.comibsibsappivenpcanalytical-0.0.1/logout-page.html", false);                
-                         
-            // sap.m.URLHelper.redirect("https://9da603b4trial.authentication.us10.hana.ondemand.com/login", false);                   
-            // sap.m.URLHelper.redirect("https://account.sap.com/core/SAMLProxyPage.html?apiKey=3_8nyT5U5bgmcYd76h25LbEmWhqOWeM39-36YxT90-TFTHoCC5AWQbqzABxbwJMaxU&mode=logout&samlContext=eu1_184876214373_486aa0f9-87e9-473f-b7c4-5bc55245c0ec", false);                   
+          }                    
         },
         _openLoginFragment:function(){
           if (!that.oDialog) {

@@ -2,10 +2,9 @@
   "authenticationMethod": "none",
   "logout": {
     "logoutEndpoint": "/do/logout",  
-    "logoutPage": "/logout-page.html"            
+    "logoutPage": "/comibsibsappivenpcanalytical/index.html"                  
   },   
   "routes": [
-    
   ],
   "welcomeFile": "/comibsibsappivenpcanalytical"
 }

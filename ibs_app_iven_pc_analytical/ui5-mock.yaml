@@ -20,12 +20,12 @@ server:
             url: https://xsc7eb9cb36.ap1.hana.ondemand.com
             destination: HanaDB  
           - path: /sap
-            url: https://portal.intellectbizware.com:80
+            url: http://a17.hana.com   
             client: '009'
-            destination: A17  
+            destination: A17      
           - path: /odata    
             url: https://ibs-portal-dev-ibs-portal-dev-vendor-portal-srv.cfapps.us10.hana.ondemand.com/
-            destination: IVEN_DATA
+            destination: IVEN_DB
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -40,5 +40,5 @@ server:
           - urlPath: /sap/opu/odata/sap/ZIVN_PO_CONFIRMATION_SRV
             metadataPath: ./webapp/localService/metadata.xml
             mockdataPath: ./webapp/localService/data
-            generateMockData: true
+            generateMockData: true    
         annotations: []

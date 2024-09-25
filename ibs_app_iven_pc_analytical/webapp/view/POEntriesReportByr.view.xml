@@ -122,8 +122,8 @@
 											<Text text="{lists>VendorName}"/>
 											<Text text="{lists>HeaderText}" maxLines="2"/>
 											<Text text="{lists>NoteToSupp}" maxLines="2"/>
-											<ObjectStatus inverted="true" text="{ path: 'lists>Status', formatter: '.formatter.formatStateText' }"
-												state="{ path: 'lists>Status', formatter: '.formatter.formatState' }"/>
+											<ObjectStatus inverted="true" text="{ path: 'lists>Status', formatter: '.formatter.formatStateText1' }"
+												state="{ path: 'lists>Status', formatter: '.formatter.formatState1' }"/>   
 										</cells>
 									</ColumnListItem>
 								</items>

@@ -31,7 +31,7 @@ sap.ui.define([
 			var that = this;
 			//get UI model from component.js
 			this.oPModel = this.getOwnerComponent().getModel("oPropertyModel");
-			// this.readData();
+			// this.readData();    
 			
 			jQuery.sap.require("jquery.sap.storage");
 			oStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session);
@@ -75,6 +75,7 @@ sap.ui.define([
                 },
                 error: function (e) {
 					// debugger;
+					BusyIndicator.hide()     
                 }
             });
 

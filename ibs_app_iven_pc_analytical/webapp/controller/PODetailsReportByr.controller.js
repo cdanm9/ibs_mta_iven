@@ -3,7 +3,7 @@ sap.ui.define([
 	"sap/m/MessageToast",
 	"sap/ui/model/json/JSONModel",
 	"sap/m/MessageBox",
-	"../model/formatter",
+	"../model/formatterPOReport",
 	'sap/m/MessagePopover',
 	'sap/m/MessageItem'
 ], function (Controller, MessageToast, JSONModel, MessageBox, formatter, MessagePopover, MessageItem) {

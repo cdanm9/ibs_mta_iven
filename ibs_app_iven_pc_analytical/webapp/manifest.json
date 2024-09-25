@@ -129,7 +129,7 @@
         "type": "OData",
         "settings": {
           "annotations": [],   
-          "localUri": "localService/role-config/metadata.xml",
+          "localUri": "localService/role-config/metadata.xml",   
           "odataVersion": "2.0"
         }
       }
@@ -602,7 +602,7 @@
           "viewName": "InvCreationAI"
         },
         "NPOInvCreate": {
-          "viewId": "NPOInvCreate",
+          "viewId": "NPOInvCreate",    
           "viewName": "pc_inv_submit.NPOInvCreate"
         },
         "TargetView1": {

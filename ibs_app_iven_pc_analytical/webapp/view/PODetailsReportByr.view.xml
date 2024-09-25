@@ -104,7 +104,7 @@
 											        <m:Label text="Reference No" design="Bold"/>
 													<m:Text text="{hData>/RefNo}"/>
 												</f:content>
-											</f:SimpleForm>
+											</f:SimpleForm>   
 									<!--	</layout:Grid>-->
 									<!--</layout:VerticalLayout>-->
 								</blocks>

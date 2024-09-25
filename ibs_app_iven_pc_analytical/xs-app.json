@@ -3,20 +3,13 @@
   "authenticationMethod": "route",
   "logout": {
     "logoutEndpoint": "/do/logout",  
-    "logoutPage": "/logout-page.html"                
+    "logoutPage": "/comibsibsappivenpcanalytical/logout-page.html"                    
   },
-  "routes": [  
-    {
-      "source": "^/sap/rest/authorization/v2/(.*)$",
-      "target": "/sap/rest/authorization/v2/$1",           
-      "destination": "ROLE_CONFIG",
-      "authenticationType": "xsuaa",              
-      "csrfProtection": false
-    },
+  "routes": [ 
     {
       "source": "^/sap/(.*)$",
       "target": "/sap/$1",
-      "destination": "A17",
+      "destination": "S4_HANA_Z",    
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },
@@ -26,13 +19,13 @@
       "destination": "HanaDB",
       "authenticationType": "none",
       "csrfProtection": false       
-    },
+    },   
     {
-      "source": "^/odata/(.*)$",
+      "source": "^/odata/(.*)$",   
       "target": "/odata/$1",
-      "destination": "IVEN_DATA",          
+      "destination": "IVEN_DATA",             
       "authenticationType": "none",       
-      "csrfProtection": false
+      "csrfProtection": false       
     },
     {
       "source": "^/resources/(.*)$",
@@ -66,7 +59,7 @@
       "source": "^(.*)$",
       "target": "$1",
       "service": "html5-apps-repo-rt",
-      "authenticationType": "xsuaa"   
+      "authenticationType": "xsuaa"       
     }
   ]
-}
+}  

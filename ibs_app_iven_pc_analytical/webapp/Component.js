@@ -31,15 +31,15 @@ function (UIComponent, Device, models) {
             this.setModel(models.createDeviceModel(), "device");
 
             // set the property model
-            this.setModel(models.createPropertyModel(), "oPropertyModel");
+            this.setModel(models.createPropertyModel(), "oPropertyModel");   
 
-            this.setModel(models.createPropertyModelASN(), "viewModel");
+            this.setModel(models.createPropertyModelASN(), "viewModel");  
 
             this.setModel(models.createPropertyModelSES(), "viewModelSES");
 
             this.setModel(models.createPropertyModelInvCreation(), "oPropertyModelInvCre");
 
-            this.setModel(models.createAppDetailsModel(), "appInfo");
+            // this.setModel(models.createAppDetailsModel(), "appInfo");
         },
 
         getContentDensityClass: function () {

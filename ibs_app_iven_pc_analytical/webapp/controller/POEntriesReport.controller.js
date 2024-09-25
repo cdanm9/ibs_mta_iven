@@ -121,7 +121,7 @@ sap.ui.define([
 					that.readData(num);
                 },
                 error: function (e) {
-
+					BusyIndicator.hide()     
                 }
             });
 			

@@ -28,16 +28,17 @@ server:
           - path: /DOC_INFO_EXT
             url: https://xsc7eb9cb36.ap1.hana.ondemand.com
             destination: HanaDB  
-          - path: /sap/rest/authorization/v2     
+          - path: /sap/rest/authorization/v2        
             url: https://api.authentication.us10.hana.ondemand.com  
-            destination: ROLE_CONFIG       
-          - path: /sap
-            url: https://portal.intellectbizware.com:80
+            destination: ROLE_CONFIG                
+          - path: /sap  
+            url: http://a17.hana.com
             client: '009'
-            destination: A17  
+            destination: S4_HANA_Z
           - path: /odata       
             url: https://ibs-portal-dev-ibs-portal-dev-vendor-portal-srv.cfapps.us10.hana.ondemand.com/
             destination: IVEN_DATA
+          
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:

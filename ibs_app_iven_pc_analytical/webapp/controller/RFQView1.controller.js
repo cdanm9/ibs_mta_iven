@@ -115,7 +115,7 @@ sap.ui.define([
 		            that.onRead();
                 },
                 error: function (e) {
-
+					BusyIndicator.hide();   
                 }
             });
 		// });

@@ -23,7 +23,7 @@ function (JSONModel, Device) {
 						AppKey: "invcreation",
 						AppText: "Invoice Creation",
 						AppIcon:"sap-icon://create-form",   
-						SubApps: [    
+						SubApps: [        
 							{
 								AppKey: "invcreation",
 								AppText: "Invoice Creation",   

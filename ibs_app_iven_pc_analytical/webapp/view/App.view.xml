@@ -14,19 +14,27 @@
     xmlns:f="sap:f"
     height="100%"
 > 
-    <tnt:ToolPage id="toolPage">
+    <tnt:ToolPage id="toolPage"  >
         <tnt:header>
-			<tnt:ToolHeader>      
+			<tnt:ToolHeader>   
+                <Button
+					id="sideNavigationToggleButton"
+					icon="sap-icon://menu2"
+					type="Transparent"
+					press="onSideNavButtonPress">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>         
 				<Image height="1.5rem"
 					   class="sapUiSmallMarginBegin"   
-					   src="image/Nihilent.png" />                              
+					   src="image/Nihilent.jpg" />                                 
 				<Title level="H1" text="iVen (Vendor Management)" wrapping="false" id="idiVenPO">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="Disappear"/>
 					</layoutData>
 				</Title>
-				<ToolbarSpacer />  
-                <Link text="Log Out" href="/do/logout" press="onLogout" />                 
+				<ToolbarSpacer />                     
 				<ToolbarSpacer width="1.125rem"/>  
                 <Avatar id="myAvatar"    
                     initials="{appInfo>/UserInitials}" 
@@ -38,17 +46,17 @@
 			</tnt:ToolHeader>    
 		</tnt:header>      
         <tnt:sideContent>   
-            <tnt:SideNavigation itemSelect="onItemSelect">
-                <tnt:NavigationList items="{appInfo>/AppList}">
-                    <tnt:NavigationListItem icon="{appInfo>AppIcon}" text="{appInfo>AppText}" key="{appInfo>AppKey}" items="{appInfo>SubApps}" expanded="false">   
+            <tnt:SideNavigation  itemSelect="onItemSelect" >
+                <tnt:NavigationList id="idNavigationList" items="{appInfo>/AppList}" >
+                    <tnt:NavigationListItem id="idNavigationListItem" icon="{appInfo>APP_ICON}" text="{appInfo>APP_TEXT}" key="{appInfo>APP_KEY}" items="{appInfo>TO_SUBAPPINFO}" expanded="false"  >         
                         <tnt:items>   
-                            <tnt:NavigationListItem  icon="{appInfo>AppIcon}" text="{appInfo>AppText}" key="{appInfo>AppKey}"/>        
+                            <tnt:NavigationListItem id="idNavigationListSubItem" icon="{appInfo>S_APP_ICON}" text="{appInfo>S_APP_TEXT}" key="{appInfo>S_APP_KEY}"/>          
                         </tnt:items>
                     </tnt:NavigationListItem>
                 </tnt:NavigationList>
-            </tnt:SideNavigation>
+            </tnt:SideNavigation>     
 
-        </tnt:sideContent>
+        </tnt:sideContent>  
         <tnt:mainContents>
         <App id="myPage">
         </App>

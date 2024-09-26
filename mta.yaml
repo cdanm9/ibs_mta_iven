@@ -1,14 +1,14 @@
 _schema-version: "3.2"
-ID: ibs_mta_iven_po
+ID: ibs_mta_iven_sa
 version: 0.0.1
 modules:
-- name: ibs-mta-iven-po-approuter
+- name: ibs-mta-iven-sa-approuter
   type: approuter.nodejs
   path: ibs-mta-iven-po-approuter
   requires:
-  - name: ibs_mta_iven_po_html_repo_runtime
-  - name: uaa_ibs_mta_iven_po
-  - name: ibs_mta_iven_po-destination-service
+  - name: ibs_mta_iven_sa_html_repo_runtime
+  - name: uaa_ibs_mta_iven_sa
+  - name: ibs_mta_iven_sa-destination-service
     group: destinations
     properties:
       forwardAuthToken: false
@@ -17,23 +17,23 @@ modules:
   parameters:
     disk-quota: 256M
     memory: 256M
-- name: ibs_mta_iven_po_ui_deployer
+- name: ibs_mta_iven_sa_ui_deployer
   type: com.sap.application.content
   path: .
   requires:
-  - name: ibs_mta_iven_po_html_repo_host
+  - name: ibs_mta_iven_sa_html_repo_host
     parameters:
       content-target: true
   build-parameters:
     build-result: resources
     requires:
     - artifacts:
-      - comibsibsappivenpcanalytical.zip
-      name: comibsibsappivenpcanalytical
+      - comibsibsappivensaanalytical.zip
+      name: comibsibsappivensaanalytical
       target-path: resources/
-- name: comibsibsappivenpcanalytical
+- name: comibsibsappivensaanalytical
   type: html5
-  path: ibs_app_iven_pc_analytical
+  path: ibs_app_iven_sa_analytical
   build-parameters:
     build-result: dist
     builder: custom
@@ -42,24 +42,24 @@ modules:
     - npm run build:cf
     supported-platforms: []
 resources:
-- name: ibs_mta_iven_po_html_repo_runtime
+- name: ibs_mta_iven_sa_html_repo_runtime
   type: org.cloudfoundry.managed-service
   parameters:
     service: html5-apps-repo
     service-plan: app-runtime
-- name: uaa_ibs_mta_iven_po
+- name: uaa_ibs_mta_iven_sa
   type: org.cloudfoundry.managed-service
   parameters:
     path: ./xs-security.json
     service: xsuaa
-    service-name: ibs_mta_iven_po-xsuaa-service
+    service-name: ibs_mta_iven_sa-xsuaa-service
     service-plan: application
-- name: ibs_mta_iven_po_html_repo_host
+- name: ibs_mta_iven_sa_html_repo_host
   type: org.cloudfoundry.managed-service
   parameters:
     service: html5-apps-repo
     service-plan: app-host
-- name: ibs_mta_iven_po-destination-service
+- name: ibs_mta_iven_sa-destination-service
   type: org.cloudfoundry.managed-service
   parameters:
     config:
@@ -75,7 +75,7 @@ resources:
           existing_destinations_policy: update
       version: 1.0.0
     service: destination
-    service-name: ibs_mta_iven_po-destination-service
+    service-name: ibs_mta_iven_sa-destination-service
     service-plan: lite
 parameters:
   deploy_mode: html5-repo

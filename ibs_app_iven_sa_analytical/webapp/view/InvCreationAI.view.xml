@@ -1,0 +1,66 @@
+<mvc:View controllerName="com.ibs.ibsappivensaanalytical.controller.InvCreationAI"
+    xmlns:l="sap.ui.layout"
+	xmlns:u="sap.ui.unified"   
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"    
+    displayBlock="true"   
+    xmlns="sap.m">
+    <Page id="page" title="Invoice Creation AI" titleAlignment="Center">      
+        <Table id="idProductsTable"
+		inset="false"
+		keyboardMode="Navigation"
+		items="{
+			path: 'fileDetails>/results',   
+			sorter: {
+				path: 'FILE_ID'
+			}
+		}">
+		<infoToolbar>
+			<OverflowToolbar>
+			<ToolbarSpacer/>
+				<Button text="Create" type="Emphasized" press="onCreate"></Button>
+				<!-- <Button text="Navigation" type="Default" press="onNav"></Button> -->
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column id="netCol"
+				width="12em"
+                hAlign="Center">
+				<Text id="netText" text=" File Id" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true"
+                hAlign="Center">
+				<Text text="File Name" />
+			</Column>	
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Status" />
+			</Column>
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						title="{fileDetails>FILE_ID}"/>
+					<Text
+						text="{fileDetails>FILE_NAME}" />
+					<!-- <Text
+						text="{fileDetails>STATUS}" /> -->
+					<ObjectStatus text="{fileDetails>STATUS}" inverted="true"
+                            state="{path:'fileDetails>STATUS', formatter:'.formatter.getStatus'}"/>  
+					
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+    </Page>
+</mvc:View>
+
+
+

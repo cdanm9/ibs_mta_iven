@@ -1,5 +1,5 @@
 {
-  "xsappname": "ibs_mta_iven_po",
+  "xsappname": "ibs_mta_iven_sa",
   "tenant-mode": "dedicated",
   "description": "Security profile of called application",   
   "scopes": [
@@ -21,7 +21,8 @@
     "redirect-uris": [   
       "http://localhost:5000/",        
       "https://9da603b4trial-dev-ibs-mta-iven-po-approuter.cfapps.us10-001.hana.ondemand.com/",
-      "https://ibs-portal-dev-ibs-portal-dev-ibs-mta-iven-po-approuter.cfapps.us10.hana.ondemand.com/"
-    ]
+      "https://ibs-portal-dev-ibs-portal-dev-ibs-mta-iven-po-approuter.cfapps.us10.hana.ondemand.com/",
+      "https://ibs-portal-dev-ibs-portal-dev-ibs-mta-iven-sa-approuter.cfapps.us10.hana.ondemand.com/"
+    ]   
   }
 }

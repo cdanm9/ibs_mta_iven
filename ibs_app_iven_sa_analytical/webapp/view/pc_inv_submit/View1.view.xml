@@ -1,0 +1,112 @@
+<!-- <mvc:View controllerName="com.ibs.ibsappivenpcinvsubmit.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content />
+    </Page>
+</mvc:View> -->
+
+<mvc:View controllerName="com.ibs.ibsappivensaanalytical.controller.pc_inv_submit.View1"    
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"  xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"  xmlns:tnt="sap.tnt" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout">
+	<Page title="{i18n>title}" showHeader="false">
+		<IconTabBar id="idIconTabBar" select=".onFilterSelect" class="sapUiResponsiveContentPadding" selectedKey="all">
+			<items>
+				<IconTabFilter icon="sap-icon://approvals" iconColor="Positive" count="{CountData>/count2}" text="Proccessed" key="PROCESSED"/>
+				<IconTabFilter icon="sap-icon://clear-all" iconColor="Negative" count="{CountData>/count1}" text="Pending" key="PENDING"/>
+				<IconTabFilter icon="sap-icon://accept" iconColor="Positive" count="{CountData>/count3}" text="Approved" key="APPROVE"/>
+				<IconTabFilter icon="sap-icon://delete" iconColor="Negative" count="{CountData>/count4}" text="Rejected" key="REJECT"/>
+				<IconTabSeparator/>
+				<IconTabFilter showAll="true" id="AllTab" count="{CountData>/AllData}" text="All Invoices" key="all"/>
+			</items>
+			<content>
+				<Table id="productsTable" mode="SingleSelectMaster" itemPress="onListItemPress" 
+					items="{path: 'headerModel>/value', sorter: { path: 'PO_FILE_NO', descending: true }}"
+					class="sapFDynamicPageAlignContent" width="auto" autoPopinMode="true" contextualWidth="auto">
+					<headerToolbar>
+						<OverflowToolbar>
+							<Title text="Invoice Submitted" />
+							<ToolbarSpacer/>
+							<SearchField id="id_search" liveChange="onSearch" width="19.5rem" placeholder="Search by Document ID or Invoice No."/>
+							<!-- <OverflowToolbarButton icon="sap-icon://sort" type="Transparent" press=""/> -->
+							<Button icon="sap-icon://add" text="Create" type="Transparent" press="onCreate"/>
+						</OverflowToolbar>
+					</headerToolbar>
+					<columns>
+						<Column width="12em"><Text text="Document ID" class="boldText"/></Column>
+						<Column	hAlign="Center"><Text text="Document Date"/></Column>
+						<Column	hAlign="Center"><Text text="Invoice Number"/></Column>
+						<Column	hAlign="Center"><Text text="Invoice Date"/></Column>
+						<Column	hAlign="Center"><Text text="Amount"/></Column>
+						<Column	hAlign="Center"><Text text="Status"/></Column>
+					</columns>
+					<items>
+						<ColumnListItem type="Navigation">
+							<cells>
+								<Text text="{path:'headerModel>PO_FILE_NO', formatter:'.formatter.getDataNullValue'}" class="boldText"/>  
+								<Text text="{path: 'headerModel>DOCUMENTDATE', formatter:'.formatter.formatDate'}"/>
+								<Text text="{path:'headerModel>TO_ATTACHMENT/INVOICE_NO', formatter:'.formatter.getDataNullValue'}"/>
+								<Text text="{path:'headerModel>TO_ATTACHMENT/INVOICE_DATE', formatter:'.formatter.formatDate'}"/>
+								<!-- <Text text="{path: 'headerModel>REQUESTEDDATE', formatter:'.formatter.formatDate'}"/> -->
+								<Text text="{path:'headerModel>GROSSAMOUNT',formatter:'.formatter.formatterAmount'}" />    
+								<ObjectStatus text="{headerModel>STATUS}" inverted="true"
+									state="{path: 'headerModel>STATUS',formatter: '.formatter.getStatus'}" />
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</content>
+		</IconTabBar>
+	</Page>
+</mvc:View>
+
+<!-- <mvc:View controllerName="com.ivenpcinvsubmit.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"  xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"  xmlns:tnt="sap.tnt" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout">
+	<Page title="{i18n>title}" showHeader="false">
+		<IconTabBar id="idIconTabBar" select=".onFilterSelect" class="sapUiResponsiveContentPadding" selectedKey="all">
+			<items>
+				<IconTabFilter icon="sap-icon://approvals" iconColor="Positive" count="{CountData>/count2}" text="Proccessed" key="PROCESSED"/>
+				<IconTabFilter icon="sap-icon://clear-all" iconColor="Negative" count="{CountData>/count1}" text="Pending"key="PENDING"/>
+				<IconTabFilter icon="sap-icon://accept" iconColor="Positive" count="{CountData>/count3}" text="Approved" key="APPROVE"/>
+				<IconTabFilter icon="sap-icon://delete" iconColor="Negative" count="{CountData>/count4}" text="Rejected" key="REJECT"/>
+				<IconTabSeparator/>
+				<IconTabFilter showAll="true" id="AllTab" count="{CountData>/AllData}" text="All Invoices" key="all"/>
+			</items>
+			<content>
+				<Table id="productsTable" mode="SingleSelectMaster" itemPress="onListItemPress" 
+					items="{path: 'AttachmentData>/', sorter: { path: 'PO_FILE_NO', descending: true }}"
+					class="sapFDynamicPageAlignContent" width="auto" autoPopinMode="true" contextualWidth="auto">
+					<headerToolbar>
+						<OverflowToolbar>
+							<Title text="Invoice Submitted" />
+							<ToolbarSpacer/>
+							<SearchField liveChange="onSearch" width="19.5rem" placeholder="Search Doc Id/ Invoice No."/>
+							
+							<Button icon="sap-icon://add" text="Create" type="Transparent" press="onCreate"/>
+						</OverflowToolbar>
+					</headerToolbar>
+					<columns>
+						<Column width="12em"><Text text="Document ID" class="boldText"/></Column>
+						<Column	hAlign="Center"><Text text="Invoice Number"/></Column>
+						<Column	hAlign="Center"><Text text="Amount"/></Column>
+						<Column	hAlign="Center"><Text text="Status"/></Column>
+					</columns>
+					<items>
+						<ColumnListItem type="Navigation">
+							<cells>
+								<Text text ="{AttachmentData>PO_FILE_NO}" class="boldText"/>  
+								<Text text="{AttachmentData>INVOICE_NO}"/>
+								<Text text="{path:'AttachmentData>TO_HEADER/GROSSAMOUNT',formatter:'.formatter.formatterAmount'}" />
+								<ObjectStatus text="{AttachmentData>STATUS}" inverted="true"
+									state="{path: 'AttachmentData>STATUS',formatter: '.formatter.getStatus'}" />
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</content>
+		</IconTabBar>
+	</Page>
+</mvc:View> -->

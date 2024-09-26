@@ -1,0 +1,540 @@
+<mvc:View controllerName="com.ibs.ibsappivensaanalytical.controller.Invoice_Detail" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form"
+	xmlns="sap.uxap" xmlns:m="sap.m" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:layout="sap.ui.layout"
+	xmlns:u="sap.ui.unified" xmlns:t="sap.suite.ui.commons">
+	<!--<m:App id="app">-->
+	<m:Page showHeader="false" showNavButton="false" navButtonPress="onBack">
+		<m:content>
+			<!--<layout:DynamicSideContent id="DynamicSideContent" class="sapUiSizeCompact" containerQuery="true" sideContentFallDown="BelowM"-->
+			<!--	breakpointChanged="handleBreakpointChangeEvent" showSideContent="{viewModel>/ShowSideContent}">-->
+			<ObjectPageLayout id="ObjectPageLayout" preserveHeaderStateOnScroll="true" upperCaseAnchorBar="true">
+				<headerTitle>
+					<ObjectPageDynamicHeaderTitle>
+						<expandedHeading>
+							<m:Title text="ASN Number : {oPropertyModelInvCre>/GrnNo}" wrapping="true"/>
+						</expandedHeading>
+						<actions>
+							<!--<m:Button text="PO Events" press="handleEvents" type="Emphasized"/>-->
+						</actions>
+					</ObjectPageDynamicHeaderTitle>
+				</headerTitle>
+				<!--<headerContent>-->
+				<!--	<layout:HorizontalLayout>-->
+				<!--		<layout:VerticalLayout class="sapUiSmallMarginEnd">-->
+				<!--			<m:Label text="{i18n>AddressFrom}:"/>-->
+				<!--			<m:Label text="{detailmodel>/ShipFrom}" width="10rem" wrapping="true" design="Bold"/>-->
+				<!--		</layout:VerticalLayout>-->
+				<!--		<m:HBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd"></m:HBox>-->
+				<!--		<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd">-->
+				<!--			<m:Label text="{i18n>AddressTo}:"/>-->
+				<!--			<m:Label text="{detailmodel>/ShipTo}" width="10rem" wrapping="true" design="Bold"/>-->
+				<!--		</layout:VerticalLayout>-->
+				<!--		<m:HBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd"></m:HBox>-->
+				<!--		<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd" visible="{= ${viewModel>/Table2VisibleInvCreation}}">-->
+				<!--			<m:Label text="SES No:" design="Bold"/>-->
+				<!--			<m:ObjectNumber number="{detailmodel>/SesNo}" state="Success"/>-->
+				<!--		</layout:VerticalLayout>-->
+				<!--		<m:HBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd"></m:HBox>-->
+				<!--		<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd" visible="{= ${viewModel>/Table2VisibleInvCreation}}">-->
+				<!--			<m:Label text="Amount:" design="Bold"/>-->
+				<!--			<m:ObjectNumber number="{detailmodel>/PoAmount}" unit="{detailmodel>/Currency}"/>-->
+				<!--		</layout:VerticalLayout>-->
+				<!--	</layout:HorizontalLayout>-->
+				<!--</headerContent>-->
+				<sections>
+					<ObjectPageSection titleUppercase="false" title="Details">
+						<subSections>
+							<ObjectPageSubSection title="Details" mode="Expanded" titleUppercase="true">
+								<blocks>
+									<!--<layout:VerticalLayout width="100%">-->
+									<!--	<layout:Grid defaultSpan="L4" containerQuery="true">-->
+									<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="DETAILS" backgroundDesign="Solid" labelSpanXL="4" labelSpanL="4"-->
+									<!--	labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3"-->
+									<!--	columnsL="3" columnsM="3" singleContainerFullSize="true">-->
+									<!--	<f:content>-->
+									<!--		<core:Title/>-->
+									<!--		<m:Label text="PO Number" design="Bold"/>-->
+									<!--		<m:Text text="{headerModel>/Ponumber}"/>-->
+									<!--		<m:Label text="GR Date" design="Bold"/>-->
+									<!--		<m:Text text="{path:'headerModel>/Gsrndate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+									<!--		<core:Title/>-->
+									<!--		<m:Label text="PO Type" design="Bold"/>-->
+									<!--		<m:Text text="{headerModel>/Potypename}"/>-->
+									<!--		<core:Title/>-->
+									<!--		<m:Label text="GR Amount" design="Bold"/>-->
+									<!--		<m:ObjectNumber unit="INR" number="{ path: 'headerModel>/Grnamt', formatter: '.formatter.formatAmount' }"/>-->
+									<!--<m:Text text="{ path: 'detailmodel>/PoAmount', formatter: '.formatter.formatAmount' } {detailmodel>/Currency}"/>-->
+									<!--	</f:content>-->
+									<!--</f:SimpleForm>-->
+									<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="DETAILS" labelSpanXL="5" labelSpanL="5" labelSpanM="5"
+										adjustLabelSpan="false" columnsXL="4" columnsL="3" columnsM="2" singleContainerFullSize="false">
+									
+											<f:content>
+											<core:Title />
+											<m:Label text=" Vendor Name" design="Bold"/>
+											<m:Text text="{hData>/VendorName}"/>
+											<m:Label text="Vendor Address" design="Bold"/>
+											<m:Text text="A 1/47, Hundred Shed Area,
+											Valsad  Gujarat,India 396195"/>
+											<core:Title />
+											<m:Label text="Bank Key" design="Bold"/>
+											<m:Text text="INDB0000085"/>
+											<m:Label text="Bank Account" design="Bold"/>
+											<m:Text text="0085667581050"/>
+											<m:Label text="Bank Name" design="Bold"/>
+											<m:Text text="Indusind Bank Ltd. - Vapi Branch"/>
+											<core:Title />
+											<m:Label text="{i18n>SubSection1Label1}" design="Bold"/>
+											<m:Text text="{path:'hData>/PoDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+											<m:Label text="{i18n>SubSection1Label6}" design="Bold"/>
+											<m:Text text="{hData>/PurOrgDes}"/>
+											<m:Label text="{i18n>SubSection1Label4}" design="Bold"/>
+											<m:ObjectNumber state="Success" unit="INR" number="{ path: 'headerModel>/Grnamt', formatter: '.formatter.formatAmount' }"/>
+											
+										</f:content>
+									</f:SimpleForm>
+									
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection titleUppercase="true" title="Invoice Header">
+						<subSections>
+							<ObjectPageSubSection title="Invoice Header" mode="Expanded">
+								<blocks>
+									<!--<layout:VerticalLayout width="100%">-->
+									<!--	<layout:Grid defaultSpan="L4" containerQuery="true">-->
+									<f:SimpleForm editable="true" layout="ResponsiveGridLayout" backgroundDesign="Solid" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+										labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+										singleContainerFullSize="true">
+										<f:content>	
+											<core:Title/>
+											<m:Label required="true" text="Invoice Reference Number"  design="Bold"/>
+											<m:Input id="idInvoiceNo" type="Text" liveChange="invRef"/>
+											<core:Title/>
+											<m:Label required="true" text="Invoice Date" design="Bold"/>
+											<m:DatePicker id="idInvoiceDate"  displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-dd" change="invRefdate"/>
+										</f:content>
+									</f:SimpleForm>
+									<!--	</layout:Grid>-->
+									<!--</layout:VerticalLayout>-->
+								</blocks>
+							</ObjectPageSubSection>
+							<ObjectPageSubSection id="personalSectionSS2" title="Tax Information" titleUppercase="false">
+								<blocks>
+									<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+										adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+										singleContainerFullSize="false">
+										<f:content>
+											<m:Label id="idTaxRadio" text="Tax Level" design="Bold"></m:Label>
+											<m:RadioButtonGroup id="rbg3" class="sapUiLargeMarginEnd" visible="{viewModel>/SelectInvType}" columns="5"
+												selectedIndex="{viewModel>/SelectIndex}" select="handleRadioBtn">
+												<m:RadioButton id="RB3-1" text="Header Level"/>
+												<m:RadioButton id="RB3-2" text="Item Level"/>
+											</m:RadioButtonGroup>
+											<!--<core:Title/>-->
+											<!--<m:Label text="Category" design="Bold" visible="{viewModel>/RadioTaxType}"/>-->
+											<!--<m:ComboBox id="id_taxCtg" value="" selectedKey="-1" width="15rem" visible="{viewModel>/RadioTaxType}" placeholder="Select Tax Category" showSecondaryValues="false"-->
+											<!--	selectionChange="onActionChange">-->
+											<!--	<core:Item key="01" text="Sales Tax"/>-->
+											<!--	<core:Item key="02" text="Credit"/>-->
+											<!--</m:ComboBox>-->
+											<!--<m:Label text="Location" visible="{viewModel>/RadioTaxType}" design="Bold"/>-->
+											<!--<m:Input value="{hData>/VendorName}" width="15rem" visible="{viewModel>/RadioTaxType}"/>-->
+											<!--<m:Label text="Description" design="Bold" visible="{viewModel>/RadioTaxType}"/>-->
+											<!--<m:Input value="{hData>/DpPerc}" width="15rem" visible="{viewModel>/RadioTaxType}"/>-->
+											<!--<m:Label id="refLabel" text="Inv. Reference" visible="{viewModel>/SelectInvType}" required="{= ${viewModel>/SelectedIconTab} === 'Pending' ? true : false}" design="Bold"/>-->
+											<!--      <m:Input id="ref" value="{detailModel>/Reference}" visible="{viewModel>/SelectInvType}" width="15rem" maxLength="16"/>-->
+											<!--      <core:Title/>-->
+											<!--<m:Label text="Regime" design="Bold" visible="{viewModel>/RadioTaxType}"/>-->
+											<!--<m:Input value="{hData>/BuyerName}" width="15rem" visible="{viewModel>/RadioTaxType}"/>-->
+											<!--<m:Label text="Taxable Amt" design="Bold" visible="{viewModel>/RadioTaxType}"/>-->
+											<!--<m:Input value="{hData>/PurOrgDes}" width="15rem" visible="{viewModel>/RadioTaxType}"/>-->
+											<!--<m:Label text="Tax Rate Type" design="Bold" visible="{viewModel>/RadioTaxType}"/>-->
+											<!--<m:Input value="{hData>/PurOrgDes}" width="15rem" visible="{viewModel>/RadioTaxType}"/>-->
+											<!--      <core:Title/>-->
+											<m:Label text="Tax %" required="true" design="Bold" visible="{oPropertyModelInvCre>/RadioTaxType}"/>
+											<m:Input id="txPerc" value="{oPropertyModelInvCre>/Tax%value}" width="7.5rem" change="onTaxP" visible="{oPropertyModelInvCre>/RadioTaxType}"/>
+											<m:Label text="Tax Amount" design="Bold" visible="{oPropertyModelInvCre>/RadioTaxType}"/>
+											<m:Input
+											id="taxAmount"
+												value="{path:'oPropertyModelInvCre>/TaxAmtvalue', type:'sap.ui.model.type.Float', formatOptions:{groupingEnabled:true, groupingSeparator:',', maxFractionDigits:2}}"
+												editable="false" description="{hData>/Currency}" width="15rem" visible="{oPropertyModelInvCre>/RadioTaxType}"/>
+										</f:content>
+									</f:SimpleForm>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection title="Items" visible="{= ${viewModel>/Table1VisibleInvCreation}}">
+						<subSections>
+							<ObjectPageSubSection title="Items" mode="Expanded">
+								<layout:VerticalLayout>
+									<m:Table id="idItemsTable" mode="None" rememberSelections="true" sticky="ColumnHeaders" items="{detailmodel>/results}"
+										selectionChange="onSelectionForDelete">
+										<m:headerToolbar></m:headerToolbar>
+										<m:columns>
+											<m:Column demandPopin="true">
+												<m:Label design="Bold" text="PO Number" wrapping="true"/>
+											</m:Column>
+											<m:Column demandPopin="true">
+												<m:Label design="Bold" text="ASN / SES Number"/>
+											</m:Column>
+											<m:Column demandPopin="true">
+												<m:Label design="Bold" text="Item-Material Desc"/>
+											</m:Column>
+											<!--<m:Column demandPopin="true">-->
+											<!--	<m:Label design="Bold" text="Material" wrapping="true"/>-->
+											<!--</m:Column>-->
+											
+											<m:Column hAlign="Right" width="5.5rem" demandPopin="true">
+												<m:Label design="Bold" text="ASN Qty"/>
+											</m:Column>
+											<m:Column hAlign="Right" demandPopin="true">
+												<m:Label design="Bold" text="ASN Amt"/>
+											</m:Column>
+												<m:Column hAlign="Right" width="5.5rem" demandPopin="true">
+												<m:Label design="Bold" text="GRN Qty"/>
+											</m:Column>
+											<m:Column hAlign="Right" demandPopin="true">
+												<m:Label design="Bold" text="Grn Amt"/>
+											</m:Column>
+
+
+											<m:Column hAlign="Right" demandPopin="true">
+												<m:Label design="Bold" text="VendorAmt"/>
+											</m:Column>
+											<m:Column hAlign="Center" demandPopin="true">
+												<m:Label design="Bold" text="Tax%"/>
+											</m:Column>
+											<m:Column hAlign="Right" demandPopin="true">
+												<m:Label design="Bold" text="Tax Amount"/>
+											</m:Column>
+											<m:Column hAlign="Right" demandPopin="true">
+												<m:Label design="Bold" text="Total Amount"/>
+											</m:Column>
+										</m:columns>
+										<m:items>
+											<m:ColumnListItem>
+												<m:cells>
+													<m:Text text="{detailmodel>Ebeln}"/>
+													<m:Text text="{path:'detailmodel>Asnno'}"/>
+													<m:Text text="{path:'detailmodel>Asnitem'}-{detailmodel>Maktx}"/>
+													<!--<m:Text text="{detailmodel>Maktx}"/>-->
+													<!--<m:ObjectNumber number="{detailmodel>Menge}" unit="{detailmodel>Meins}"/>-->
+													<m:ObjectNumber unit="{detailmodel>Meins}" number="{ path: 'detailmodel>Menge', formatter: '.formatter.formatAmount' }"/>
+													<m:ObjectNumber unit="INR" number="{ path: 'detailmodel>Grnamt', formatter: '.formatter.formatAmount' }"/>
+														<m:ObjectNumber unit="{detailmodel>Meins}" number="{ path: 'detailmodel>Menge', formatter: '.formatter.formatAmount' }"/>
+													<m:ObjectNumber unit="INR" number="{ path: 'detailmodel>Grnamt', formatter: '.formatter.formatAmount' }"/>
+													<m:Input value="{ path: 'detailmodel>Netwr', formatter: '.formatter.formatAmount'}" liveChange="liveChangeAmount" width="5rem" change="onAmount"></m:Input>
+													<m:Input value="{detailmodel>Vat}" width="5rem" editable="{oPropertyModelInvCre>/TaxInput}" type="Number" change="onChange"></m:Input>
+													<!--<m:Text text="{detailmodel>Netpr}"></m:Text>-->
+													<m:ObjectNumber unit="INR" number="{ path: 'detailmodel>Netpr', formatter: '.formatter.formatAmount' }"/>
+													<m:ObjectNumber unit="INR" number="{ path: 'detailmodel>Totalamt', formatter: '.formatter.formatAmount' }"/>
+												</m:cells>
+											</m:ColumnListItem>
+										</m:items>
+									</m:Table>
+								</layout:VerticalLayout>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection title="{i18n>OP_Section3}">
+						<subSections>
+							<ObjectPageSubSection title="Attachments" mode="Expanded">
+								<m:VBox>
+									<m:MessageStrip visible="{= ${viewModel>/Table1VisibleInvCreation}}"
+										text="Supported Attachment Types: txt, jpg, docx, pdf, zip, xlsx and Attachment Size upto: 5MB" type="Information" showIcon="true"></m:MessageStrip>
+									<!-- <m:UploadCollection id="UploadCollection" multiple="true" sameFilenameAllowed="false" instantUpload="false" change="onChangeA"
+										filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch"
+										uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts" maximumFilenameLength="150" maximumFileSize="5"
+										uploadUrl="/sap/opu/odata/sap/ZIVN_INV_CREAT_SRV/AttachmentSet" items="{attachModel>/results}"
+										uploadButtonInvisible="{= ${viewModel>/Table2VisibleInvCreation}}" noDataDescription="{viewModel>/NoAttachText}">
+										<m:items>
+											<m:UploadCollectionItem documentId="{attachModel>RequestNo}" fileName="{attachModel>Filename}" visibleEdit="false"
+												visibleDelete="{= ${viewModel>/Table1VisibleInvCreation}}"
+												url="{viewModel>/AttachURL}/sap/opu/odata/sap/ZIVN_INV_CREAT_SRV/AttachmentSet(RequestNo='{attachModel>RequestNo}')/$value" press="onAttachmentPress"/>
+										</m:items>
+									</m:UploadCollection> -->
+										<m:UploadCollection id="UploadCollection" multiple="true" sameFilenameAllowed="false" instantUpload="false" change="onChangeA"
+										filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch"
+										uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts" maximumFilenameLength="150" maximumFileSize="5"
+										uploadUrl="{oPropertyModelInvCre>/AttachURL}/sap/opu/odata/sap/ZIVN_INV_CREAT_SRV/AttachmentSet" items="{attachModel>/results}"
+										uploadButtonInvisible="{= ${viewModel>/Table2VisibleInvCreation}}" noDataDescription="{viewModel>/NoAttachText}">
+										<m:items>
+											<m:UploadCollectionItem documentId="{attachModel>RequestNo}" fileName="{attachModel>Filename}" visibleEdit="false"
+												visibleDelete="{= ${viewModel>/Table1VisibleInvCreation}}"
+												url="{oPropertyModelInvCre>/AttachURL}/sap/opu/odata/sap/ZIVN_INV_CREAT_SRV/AttachmentSet(RequestNo='{attachModel>RequestNo}')/$value"/>
+										</m:items>
+									</m:UploadCollection>
+								</m:VBox>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+				</sections>
+			</ObjectPageLayout>
+			<ObjectPageLayout id="ObjectPage" preserveHeaderStateOnScroll="true" upperCaseAnchorBar="true">
+				<headerTitle>
+					<ObjectPageDynamicHeaderTitle>
+						<expandedHeading>
+							<m:Title text="ASN Number : {headerModel>/Grnno}" wrapping="true"/>
+						</expandedHeading>
+						<actions>
+							<!--<m:Button text="PO Events" press="handleEvents" type="Emphasized"/>-->
+						</actions>
+					</ObjectPageDynamicHeaderTitle>
+				</headerTitle>
+				<!--<headerContent>-->
+				<!--	<layout:HorizontalLayout>-->
+				<!--		<layout:VerticalLayout class="sapUiSmallMarginEnd">-->
+				<!--			<m:Label text="{i18n>AddressFrom}:"/>-->
+				<!--			<m:Label text="{detailmodel>/ShipFrom}" width="10rem" wrapping="true" design="Bold"/>-->
+				<!--		</layout:VerticalLayout>-->
+				<!--		<m:HBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd"></m:HBox>-->
+				<!--		<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd">-->
+				<!--			<m:Label text="{i18n>AddressTo}:"/>-->
+				<!--			<m:Label text="{detailmodel>/ShipTo}" width="10rem" wrapping="true" design="Bold"/>-->
+				<!--		</layout:VerticalLayout>-->
+				<!--		<m:HBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd"></m:HBox>-->
+				<!--		<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd" visible="{= ${viewModel>/Table2VisibleInvCreation}}">-->
+				<!--			<m:Label text="SES No:" design="Bold"/>-->
+				<!--			<m:ObjectNumber number="{detailmodel>/SesNo}" state="Success"/>-->
+				<!--		</layout:VerticalLayout>-->
+				<!--		<m:HBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd"></m:HBox>-->
+				<!--		<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd" visible="{= ${viewModel>/Table2VisibleInvCreation}}">-->
+				<!--			<m:Label text="Amount:" design="Bold"/>-->
+				<!--			<m:ObjectNumber number="{detailmodel>/PoAmount}" unit="{detailmodel>/Currency}"/>-->
+				<!--		</layout:VerticalLayout>-->
+				<!--	</layout:HorizontalLayout>-->
+				<!--</headerContent>-->
+				<sections>
+					<ObjectPageSection titleUppercase="false" title="Details">
+						<subSections>
+							<ObjectPageSubSection title="Details" mode="Expanded" titleUppercase="true">
+								<blocks>
+									<!--<layout:VerticalLayout width="100%">-->
+									<!--	<layout:Grid defaultSpan="L4" containerQuery="true">-->
+									<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="DETAILS" backgroundDesign="Solid" labelSpanXL="4" labelSpanL="4"-->
+									<!--	labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2"-->
+									<!--	columnsL="2" columnsM="2" singleContainerFullSize="true">-->
+									<!--	<f:content>-->
+									<!--		<core:Title/>-->
+									<!--		<m:Label text="Vendor Invoice Number" design="Bold"/>-->
+									<!--		<m:Text text="{headerModel>/Vendorinvno}"/>-->
+									<!--		<core:Title/>-->
+									<!--		<m:Label text="Vendor Invoice Date" design="Bold"/>-->
+									<!--		<m:Text text="{path:'headerModel>/Vendorinvdate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+									<!--	</f:content>-->
+									<!--</f:SimpleForm>-->
+									<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="DETAILS" labelSpanXL="5" labelSpanL="5" labelSpanM="5"
+										adjustLabelSpan="false" columnsXL="4" columnsL="3" columnsM="2" singleContainerFullSize="false">
+										<!--<f:content>-->
+										<!--	<core:Title/>-->
+										<!--	<m:Label text="{i18n>SubSection1Label1}" design="Bold"/>-->
+										<!--	<m:Text text="{path:'hData>/PoDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+										<!--	<m:Label text="{i18n>SubSection1Label2}" design="Bold"/>-->
+										<!--	<m:Text text="{hData>/VendorName}"/>-->
+										<!--	<m:Label text="Down Pay. %" design="Bold"/>-->
+										<!--	<m:Text text="{hData>/DpPerc}"/>-->
+										<!--	<m:Label text="{i18n>SubSection1Label7}" design="Bold"/>-->
+										<!--	<m:Text text="{hData>/HeaderText}"/>-->
+										<!--	<m:Label text="Vendor Invoice Number" design="Bold"/>-->
+										<!--	<m:Text text="{headerModel>/Vendorinvno}"/>-->
+											<!--	</f:content>-->
+											<!--</f:SimpleForm>-->
+											<!--<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"-->
+											<!--                     labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false">-->
+											<!--	<f:content>-->
+										<!--	<core:Title/>-->
+										<!--	<m:Label text="{i18n>SubSection1Label3}" design="Bold"/>-->
+										<!--	<m:Text text="{hData>/BuyerName}({hData>/Buyer})"/>-->
+											<!--<m:Label text="{i18n>SubSection1Label5}" design="Bold"/>-->
+											<!--<m:Text text="{hData>/PurGroupDes}"/>-->
+										<!--	<m:Label text="{i18n>SubSection1Label6}" design="Bold"/>-->
+										<!--	<m:Text text="{hData>/PurOrgDes}"/>-->
+										<!--	<m:Label text="Down Pay. Amt" design="Bold"/>-->
+										<!--	<m:ObjectNumber unit="{hData>/Currency}"-->
+										<!--		number="{ parts:[{path:'hData>/DpAmount'},{path:'hData>/Currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>-->
+										<!--	<m:Label text="Note To Supp." design="Bold" class="sapUiTinyMarginTop"/>-->
+										<!--	<m:Text text="{hData>/NoteToSupp}"/>-->
+										<!--	<m:Label text="Vendor Invoice Date" design="Bold"/>-->
+										<!--	<m:Text text="{path:'headerModel>/Vendorinvdate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+											<!--	</f:content>-->
+											<!--</f:SimpleForm>-->
+											<!--<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"-->
+											<!--                     labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false">-->
+											<!--	<f:content>-->
+										<!--	<core:Title/>-->
+										<!--	<m:Label text="{i18n>SubSection1Label4}" design="Bold"/>-->
+										<!--	<m:ObjectNumber state="Success" unit="INR" number="{ path: 'headerModel>/Grnamt', formatter: '.formatter.formatAmount' }"/>-->
+											<!--<m:ObjectNumber state="Success" unit="{hData>/Currency}"-->
+											<!--                number="{path:'hData>/PoAmount', formatter: '.formatter.formatAmount'}"/>-->
+										<!--	<m:Label text="Retention %" design="Bold"/>-->
+										<!--	<m:Text text="{hData>/RetentionPerc}"/>-->
+										<!--	<m:Label text="Down Pay. Due" design="Bold"/>-->
+										<!--	<m:Text text="{path:'hData>/DpDueDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+										<!--	<m:Label text="Reference No" design="Bold"/>-->
+										<!--	<m:Text text="{hData>/RefNo}"/>-->
+										<!--</f:content>-->
+											<f:content>
+											<core:Title />
+											<m:Label text=" Vendor Name" design="Bold"/>
+											<m:Text text="{hData>/VendorName}"/>
+											<m:Label text="Vendor Address" design="Bold"/>
+											<m:Text text="A 1/47, Hundred Shed Area,
+											Valsad  Gujarat,India 396195"/>
+												<m:Label text="Vendor Invoice No." design="Bold"/>
+											<m:Text text="{headerModel>/Vendorinvno}"/>
+											
+											<core:Title />
+											<m:Label text="Bank Key" design="Bold"/>
+											<m:Text text="INDB0000085"/>
+											<m:Label text="Bank Account" design="Bold"/>
+											<m:Text text="0085667581050"/>
+											<m:Label text="Bank Name" design="Bold"/>
+											<m:Text text="Indusind Bank Ltd. - Vapi Branch"/>
+										
+												<m:Label text="Vendor Invoice Date" design="Bold"/>
+											<m:Text text="{path:'headerModel>/Vendorinvdate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+											<core:Title />
+											
+											
+						          
+											<m:Label text="{i18n>SubSection1Label1}" design="Bold"/>
+											<m:Text text="{path:'hData>/PoDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+											<m:Label text="{i18n>SubSection1Label6}" design="Bold"/>
+											<m:Text text="{hData>/PurOrgDes}"/>
+											<m:Label text="{i18n>SubSection1Label4}" design="Bold"/>
+											<m:ObjectNumber state="Success" unit="INR" number="{ path: 'headerModel>/Grnamt', formatter: '.formatter.formatAmount' }"/>
+											
+										</f:content>
+									</f:SimpleForm>
+									<!--	</layout:Grid>-->
+									<!--</layout:VerticalLayout>-->
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<!--<ObjectPageSection titleUppercase="true" title="Invoice Header">-->
+					<!--	<subSections>-->
+					<!--		<ObjectPageSubSection title="Invoice Header" mode="Expanded">-->
+					<!--			<blocks>-->
+					<!--<layout:VerticalLayout width="100%">-->
+					<!--	<layout:Grid defaultSpan="L4" containerQuery="true">-->
+					<!--				<f:SimpleForm editable="true" layout="ResponsiveGridLayout" backgroundDesign="Solid" labelSpanXL="4" labelSpanL="4" labelSpanM="4"-->
+					<!--					labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--					singleContainerFullSize="true">-->
+					<!--					<f:content>-->
+					<!--						<core:Title/>-->
+					<!--						<m:Label required="true" text="Invoice Reference Number" design="Bold"/>-->
+					<!--						<m:Input id="idInvoiceNo" type="Number"/>-->
+					<!--						<core:Title/>-->
+					<!--						<m:Label required="true" text="Invoice Date" design="Bold"/>-->
+					<!--						<m:DatePicker id="idInvoiceDate" dateValue="{viewModel>/Estimateddate}" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-dd"/>-->
+					<!--					</f:content>-->
+					<!--				</f:SimpleForm>-->
+					<!--	</layout:Grid>-->
+					<!--</layout:VerticalLayout>-->
+					<!--			</blocks>-->
+					<!--		</ObjectPageSubSection>-->
+					<!--	</subSections>-->
+					<!--</ObjectPageSection>-->
+					<ObjectPageSection title="Items" visible="{= ${viewModel>/Table1VisibleInvCreation}}">
+						<subSections>
+							<ObjectPageSubSection title="Items" mode="Expanded">
+								<layout:VerticalLayout>
+									<m:Table id="idItemTable" mode="None" rememberSelections="true" sticky="ColumnHeaders" items="{detailmodel>/results}"
+										selectionChange="onSelectionForDelete">
+										<m:headerToolbar></m:headerToolbar>
+										<m:columns>
+											<m:Column demandPopin="true">
+												<m:Label design="Bold" text="PO Number" wrapping="true"/>
+											</m:Column>
+											<m:Column demandPopin="true">
+												<m:Label design="Bold" text="ASN / SES Number"/>
+											</m:Column>
+											<m:Column demandPopin="true">
+												<m:Label design="Bold" text="Item-Material Desc"/>
+											</m:Column>
+											<!--<m:Column demandPopin="true">-->
+											<!--	<m:Label design="Bold" text="Material" wrapping="true"/>-->
+											<!--</m:Column>-->
+											<m:Column hAlign="Right" width="5.5rem" demandPopin="true">
+												<m:Label design="Bold" text="Quantity"/>
+											</m:Column>
+											<m:Column hAlign="Right" demandPopin="true">
+												<m:Label design="Bold" text="VendorAmt"/>
+											</m:Column>
+											<m:Column hAlign="Right" width="5.5rem" demandPopin="true">
+												<m:Label design="Bold" text="Tax%"/>
+											</m:Column>
+											<m:Column hAlign="Right" demandPopin="true">
+												<m:Label design="Bold" text="Tax Amount"/>
+											</m:Column>
+											<m:Column hAlign="Right" demandPopin="true">
+												<m:Label design="Bold" text="Total Amount"/>
+											</m:Column>
+										</m:columns>
+										<m:items>
+											<m:ColumnListItem>
+												<m:cells>
+													<m:Text text="{detailmodel>Ebeln}"/>
+													<m:Text text="{path:'detailmodel>Asnno'}"/>
+													<m:Text text="{path:'detailmodel>Asnitem'}-{detailmodel>Maktx}"/>
+													<!--<m:Text text="{detailmodel>Maktx}"/>-->
+													<!--<m:ObjectNumber number="{detailmodel>Menge}" unit="{detailmodel>Meins}"/>-->
+													<m:ObjectNumber unit="{detailmodel>Meins}" number="{ path: 'detailmodel>Menge', formatter: '.formatter.formatAmount'}"/>
+													<!--<m:ObjectNumber unit="INR" number="{ path: 'detailmodel>Grnamt', formatter: '.formatter.formatAmount' }"/>-->
+													<m:ObjectNumber unit="INR" number="{ path: 'detailmodel>Netwr', formatter: '.formatter.formatAmount' }"/>
+													<m:ObjectNumber number="{ path: 'detailmodel>Vat', formatter: '.formatter.formatAmount' }"/>
+													<m:ObjectNumber unit="INR" number="{ path: 'detailmodel>Netpr', formatter: '.formatter.formatAmount' }"/>
+													<m:ObjectNumber unit="INR" number="{ path: 'detailmodel>Totalamt', formatter: '.formatter.formatAmount' }"/>
+												</m:cells>
+											</m:ColumnListItem>
+										</m:items>
+									</m:Table>
+								</layout:VerticalLayout>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection title="{i18n>OP_Section3}">
+						<subSections>
+							<ObjectPageSubSection title="Attachments" mode="Expanded">
+								<m:VBox>
+									<!--<m:MessageStrip visible="{= ${viewModel>/Table1VisibleInvCreation}}"-->
+									<!--	 type="Information" showIcon="true"></m:MessageStrip>-->
+									<!-- <m:UploadCollection id="id_Collection" multiple="true" sameFilenameAllowed="false" beforeUploadStarts="onBeforeUploadStarts"
+										maximumFilenameLength="50" uploadUrl="/sap/opu/odata/sap/ZIVN_INV_CREAT_SRV/AttachmentSet" items="{attachModel>/results}"
+										uploadButtonInvisible="true" noDataDescription="There are no attached files!">
+										<m:items>
+											<m:UploadCollectionItem documentId="{attachModel>RequestNo}" fileName="{attachModel>Filename}" visibleEdit="false" visibleDelete="false"
+												url="/sap/opu/odata/sap/ZIVN_INV_CREAT_SRV/AttachmentSet(RequestNo='{attachModel>RequestNo}')/$value"/>
+										</m:items>
+									</m:UploadCollection> -->
+										<m:UploadCollection id="id_Collection" multiple="true" sameFilenameAllowed="false" beforeUploadStarts="onBeforeUploadStarts"
+										maximumFilenameLength="50" uploadUrl="{oPropertyModelInvCre>/AttachURL}/sap/opu/odata/sap/ZIVN_INV_CREAT_SRV/AttachmentSet" items="{attachModel>/results}"
+										uploadButtonInvisible="true" noDataDescription="There are no attached files!">
+										<m:items>
+											<m:UploadCollectionItem documentId="{attachModel>RequestNo}" fileName="{attachModel>Filename}" visibleEdit="false" visibleDelete="false"
+												url="{oPropertyModelInvCre>/AttachURL}/sap/opu/odata/sap/ZIVN_INV_CREAT_SRV/AttachmentSet(RequestNo='{attachModel>RequestNo}')/$value"/>
+										</m:items>
+									</m:UploadCollection>
+								</m:VBox>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+				</sections>
+			</ObjectPageLayout>
+		</m:content>
+		<m:footer >
+			<m:Bar>
+				<m:contentRight>
+					<m:Button text="Back" type="Back" press="onBack"/>
+					<m:Button id="id_page" text="Submit" type="Accept" icon="sap-icon://accept" enabled="{viewModel>/btnEnableInvCreation}" press="openSaveFragment"
+						visible="{= ${viewModel>/Table1VisibleInvCreation}}"/>
+					<!--<m:Button text="Delete" type="Reject" icon="sap-icon://delete" press="onDelete" visible="{= ${viewModel>/Table2VisibleInvCreation}}"/>	-->
+				</m:contentRight>
+			</m:Bar>
+		</m:footer>
+	</m:Page>
+	<!--</m:App>-->
+</mvc:View>

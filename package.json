@@ -5,8 +5,8 @@
   "scripts": {
     "clean": "rimraf resources mta_archives mta-op*",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "deploy": "cf deploy mta_archives/ibs_mta_iven_po_0.0.1.mtar --retries 1",   
-    "undeploy": "cf undeploy ibs_mta_iven_po --delete-services --delete-service-keys --delete-service-brokers"
+    "deploy": "cf deploy mta_archives/ibs_mta_iven_sa_0.0.1.mtar --retries 1",   
+    "undeploy": "cf undeploy ibs_mta_iven_sa --delete-services --delete-service-keys --delete-service-brokers"
   },  
   "devDependencies": {
     "mbt": "^1.2.27",

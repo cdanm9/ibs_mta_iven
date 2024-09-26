@@ -1,0 +1,166 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap" xmlns:m="sap.m"
+	controllerName="com.ibs.ibsappivensaanalytical.controller.SAConfirm" xmlns:layout="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:t="sap.suite.ui.commons" xmlns:html="http://www.w3.org/1999/xhtml">
+	<m:Page id="PageId2" showHeader="false" showFooter="true">   
+		<m:content>
+		  <!-- <layout:DynamicSideContent id="DynamicSideContent1" class="sapUiSizeCompact" containerQuery="true" sideContentFallDown="BelowM"-->
+				<!--breakpointChanged="handleBreakpointChangeEvent" showSideContent="false">-->
+			  <ObjectPageLayout enableLazyLoading="true" preserveHeaderStateOnScroll="true" upperCaseAnchorBar="true">
+				<headerTitle>
+					<ObjectPageDynamicHeaderTitle>
+						<heading>
+							<m:Title text="Schedule No: {headerModel>/Schedule_No}"/>
+						</heading>
+						<!--<actions>-->
+						<!--	<m:Button icon="sap-icon://comment" text="Messenger" press="handleEvents" type="Emphasized"/>-->
+						<!--</actions>-->
+					</ObjectPageDynamicHeaderTitle>
+				</headerTitle>
+				<headerContent>
+					<layout:VerticalLayout class="header">
+						<layout:HorizontalLayout allowWrapping="true">
+							<!--<layout:VerticalLayout class="sapUiMediumMarginEnd">-->
+							<!--<m:ObjectStatus title="Supplier"/>-->
+							<!--<m:ObjectStatus text="{dataModel>/0/Supplier}"/>-->
+							<!--</layout:VerticalLayout>-->
+							<layout:VerticalLayout class="sapUiLargeMarginEnd">
+								<m:Label text="Plant" design="Bold"/>
+								<m:ObjectNumber number="{path:'headerModel>/Plant_Desc'}"/>
+							</layout:VerticalLayout>
+							<layout:VerticalLayout class="sapUiLargeMarginEnd">
+								<m:Label text="Schedule Date" design="Bold"/>
+								<m:ObjectNumber number="{path:'headerModel>/Schedule_Date', formatter: '.formatter.formatDate1'}"/>
+							</layout:VerticalLayout>
+							<layout:VerticalLayout class="sapUiLargeMarginEnd">
+								<m:Label text="Vendor" design="Bold"/>
+								<m:Text text="{headerModel>/Vendor_Name}"/>
+							</layout:VerticalLayout>
+							<!--<layout:VerticalLayout class="sapUiLargeMarginEnd">-->
+							<!--	<m:Label text="Amount" design="Bold"/>-->
+							<!--	<m:ObjectNumber state="Success" unit="{hData>/Currency}"-->
+				   <!--                 number="{path:'hData>/Amount', formatter: '.formatter.formatAmount'}"/>-->
+							<!--</layout:VerticalLayout>-->
+						</layout:HorizontalLayout>
+					</layout:VerticalLayout>
+				</headerContent>
+				<sections>
+					<!--<ObjectPageSection titleUppercase="true" title="my section">-->
+					<!--	<subSections>-->
+					<!--		<ObjectPageSubSection title="Order Items" mode="Expanded" titleUppercase="true">-->
+					<!--			<blocks>-->
+					<!--				<m:Table id="tableConf" sticky="ColumnHeaders" fixedLayout="false" mode="MultiSelect" items="{detailModel>/results}">-->
+					<!--					<m:columns>-->
+					<!--						<m:Column hAlign="Center" demandPopin="true">-->
+					<!--							<m:Label design="Bold" text="Item" wrapping="true"/>-->
+					<!--						</m:Column>-->
+					<!--						<m:Column hAlign="Center" demandPopin="true">-->
+					<!--							<m:Label design="Bold" text="Material" wrapping="true"/>-->
+					<!--						</m:Column>-->
+					<!--						<m:Column hAlign="Center" width="6.6rem" demandPopin="true">-->
+					<!--							<m:Label design="Bold" text="{i18n>SubSection2TableCol2}"/>-->
+					<!--						</m:Column>-->
+					<!--						<m:Column hAlign="Center" width="4.4rem" demandPopin="true">-->
+					<!--							<m:Label design="Bold" text="Plant"/>-->
+					<!--						</m:Column>-->
+					<!--						<m:Column hAlign="Center" demandPopin="true">-->
+					<!--							<m:Label design="Bold" text="Required Qty"/>-->
+					<!--						</m:Column>-->
+					<!--						<m:Column hAlign="Center" demandPopin="true">-->
+					<!--							<m:Label design="Bold" text="Confirmed Qty" wrapping="true"/>-->
+					<!--						</m:Column>-->
+					<!--						<m:Column hAlign="Center" demandPopin="true">-->
+					<!--							<m:Label design="Bold" text="ASN Qty" wrapping="true"/>-->
+					<!--						</m:Column>-->
+					<!--						<m:Column hAlign="Center" demandPopin="true">-->
+					<!--							<m:Label design="Bold" text="Quantity"/>-->
+					<!--						</m:Column>-->
+					<!--						<m:Column hAlign="Center" demandPopin="true">-->
+					<!--							<m:Label design="Bold" text="Confirm Date"/>-->
+					<!--						</m:Column>-->
+											
+					<!--					</m:columns>-->
+					<!--					<m:items>-->
+					<!--						<m:ColumnListItem press="onTablePress" type="Active">-->
+					<!--							<m:cells>-->
+					<!--								<m:Text text="{detailModel>Schedule_Item}"/>-->
+					<!--								<m:Text text="{hData>PoItem}-{hData>MaterialDes}" wrapping="true"/>-->
+					<!--								<ObjectIdentifier title="{detailModel>Material_No}" text="{detailModel>Material_Desc}"/>-->
+					<!--								<m:Text text="{path:'hData>Delivery_Date', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+					<!--								<m:Text text="{hData>Plant}"/>-->
+					<!--								<m:Link text="{detailModel>Po_Qty}" press="onQuanPress"/>-->
+					<!--								<m:ObjectNumber number="{detailModel>Con_Qty}"/>-->
+					<!--								<m:ObjectNumber number="{detailModel>Asn_Qty}"/>-->
+					<!--								<m:Input value="{detailModel>Quantity}" liveChange="validateInput"/>-->
+					<!--					            <m:DatePicker value="{detailModel>Date}" valueFormat="yyyyMMdd"/>-->
+					<!--							</m:cells>-->
+					<!--						</m:ColumnListItem>-->
+					<!--					</m:items>-->
+					<!--				</m:Table>-->
+					<!--			</blocks>-->
+					<!--		</ObjectPageSubSection>-->
+					<!--	</subSections>-->
+					<!--</ObjectPageSection>-->
+					<ObjectPageSection titleUppercase="true" title="my section">
+						<subSections>
+							<ObjectPageSubSection title="{i18n>SubsectionTitle2}" mode="Expanded" titleUppercase="true">
+								<blocks>
+									<m:ScrollContainer height="100%" horizontal="true">
+									  <m:Table id="tableConf" sticky="ColumnHeaders" mode="MultiSelect" items="{detailModel>/results}">
+										<m:columns>
+											<m:Column hAlign="Center" demandPopin="true">
+												<m:Label design="Bold" text="Item" wrapping="true"/>
+											</m:Column>
+											<m:Column hAlign="Center" demandPopin="true">
+												<m:Label design="Bold" text="Material" wrapping="true"/>
+											</m:Column>
+											<m:Column hAlign="Center" demandPopin="true">
+												<m:Label design="Bold" text="Required Qty"/>
+											</m:Column>
+											<m:Column hAlign="Center" demandPopin="true">
+												<m:Label design="Bold" text="Confirmed Qty" wrapping="true"/>
+											</m:Column>
+											<!--<m:Column hAlign="Center" demandPopin="true">-->
+											<!--	<m:Label design="Bold" text="ASN Qty" wrapping="true"/>-->
+											<!--</m:Column>-->
+											<m:Column hAlign="Center" demandPopin="true">
+												<m:Label design="Bold" text="Quantity"/>
+											</m:Column>
+											<m:Column hAlign="Center" demandPopin="true">
+												<m:Label design="Bold" text="Confirm Date"/>
+											</m:Column>
+											
+										</m:columns>
+										<m:items>
+											<m:ColumnListItem press="onTablePress" type="Active">
+												<m:cells>
+													<m:Text text="{detailModel>Schedule_Item}"/>
+													<m:Text text="{detailModel>Material_Desc}" wrapping="true"/>
+													<!--<m:ObjectIdentifier title="{detailModel>Material_No}" text="{detailModel>Material_Desc}"/>-->
+													<m:Link text="{detailModel>Po_Qty}" press="onQuanPress"/>
+													<m:ObjectNumber number="{detailModel>Con_Qty}"/>
+													<!--<m:ObjectNumber number="{detailModel>Asn_Qty}"/>-->
+													<m:Input value="{detailModel>Quantity}" type="Number" liveChange="validateInput"/>
+										            <m:DatePicker value="{detailModel>Date}" placeholder="Select Confirm Date" valueFormat="yyyyMMdd"/>
+												</m:cells>
+											</m:ColumnListItem>
+										</m:items>
+									  </m:Table>
+									</m:ScrollContainer>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+				</sections>
+			</ObjectPageLayout>
+		  <!--</layout:DynamicSideContent>	-->
+		</m:content>
+		<m:footer>
+			<m:OverflowToolbar>
+				<!--<m:Button id="messagePopoverBtn" icon="sap-icon://decline" type="Reject" text="2" press=".handleMessagePopoverPress" visible="false"/>-->
+				<m:ToolbarSpacer/>
+				<m:Button type="Back" text="Back" press="onBack"/>
+				<m:Button icon="sap-icon://accept" id="idSubmit" type="Accept" text="Submit" press="onSubPress"/>
+			</m:OverflowToolbar>
+		</m:footer>
+	</m:Page>
+</mvc:View>

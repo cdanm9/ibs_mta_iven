@@ -1,0 +1,87 @@
+<!-- <mvc:View controllerName="com.ibs.ibsappivensaanalytical.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <App id="app">
+    </App>
+</mvc:View> -->
+
+<mvc:View
+    controllerName="com.ibs.ibsappivensaanalytical.controller.App"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    xmlns:f="sap:f"
+    height="100%"
+> 
+    <tnt:ToolPage id="toolPage"  >
+        <tnt:header>
+			<tnt:ToolHeader>   
+                <Button
+					id="sideNavigationToggleButton"
+					icon="sap-icon://menu2"
+					type="Transparent"
+					press="onSideNavButtonPress">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>         
+				<Image height="1.5rem"
+					   class="sapUiSmallMarginBegin"   
+					   src="image/Nihilent.jpg" />                                 
+				<Title level="H1" text="iVen (Vendor Management)" wrapping="false" id="idiVenPO">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Disappear"/>
+					</layoutData>
+				</Title>
+				<ToolbarSpacer />                     
+				<ToolbarSpacer width="1.125rem"/>  
+                <Avatar id="myAvatar"    
+                    initials="{appInfo>/UserInitials}" 
+                    displaySize="XS"
+                    showBorder="true"
+                    class="sapUiTinyMargin"          
+                    press="onPress">     
+                </Avatar> 
+			</tnt:ToolHeader>    
+		</tnt:header>      
+        <tnt:sideContent>   
+            <tnt:SideNavigation  itemSelect="onItemSelect" >
+                <tnt:NavigationList id="idNavigationList" items="{appInfo>/AppList}" >
+                    <tnt:NavigationListItem id="idNavigationListItem" icon="{appInfo>APP_ICON}" text="{appInfo>APP_TEXT}" key="{appInfo>APP_KEY}" items="{appInfo>TO_SUBAPPINFO}" expanded="false"  >         
+                        <tnt:items>   
+                            <tnt:NavigationListItem id="idNavigationListSubItem" icon="{appInfo>S_APP_ICON}" text="{appInfo>S_APP_TEXT}" key="{appInfo>S_APP_KEY}"/>          
+                        </tnt:items>
+                    </tnt:NavigationListItem>
+                </tnt:NavigationList>
+            </tnt:SideNavigation>     
+
+        </tnt:sideContent>  
+        <tnt:mainContents>
+        <App id="myPage">
+        </App>
+    	<NavContainer id="pageContainer" initialPage="page2">
+				<pages>
+					<ScrollContainer
+						id="root1"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+						class="sapUiContentPadding">
+						<Text text="This is the root page" />
+					</ScrollContainer>
+                    
+                    <ScrollContainer
+						id="root5"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+						class="sapUiContentPadding">
+						<Text text="This is" />
+					</ScrollContainer>
+                    </pages>
+                    </NavContainer>
+		</tnt:mainContents>   
+    </tnt:ToolPage>   
+</mvc:View>
+

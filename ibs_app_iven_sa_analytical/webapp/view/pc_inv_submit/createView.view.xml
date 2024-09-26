@@ -1,0 +1,57 @@
+<mvc:View controllerName="com.ibs.ibsappivensaanalytical.controller.pc_inv_submit.createView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:tnt="sap.tnt" xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+    <Page title="Create Invoice" showFooter="true">
+        <content>
+            <Panel>
+                <FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
+					<VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+						<Label text="Invoice No. :"  required="true"/>
+						<Input id="invNo" change="onInvoiceNumberChange"/>
+					</VBox>
+					<VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+						<Label text="Invoice Date :" required="true"/>
+						<DatePicker id="invDate"></DatePicker>
+					</VBox>
+                    <VBox justifyContent="Center" class="sapUiSmallMarginEnd" visible="true">
+						<Label text="Upload File :"/>
+						<u:FileUploader sameFilenameAllowed="true" id="id_FileUploader" fileType="pdf"
+                            change="handleUpload" uploadStart="onUploadStart" uploadComplete="onFileUploadComplete"
+                            typeMissmatch="handleTypeMissmatch" tooltip="Upload your file to the local server"
+                            uploadOnChange="false" sendXHR="true" maximumFileSize="5" useMultipart="false"
+                            uploadUrl="{oPropertyModel>/AttachURL}/sap/opu/odata/sap/ZIBS_BFPOC_SRV/POC_ATTACHSet">
+                            <u:headerParameters>
+                                <u:FileUploaderParameter  name="slug" value="{oPropertyModel>/RequestNo}|{oPropertyModel>/filename}"/>
+                            </u:headerParameters>
+                        </u:FileUploader>
+					</VBox>		
+                </FlexBox>
+            </Panel>
+            <Panel >
+                <VBox >
+                    <UploadCollection id="UploadCollection" multiple="false" sameFilenameAllowed="false" instantUpload="false" change="onChangeA" 
+                        filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch"
+                        uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts" maximumFilenameLength="150"
+                        items="{attachJson>/}" uploadUrl="{oPropertyModel>/AttachURL}/sap/opu/odata/sap/ZIBS_BFPOC_SRV/POC_ATTACHSet"
+                        noDataDescription="There are no attached files!" uploadButtonInvisible="true">
+                        <items>
+                            <UploadCollectionItem documentId="{oPropertyModel>/RequestNo}" fileName="{attachJson>FILE_NAME}" 
+                                visibleEdit="false" visibleDelete="true" deletePress="onFileDeleted" id="uploadItemId"
+                                url="{oPropertyModel>/AttachURL}/sap/opu/odata/sap/ZIBS_BFPOC_SRV/POC_ATTACHSet(RequestNo='{oPropertyModel>/RequestNo}')/$value"/>
+                        </items>
+                    </UploadCollection>
+                </VBox>
+            </Panel>
+        </content>
+
+        <footer>
+            <Bar >
+                <contentRight>
+                    <Button text="Back" icon="sap-icon://nav-back" press="onBack"/>
+                    <Button text="Submit" type="Success" press="onSubmit"/>
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</mvc:View>

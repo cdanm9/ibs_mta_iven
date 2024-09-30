@@ -2,7 +2,7 @@
 
 specVersion: "3.1"
 metadata:
-  name: com.ibs.ibsappivensaanalytical
+  name: com.ibs.ibsappivenpostatusreportfe
 type: application
 server:
   customMiddleware:
@@ -15,17 +15,11 @@ server:
             - /resources
             - /test-resources
           url: https://ui5.sap.com
-        backend:   
-          - path: /DOC_INFO_EXT
-            url: https://xsc7eb9cb36.ap1.hana.ondemand.com
-            destination: HanaDB                
-          - path: /sap  
-            url: http://a17.hana.com
+        backend:
+          - path: /sap/opu/odata/sap/ZIVN_PO_RPT_STATUS_SRV
+            url: http://a17.hana.com:17
             client: '009'
-            destination: S4_HANA_Z
-          - path: /odata       
-            url: https://ibs-portal-dev-ibs-portal-dev-vendor-portal-srv.cfapps.us10.hana.ondemand.com/
-            destination: IVEN_DATA
+            destination: ERP
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -37,8 +31,10 @@ server:
       configuration:
         mountPath: /
         services:
-          - urlPath: /sap/opu/odata/sap/ZIVN_PO_CONFIRMATION_SRV
+          - urlPath: /sap/opu/odata/sap/ZIVN_PO_RPT_STATUS_SRV
             metadataPath: ./webapp/localService/metadata.xml
             mockdataPath: ./webapp/localService/data
-            generateMockData: true    
-        annotations: []
+            generateMockData: true
+        annotations:
+          - localPath: ./webapp/annotations/annotation.xml
+            urlPath: annotations/annotation.xml

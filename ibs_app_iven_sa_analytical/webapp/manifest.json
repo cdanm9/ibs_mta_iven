@@ -162,6 +162,14 @@
   },
   "sap.ui5": {
     "flexEnabled": true,
+    "componentUsages": {
+      "POStatusReportFEComponent": {
+        "name": "com.ibs.ibsappivenpostatusreportfe",  
+        "settings": {},
+        "componentData": {},
+        "lazy": false
+      }
+    },
     "dependencies": {
       "minUI5Version": "1.114.0",
       "libs": {
@@ -521,6 +529,13 @@
           "target": [
             "TargetServiceMsg"
           ]
+        },
+        {
+          "name": "po_status_report",
+          "pattern": "POStatusReportFE",    
+          "target": [
+            "TargetPOStatusReportFE"
+          ]
         }
       ],
       "targets": {
@@ -659,6 +674,10 @@
         "TargetServiceMsg": {
           "viewType": "XML",
           "viewName": "pc_inv_submit.ServiceMsg"
+        },
+        "TargetPOStatusReportFE": {
+          "viewType": "XML",
+          "viewName": "POStatusReportFE"
         }
       }
     },

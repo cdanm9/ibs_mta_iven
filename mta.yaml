@@ -31,9 +31,23 @@ modules:
       - comibsibsappivensaanalytical.zip
       name: comibsibsappivensaanalytical
       target-path: resources/
+    - artifacts:
+      - comibsibsappivenpostatusreportfe.zip
+      name: comibsibsappivenpostatusreportfe
+      target-path: resources/
 - name: comibsibsappivensaanalytical
   type: html5
   path: ibs_app_iven_sa_analytical
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comibsibsappivenpostatusreportfe
+  type: html5
+  path: ibs_app_iven_po_status_report_fe
   build-parameters:
     build-result: dist
     builder: custom

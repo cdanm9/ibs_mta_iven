@@ -1,0 +1,43 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:l="sap.ui.layout">
+	<!-- <l:VerticalLayout >
+		<Text text="Invoicedetail" />
+		
+	</l:VerticalLayout> -->
+
+<Table id = "demoTable1" items="{/InvoiceDetailsSet}">
+		
+		<columns>
+        <Column><Text text="Material Doc" /></Column>
+			<Column><Text text="Material Doc Item" /></Column>
+			<Column><Text text="Invoice Quantity" /></Column>
+			<Column><Text text="Payment Quantity" /></Column>
+            <Column><Text text="Payment Amount" /></Column>
+
+		</columns>
+		<items>
+			<ColumnListItem >
+				<cells>
+					<Text text="{Mblnr}"/>
+					<Text text="{Buzei}"
+						/>
+					<Text
+						text="{InvoiceQty}" />
+                    <Text
+						text="{PaymentQty}" />
+                     <Text
+						text="{PaymentAmt}" />
+					
+					
+
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+
+
+
+
+
+</core:FragmentDefinition>

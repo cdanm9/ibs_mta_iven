@@ -2,7 +2,7 @@
 
 specVersion: "3.1"
 metadata:
-  name: com.ibs.ibsappivensaanalytical
+  name: com.ibs.ibsappivenpostatusreportfe
 type: application
 server:
   customMiddleware:
@@ -16,16 +16,10 @@ server:
             - /test-resources
           url: https://ui5.sap.com
         backend:
-          - path: /DOC_INFO_EXT
-            url: https://xsc7eb9cb36.ap1.hana.ondemand.com
-            destination: HanaDB                
-          - path: /sap  
-            url: http://a17.hana.com
+          - path: /sap/opu/odata/sap/ZIVN_PO_RPT_STATUS_SRV
+            url: http://a17.hana.com:17
             client: '009'
-            destination: S4_HANA_Z
-          - path: /odata       
-            url: https://ibs-portal-dev-ibs-portal-dev-vendor-portal-srv.cfapps.us10.hana.ondemand.com/
-            destination: IVEN_DATA
+            destination: ERP
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -35,5 +29,5 @@ server:
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:
-        component: com.ibs.ibsappivensaanalytical
+        component: com.ibs.ibsappivenpostatusreportfe
         ui5Theme: sap_horizon

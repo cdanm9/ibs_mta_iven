@@ -1,0 +1,41 @@
+{
+    "fileName": "id_1727353207202_636_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "moduleName": "",
+    "reference": "com.ibs.ibsappivenpostatusreportfe",
+    "packageName": "",
+    "content": {
+        "property": "growingThreshold",
+        "newValue": 30
+    },
+    "selector": {
+        "id": "com.ibs.ibsappivenpostatusreportfe::sap.suite.ui.generic.template.ListReport.view.ListReport::HeaderSet--responsiveTable",
+        "idIsLocal": false,
+        "type": "sap.m.Table"
+    },
+    "layer": "CUSTOMER_BASE",
+    "texts": {},
+    "namespace": "apps/com.ibs.ibsappivenpostatusreportfe/changes/",
+    "projectId": "",
+    "creation": 1727353207202,
+    "originalLanguage": "",
+    "support": {
+        "generator": "changeUtils: SAPFioriTools",
+        "service": "",
+        "user": "",
+        "sapui5Version": "1.114.0",
+        "sourceChangeFileName": "",
+        "compositeCommand": ""
+    },
+    "oDataInformation": {},
+    "dependentSelector": {},
+    "validAppVersions": {
+        "from": "0.0.1",
+        "to": "0.0.1",
+        "creation": "0.0.1"
+    },
+    "jsOnly": false,
+    "variantReference": "",
+    "appDescriptorChange": false
+}

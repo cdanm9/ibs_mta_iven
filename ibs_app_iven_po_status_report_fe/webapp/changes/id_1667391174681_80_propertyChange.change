@@ -1,0 +1,37 @@
+{
+	"fileName": "id_1667391174681_80_propertyChange",
+	"fileType": "change",
+	"changeType": "propertyChange",
+	"moduleName": "",
+	"reference": "com.ibs.ibsappivenpostatusreport.Component",
+	"packageName": "$TMP",
+	"content": {
+		"property": "growingThreshold",
+		"newValue": 30
+	},
+	"selector": {
+		"id": "com.ibs.ibsappivenpostatusreport::sap.suite.ui.generic.template.ListReport.view.ListReport::HeaderSet--responsiveTable",
+		"type": "sap.m.Table",
+		"idIsLocal": false
+	},
+	"layer": "CUSTOMER_BASE",
+	"texts": {},
+	"namespace": "apps/com.ibs.ibsappivenpostatusreport/changes/",
+	"projectId": "com.ibs.ibsappivenpostatusreport",
+	"creation": "2022-11-02T12:12:58.036Z",
+	"originalLanguage": "EN",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.84.28",
+		"sourceChangeFileName": "",
+		"compositeCommand": "",
+		"command": "property"
+	},
+	"oDataInformation": {},
+	"dependentSelector": {},
+	"jsOnly": false,
+	"variantReference": "",
+	"appDescriptorChange": false
+}

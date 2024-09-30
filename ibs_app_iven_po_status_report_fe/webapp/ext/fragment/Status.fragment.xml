@@ -1,0 +1,5 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+<!-- <Text text="{StatusTxt}"></Text> -->
+<ObjectStatus inverted="true" text="{path: 'StatusTxt'}"
+       state="{= ${StatusTxt} === 'Confirmed' ? 'Success' : ${StatusTxt} === 'Pending' ? 'Warning' : ${StatusTxt} === 'Partial' ? 'Information' : ${StatusTxt} === 'Close' ? 'Error' : 'None'}"/>
+</core:FragmentDefinition>

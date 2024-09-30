@@ -1,0 +1,382 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZIVN_PO_RPT_STATUS_SRV/$metadata">
+        <edmx:Include Namespace="ZIVN_PO_RPT_STATUS_SRV"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="ZIVN_PO_RPT_STATUS_SRV.Header">
+            
+	            <Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>PoNumber</PropertyPath>
+						<PropertyPath>PoDate</PropertyPath>
+						<PropertyPath>StatusTxt</PropertyPath>
+					</Collection>
+				</Annotation>
+
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PoNumber"/>
+                            <PropertyValue Property="Label" String="Order Number"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PoDate"/>
+                            <PropertyValue Property="Label" String="Order Date"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PoAmount"/>
+                            <PropertyValue Property="Label" String="Net Value"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="BuyerName"/>
+                            <PropertyValue Property="Label" String="Buyer Name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="HeaderText"/>
+                            <PropertyValue Property="Label" String="PO Header Text"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="NoteToSupp"/>
+                            <PropertyValue Property="Label" String="Supplier Note"/>
+                        </Record>
+                        <!-- <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="StatusTxt"/>
+                            <PropertyValue Property="Label" String="Status"/>
+                        </Record> -->
+                    </Collection>
+                </Annotation>
+            
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Purchase Order Details"/>
+                        <PropertyValue Property="TypeNamePlural" String="Purchase Order Details"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="VendorName"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="PoNumber"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+				<Annotation Term="UI.HeaderFacets">
+					<Collection>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#iddp2"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#RetPerc2"/>
+						</Record>
+					</Collection>
+				</Annotation>
+
+                <Annotation Term="UI.DataPoint" Qualifier="iddp2">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="DpPerc"/>
+						<PropertyValue Property="TargetValue" Decimal="100"/>
+						<PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="RetPerc2">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="RetentionPerc"/>
+						<PropertyValue Property="TargetValue" Decimal="100"/>
+						<PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/>
+					</Record>
+				</Annotation>
+
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Details"/>
+                            <PropertyValue Property="ID" String="Details"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Details"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Items"/>
+                            <PropertyValue Property="ID" String="Items"/>
+                            <PropertyValue Property="Target" AnnotationPath="NavHeaderToItem/@UI.LineItem#Items"/>
+                        </Record>
+                        
+	                <Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Label" String="ATTACHMENTS"/>
+							<PropertyValue Property="ID" String="ATTACHMENTS"/>
+						</Record>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Label" String="COMMENTS"/>
+							<PropertyValue Property="ID" String="COMMENTS"/>
+						</Record>
+
+                    </Collection>
+                </Annotation>
+
+                <Annotation Term="UI.FieldGroup" Qualifier="Details">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="PoDate"/>
+                                    <PropertyValue Property="Label" String="Order Date"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="HeaderText"/>
+                                    <PropertyValue Property="Label" String="PO Header Text"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Buyer"/>
+                                    <PropertyValue Property="Label" String="Created by"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="PoAmount"/>
+                                    <PropertyValue Property="Label" String="Net Value"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DpDueDate"/>
+                                    <PropertyValue Property="Label" String="Due Date for DP"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="RefNo"/>
+                                    <PropertyValue Property="Label" String="Your Reference"/>
+                                </Record>
+                                
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="PurOrgDes"/>
+                                    <PropertyValue Property="Label" String="Purchasing Org."/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DpAmount"/>
+                                    <PropertyValue Property="Label" String="Down Payment Amt"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="NoteToSupp"/>
+                                    <PropertyValue Property="Label" String="Supplier Note"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+            </Annotations>
+
+            <Annotations Target="ZIVN_PO_RPT_STATUS_SRV.Item">
+
+                <Annotation Term="UI.LineItem" Qualifier="Items">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PoNumber"/>
+                            <PropertyValue Property="Label" String="Purchasing Doc."/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PoItem"/>
+                            <PropertyValue Property="Label" String="Item"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Status"/>
+                            <PropertyValue Property="Label" String="PO Item Status"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="NetPrice"/>
+                            <PropertyValue Property="Label" String="Net Price"/>
+                        </Record>
+                    </Collection>
+                </Annotation> 
+
+            </Annotations>
+
+                <Annotation Term="UI.FieldGroup" Qualifier="attachment">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+                <Annotation Term="UI.FieldGroup" Qualifier="comments">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+	        <Annotations Target="ZIVN_PO_RPT_STATUS_SRV.Item">
+
+				<Annotation Term="UI.Facets">
+					<Collection>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="NavConfirmSet/@UI.LineItem#ConfirmTable"/>
+							<PropertyValue Property="Label" String="CONFIRMATION DETAILS"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="NavSESDetailsSet/@UI.LineItem#SESTABLE"/>
+							<PropertyValue Property="Label" String="SERVICE PO DETAIL"/>
+						</Record>
+                        <!-- <Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="NavSESDetailsSet/@UI.LineItem#SESTABLE1"/>
+							<PropertyValue Property="Label" String="GRN DETAILS"/>
+						</Record> -->
+                        <!-- <Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="NavSESDetailsSet/@UI.LineItem#SESTABLE2"/>
+							<PropertyValue Property="Label" String="INVOICE DETAILS"/>
+						</Record> -->
+					</Collection>
+				</Annotation>
+
+			</Annotations>
+
+            <Annotations Target="ZIVN_PO_RPT_STATUS_SRV.ChangeItem">
+
+				<Annotation Term="UI.LineItem" Qualifier="ConfirmTable">
+					<Collection>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Label" String="Item"/>
+							<PropertyValue Property="Value" Path="PoItem"/>
+						</Record>
+
+                        	<Record Type="UI.DataField">
+                        <PropertyValue Property="Label" String="Description"/>
+							<PropertyValue Property="Value" Path="MaterialDes"/>
+						</Record>
+
+						<Record Type="UI.DataField">
+                        <PropertyValue Property="Label" String="ASN No"/>
+							<PropertyValue Property="Value" Path="AsnNo"/>
+						</Record>
+					
+					
+						<Record Type="UI.DataField">
+                        <PropertyValue Property="Label" String="Delivery date"/>
+							<PropertyValue Property="Value" Path="NewDelDate"/>
+						</Record>
+						<Record Type="UI.DataField">
+                        <PropertyValue Property="Label" String="PO Quantity"/>
+							<PropertyValue Property="Value" Path="NewQuantity"/>
+						</Record>
+						
+						<Record Type="UI.DataField">
+                        <PropertyValue Property="Label" String="Purchasing Doc."/>
+							<PropertyValue Property="Value" Path="PoNumber"/>
+						</Record>
+						<Record Type="UI.DataField">
+                        <PropertyValue Property="Label" String="Text"/>
+							<PropertyValue Property="Value" Path="Reason"/>
+						</Record>
+					</Collection>
+				</Annotation>
+
+			</Annotations>
+
+            <Annotations Target="ZIVN_PO_RPT_STATUS_SRV.SESDetails">
+				<Annotation Term="UI.LineItem" Qualifier="SESTABLE">
+					<Collection>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Line Number"/>
+							<PropertyValue Property="Value" Path="SerItem"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Item"/>
+							<PropertyValue Property="Value" Path="PoItem"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Purchasing Doc."/>
+							<PropertyValue Property="Value" Path="PoNumber"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Quantity"/>
+							<PropertyValue Property="Value" Path="SerQuantity"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Short Text 1"/>
+							<PropertyValue Property="Value" Path="Description"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Gross"/>
+							<PropertyValue Property="Value" Path="GrossValue"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Net Value"/>
+							<PropertyValue Property="Value" Path="NetValue"/>
+						</Record>
+					</Collection>
+				</Annotation>               
+			</Annotations>
+
+<!-- <Annotations Target="ZIVN_PO_RPT_STATUS_SRV.GRNDetailsSet">
+				<Annotation Term="UI.LineItem" Qualifier="SESTABLE1">
+					<Collection>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Material Doc"/>
+							<PropertyValue Property="Value" Path="Mblnr"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Received Date"/>
+							<PropertyValue Property="Value" Path="Budat"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Plant"/>
+							<PropertyValue Property="Value" Path="Plname"/>
+						</Record>
+                        <Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Movement Type"/>
+							<PropertyValue Property="Value" Path="Btext"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Material"/>
+							<PropertyValue Property="Value" Path="Maktx"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="PO Quantity"/>
+							<PropertyValue Property="Value" Path="Meins"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Received Qty"/>
+							<PropertyValue Property="Value" Path="Bstmg"/>
+						</Record>	
+					</Collection>
+				</Annotation>               
+			</Annotations> -->
+
+<!-- <Annotations Target="ZIVN_PO_RPT_STATUS_SRV.SESDetails">
+				<Annotation Term="UI.LineItem" Qualifier="SESTABLE2">
+					<Collection>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Material Doc"/>
+							<PropertyValue Property="Value" Path="Mblnr"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Material Doc Item"/>
+							<PropertyValue Property="Value" Path="Buzei"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Invoice Quantity"/>
+							<PropertyValue Property="Value" Path="InvoiceQty"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Payment Quantity"/>
+							<PropertyValue Property="Value" Path="PaymentQty"/>
+						</Record>
+						<Record Type="UI.DataField">
+                         <PropertyValue Property="Label" String="Payment Amount"/>
+							<PropertyValue Property="Value" Path="PaymentAmt"/>
+						</Record>
+					</Collection>
+				</Annotation>               
+			</Annotations> -->
+
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

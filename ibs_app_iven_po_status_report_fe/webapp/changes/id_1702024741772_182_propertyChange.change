@@ -1,0 +1,41 @@
+{
+    "fileName": "id_1702024741772_182_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "moduleName": "",
+    "reference": "com.ibs.ibsappivenpostatusreport",
+    "packageName": "",
+    "content": {
+        "property": "visible",
+        "newValue": true
+    },
+    "selector": {
+        "id": "com.ibs.ibsappivenpostatusreport::sap.suite.ui.generic.template.ObjectPage.view.Details::HeaderSet--COMMENTS::Section",
+        "idIsLocal": false,
+        "type": "sap.uxap.ObjectPageSection"
+    },
+    "layer": "CUSTOMER_BASE",
+    "texts": {},
+    "namespace": "apps/com.ibs.ibsappivenpostatusreport/changes/",
+    "projectId": "",
+    "creation": 1702024741772,
+    "originalLanguage": "",
+    "support": {
+        "generator": "changeUtils: SAPFioriTools",
+        "service": "",
+        "user": "",
+        "sapui5Version": "1.120.1",
+        "sourceChangeFileName": "",
+        "compositeCommand": ""
+    },
+    "oDataInformation": {},
+    "dependentSelector": {},
+    "validAppVersions": {
+        "from": "0.0.1",
+        "to": "0.0.1",
+        "creation": "0.0.1"
+    },
+    "jsOnly": false,
+    "variantReference": "",
+    "appDescriptorChange": false
+}

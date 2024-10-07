@@ -9,7 +9,7 @@
     {
       "source": "^/sap/(.*)$",
       "target": "/sap/$1",
-      "destination": "S4_HANA_Z",    
+      "destination": "A17",    
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },

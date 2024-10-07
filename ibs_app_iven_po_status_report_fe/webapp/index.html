@@ -13,15 +13,38 @@
     <script
         id="sap-ui-bootstrap"
         src="resources/sap-ui-core.js"
-        data-sap-ui-theme="sap_horizon"
+        data-sap-ui-theme="sap_horizon_dark"      
         data-sap-ui-resourceroots='{
             "com.ibs.ibsappivenpostatusreportfe": "./"
         }'
         data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
         data-sap-ui-compatVersion="edge"
         data-sap-ui-async="true"
-        data-sap-ui-frameOptions="trusted"
+        data-sap-ui-frameOptions="trusted"   
     ></script>
+    <script>
+        window["sap-ui-config"] = {
+            frameOptions: 'allow',
+            allowlist:[
+                "https://iframetester.com/",
+                "*",
+                "https://ibs-portal-dev-ibs-portal-dev-ibs-mta-iven-sa-approuter.cfapps.us10.hana.ondemand.com/",     
+                "https://ibs-portal-dev-ibs-portal-dev-ibs-mta-iven-sa-approuter.cfapps.us10.hana.ondemand.com/comibsibsappivensaanalytical/index.html"         
+            ],
+            frameOptionsConfig: {
+                blockEvents:false,
+                showBlockLayer:false,
+                callback: function(bSuccess) {
+                    if (bSuccess) {
+                        //alert("App is allowed to run!");
+                        console.log("app is allowed to call");
+                    } else {
+                        alert("App is not allowed to run!");
+                    }
+                }
+            }
+        };
+    </script>
 </head>
 <body class="sapUiBody sapUiSizeCompact" id="content">
     <div

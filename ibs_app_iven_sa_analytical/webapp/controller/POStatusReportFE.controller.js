@@ -17,20 +17,26 @@ sap.ui.define([
 	return Controller.extend("com.ibs.ibsappivensaanalytical.controller.POStatusReportFE", {
 		onInit: function () { 
 			that=this; 
-			let oIdPOStatRptFEComCont=that.getView().byId("idPOStatusReportFEComponentCont")
-			Component.create({    
-				usage:"POStatusReportFEComponent",
-				name: "com.ibs.ibsappivenpostatusreportfe",    
-				settings: {}, 
-				componentData: {}, 
-				async: true, 
-				manifest: true})     
-			.then(function (oComponent) { 
-				oIdPOStatRptFEComCont.setComponent(oComponent); 
-			})
-			.catch(function (oError) { 
-				console.error(oError);
-			});    
+			// let oIdPOStatRptFEComCont=that.getView().byId("idPOStatusReportFEComponentCont")  
+			// Component.create({    
+			// 	name: "com.ibs.ibsappivenpostatusreportfe",   
+			// 	settings: {}, 
+			// 	componentData: {}, 
+			// 	async: true, 
+			// 	manifest: true       
+			// })
+			// .then(function (oComponent) { 
+			// 	oIdPOStatRptFEComCont.setComponent(oComponent); 
+			// })
+			// .catch(function (oError) { 
+			// 	console.error("Error creating component:", oError); 
+			// }); 
+			   
+			// UIComponent.create({ 
+			// 	name: "com.ibs.ibsappivenpostatusreportfe",
+			// }).then(function(oComponent) {
+			// 	oIdPOStatRptFEComCont.setComponent(oComponent)
+			// });
 		}
 	});
 });

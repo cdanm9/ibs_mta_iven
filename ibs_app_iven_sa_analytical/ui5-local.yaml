@@ -31,7 +31,7 @@ server:
           - path: /sap  
             url: http://a17.hana.com
             client: '009'
-            destination: S4_HANA_Z
+            destination: A17
           - path: /odata       
             url: https://ibs-portal-dev-ibs-portal-dev-vendor-portal-srv.cfapps.us10.hana.ondemand.com/
             destination: IVEN_DATA

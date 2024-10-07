@@ -31,8 +31,8 @@ server:
         backend:
           - path: /sap/opu/odata/sap/ZIVN_PO_RPT_STATUS_SRV
             url: http://a17.hana.com:17
-            client: '009'
-            destination: ERP
+            client: '009'   
+            destination: A17
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:

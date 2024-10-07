@@ -19,7 +19,7 @@ server:
           - path: /sap/opu/odata/sap/ZIVN_PO_RPT_STATUS_SRV
             url: http://a17.hana.com:17
             client: '009'
-            destination: ERP
+            destination: A17
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

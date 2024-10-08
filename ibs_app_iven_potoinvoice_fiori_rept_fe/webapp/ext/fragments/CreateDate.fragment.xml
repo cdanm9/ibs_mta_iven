@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:table="sap.ui.table" xmlns="sap.m">
+    <Column id="FioriTools::ColumnExtension">
+        <Text text="IBD Creation Date"/>
+        <customData>
+            <core:CustomData key="p13nData" value="\{&quot;columnIndex&quot;: &quot;2&quot;, &quot;leadingProperty&quot;: &quot;AsnDate&quot;, &quot;columnKey&quot;: &quot;ColumnExtension&quot;}"/>
+        </customData>
+    </Column>
+    <Column id="FioriTools::ColumnExtension11">
+        <Text text="Time"/>
+        <customData>
+            <core:CustomData key="p13nData" value="\{&quot;columnIndex&quot;: &quot;3&quot;, &quot;leadingProperty&quot;: &quot;AsnTime&quot;, &quot;columnKey&quot;: &quot;ColumnExtension11&quot;}"/>
+        </customData>
+    </Column>
+</core:FragmentDefinition>

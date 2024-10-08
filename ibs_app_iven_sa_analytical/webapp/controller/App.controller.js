@@ -5,16 +5,21 @@ sap.ui.define(
         "sap/ui/model/Filter",
         "sap/ui/model/json/JSONModel",
         "sap/m/MessageBox",
-        "sap/m/MessageToast"  
+        "sap/m/MessageToast",
+        "sap/base/security/URLListValidator"  
     ],  
-    function(BaseController,Fragment,Filter,JSONModel,MessageBox,MessageToast) {   
+    function(BaseController,Fragment,Filter,JSONModel,MessageBox,MessageToast,URLListValidator) {   
       "use strict";
       let that,localStorage;
       return BaseController.extend("com.ibs.ibsappivensaanalytical.controller.App", {
         onInit: function() {  
           that=this
           that.oDataModel = this.getOwnerComponent().getModel("checkServiceAvailibilty")    
-          that.idNavigationList=this.getView().byId("idNavigationList"); 
+          that.idNavigationList=this.getView().byId("idNavigationList");
+          URLListValidator.add("https", "ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com", undefined, "/8526cdcb-5c31-4934-a365-72dce07a9b8d.ibs_bs_iven_po.comibsibsappiveninvoicepaymentrpt-0.0.1/index.html");
+          URLListValidator.add("https", "ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com");
+          URLListValidator.add(undefined, "ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com");
+          
           
           let oAppDetails = {    
             UserFullName:"",    
@@ -129,15 +134,14 @@ sap.ui.define(
             that.getOwnerComponent().getModel("appInfo").setProperty("/AppList",oAppInfoData?.value)  
           }.bind(this), function (oError) { 
             MessageBox.error("Failed to read "+sBindingFnPath+" function");
-          });    
-
+          });       
         },
         handleRouteMatched: function (oEvent) {       
           
           // debugger
           var that = this;
           var oCloud = true;  
-          var oPremise = false;   
+          var oPremise = true;       
           // var url = that.appModulePath + "/odata/v4/addtional-process/checkServiceAvailability(cloudSrv=" + oCloud + ",onPremiseSrv=" + oPremise + ")";
           var ContextBinding = that.oDataModel.bindContext("/checkServiceAvailability(...)");               
           ContextBinding.setParameter("cloudSrv", oCloud) 

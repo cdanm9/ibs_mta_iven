@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+    <!-- <Text text="{path:'AsnDate'}"/> -->
+    <!-- <Text text="{path:'AsnDate', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'yyyy-MM-dd' }}"/> -->
+    <Text id="idDate" text=" {path:'AsnDate', 
+                  type:'sap.ui.model.type.Date', 
+                  formatOptions: { 
+                    source : { 
+                      pattern: 'YYYYMMDD' 
+                    },
+                    pattern: 'yyyy-MM-dd'
+                  } 
+                }"/>
+
+	<Text id="dte" text="{
+				path: 'AsnTime',
+				type: 'sap.ui.model.type.Time',
+				formatOptions: {
+          source : { 
+               pattern: 'HHmmss' 
+                    },
+              pattern: 'HH:mm:ss'
+            }
+          }" 
+      />
+
+
+</core:FragmentDefinition>

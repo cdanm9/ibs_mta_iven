@@ -10,7 +10,8 @@
                         height="100%" 
                         name="com.ibs.ibsappivenpostatusreportfe"
                         id="idPOStatusReportFEComponentCont">
-                        </core:ComponentContainer>   -->
+                        </core:ComponentContainer>   -->  
+        
         <html:iframe id ="attachmentframe" height="100%" width="100%" src="https://ibs-portal-dev-ibs-portal-dev-ibs-mta-iven-sa-approuter.cfapps.us10.hana.ondemand.com/comibsibsappivenpostatusreportfe/index.html"> </html:iframe>     
     </content>  
     </Page>

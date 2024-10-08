@@ -536,6 +536,20 @@
           "target": [
             "TargetPOStatusReportFE"
           ]
+        },
+        {
+          "name": "potoinvoice_fiori_rept",
+          "pattern": "POToInvoiceFioriRept",    
+          "target": [
+            "TargetPOToInvoiceFioriRept"
+          ]
+        },
+        {
+          "name": "invoice_payment_rpt",
+          "pattern": "POInvoicePaymentReportFE",    
+          "target": [
+            "TargetPOInvoicePaymentReportFE"
+          ]
         }
       ],
       "targets": {
@@ -678,6 +692,14 @@
         "TargetPOStatusReportFE": {
           "viewType": "XML",
           "viewName": "POStatusReportFE"
+        },
+        "TargetPOToInvoiceFioriRept":{
+          "viewType": "XML",
+          "viewName": "POToInvoiceFioriRept"          
+        },
+        "TargetPOInvoicePaymentReportFE":{
+          "viewType": "XML",
+          "viewName": "POInvoicePaymentReportFE"          
         }
       }
     },

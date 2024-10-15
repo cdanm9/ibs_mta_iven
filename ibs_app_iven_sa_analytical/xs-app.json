@@ -5,27 +5,13 @@
     "logoutEndpoint": "/do/logout",  
     "logoutPage": "/comibsibsappivensaanalytical/logout-page.html"                    
   },
-  "routes": [ 
-    {
-      "source": "^/sap/(.*)$",
-      "target": "/sap/$1",
-      "destination": "A17",    
-      "authenticationType": "xsuaa",
-      "csrfProtection": false
-    },
-    {
-      "source": "^/DOC_INFO_EXT/(.*)$",
-      "target": "/DOC_INFO_EXT/$1",
-      "destination": "HanaDB",
-      "authenticationType": "none",
-      "csrfProtection": false       
-    },   
+  "routes": [    
     {
       "source": "^/odata/(.*)$",   
       "target": "/odata/$1",
       "destination": "IVEN_DATA",             
-      "authenticationType": "none",       
-      "csrfProtection": false       
+      "authenticationType": "none",          
+      "csrfProtection": false          
     },
     {
       "source": "^/resources/(.*)$",

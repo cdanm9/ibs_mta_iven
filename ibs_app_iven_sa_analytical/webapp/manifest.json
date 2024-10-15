@@ -24,97 +24,7 @@
           "localUri": "localService/metadata.xml",
           "odataVersion": "2.0"
         }
-      },
-      "ASNService": {
-        "uri": "/sap/opu/odata/sap/ZIVN_ASN_CREATION_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      },
-      "SESService": {
-        "uri": "/sap/opu/odata/sap/ZIVN_SES_CREATION_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      },
-      "InvCreationService": {
-        "uri": "/sap/opu/odata/sap/ZIVN_INV_CREAT_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      },
-      "POReportService": {
-        "uri": "/sap/opu/odata/sap/ZIVN_PO_RPT_STATUS_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      },
-      "POReportByrService": {
-        "uri": "/sap/opu/odata/sap/ZIVN_PO_RPT_BUYER_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      },
-      "RFQCreationService": {
-        "uri": "/sap/opu/odata/sap/ZIVN_RFQ_SUBMIT_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      },
-      "SchedAgreementService": {
-        "uri": "/sap/opu/odata/sap/ZINV_SA_CONFIRMATION_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      },
-      "oDataModelInvCreationAIService": {
-        "uri": "/DOC_INFO_EXT/XSODATA/DOC_INFO_EXT.xsodata/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      },
-      "oDataModelNPOInvCreateService": {
-        "uri": "/sap/opu/odata/sap/ZIBS_BFPOC_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      },
-      "doc-info-ext": {
-        "uri": "/odata/v4/doc-info-ext/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/doc-info-ext/metadata.xml",
-          "odataVersion": "4.0"
-        }
-      },
+      },    
       "checkServiceAvailibiltyService": {
         "uri": "/odata/v4/addtional-process/",
         "type": "OData",
@@ -122,25 +32,16 @@
           "annotations": [],
           "localUri": "localService/doc-info-ext/metadata.xml",
           "odataVersion": "4.0"
-        }
+        }   
       },
-      "POStatusReportServiceFE": {
-        "uri": "/sap/opu/odata/sap/ZIVN_PO_RPT_STATUS_SRV/",
+      "appSaInfoService": {
+        "uri": "/odata/v4/app-sa-info/",
         "type": "OData",
         "settings": {
-          "annotations": [   
-            "annotation"
-          ],
-          "localUri": "localService/ZIVN_PO_RPT_STATUS_SRV.xml",  
-          "odataVersion": "2.0"
-        }
-      },
-      "annotation": {
-        "type": "ODataAnnotation",
-        "uri": "annotations/annotation.xml",
-        "settings": {
-          "localUri": "annotations/annotation.xml"
-        }
+          "annotations": [],
+          "localUri": "localService/doc-info-ext/metadata.xml",
+          "odataVersion": "4.0"
+        }   
       }
     }
   },
@@ -163,12 +64,6 @@
   "sap.ui5": {
     "flexEnabled": true,
     "componentUsages": {
-      "com.ibs.ibsappivenpostatusreportfe": {
-        "name": "com.ibs.ibsappivenpostatusreportfe",   
-        "lazy": false,
-        "settings":{
-        }
-      }
     },
     "dependencies": {
       "minUI5Version": "1.114.0",
@@ -211,110 +106,6 @@
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/managed.json"
       },
-      "onPremService": {
-        "type": "sap.ui.model.odata.v2.ODataModel",
-        "settings": {
-          "headers": {
-            "loginid": "",
-            "logintype": ""
-          },
-          "defaultOperationMode": "Server",
-          "defaultBindingMode": "OneWay",
-          "defaultCountMode": "Request"
-        },
-        "dataSource": "ASNService",
-        "preload": true
-      },
-      "oDataModelSES": {
-        "type": "sap.ui.model.odata.v2.ODataModel",
-        "settings": {
-          "headers": {
-            "loginid": "",
-            "logintype": ""
-          },
-          "defaultOperationMode": "Server",
-          "defaultBindingMode": "OneWay",
-          "defaultCountMode": "Request"
-        },
-        "dataSource": "SESService",
-        "preload": true
-      },
-      "oDataModelInvCreation": {
-        "dataSource": "InvCreationService",
-        "preload": true,
-        "settings": {}
-      },
-      "oDataModelPOService": {
-        "type": "sap.ui.model.odata.v2.ODataModel",
-        "settings": {
-          "headers": {
-            "loginid": "",
-            "logintype": ""
-          },
-          "defaultOperationMode": "Server",
-          "defaultBindingMode": "OneWay",
-          "defaultCountMode": "Request"
-        },
-        "dataSource": "POReportService",
-        "preload": true
-      },
-      "oDataModelPOReportByr": {
-        "type": "sap.ui.model.odata.v2.ODataModel",
-        "settings": {
-          "headers": {
-            "loginid": "",
-            "logintype": ""
-          },
-          "defaultOperationMode": "Server",
-          "defaultBindingMode": "OneWay",
-          "defaultCountMode": "Request"
-        },
-        "dataSource": "POReportByrService",
-        "preload": true
-      },
-      "RFQCreation": {
-        "type": "sap.ui.model.odata.v2.ODataModel",
-        "settings": {
-          "headers": {
-            "loginid": "",
-            "logintype": ""
-          },
-          "defaultOperationMode": "Server",
-          "defaultBindingMode": "OneWay",
-          "defaultCountMode": "Request"
-        },
-        "dataSource": "RFQCreationService",
-        "preload": true
-      },
-      "SchedAgreement": {
-        "type": "sap.ui.model.odata.v2.ODataModel",
-        "settings": {
-          "headers": {
-            "loginid": "",
-            "logintype": ""
-          },
-          "defaultOperationMode": "Server",
-          "defaultBindingMode": "OneWay",
-          "defaultCountMode": "Request"
-        },
-        "dataSource": "SchedAgreementService",
-        "preload": true
-      },
-      "oDataModelInvCreationAI": {
-        "dataSource": "oDataModelInvCreationAIService",
-        "preload": true,
-        "settings": {}
-      },
-      "oDataDocInfoExt": {
-        "preload": true,
-        "dataSource": "doc-info-ext",
-        "settings": {
-          "synchronizationMode": "None",
-          "operationMode": "Server",
-          "autoExpandSelect": true,
-          "earlyRequests": true
-        }
-      },
       "checkServiceAvailibilty": {
         "preload": true,
         "dataSource": "checkServiceAvailibiltyService",
@@ -325,21 +116,14 @@
           "earlyRequests": true
         }
       },
-      "onPremise": {
-        "dataSource": "oDataModelNPOInvCreateService",
+      "appSaInfo": {
         "preload": true,
-        "settings": {}
-      },
-      "POStatusReportFE": {   
-        "dataSource": "POStatusReportServiceFE",
-        "preload": true,
+        "dataSource": "appSaInfoService",
         "settings": {
-          "defaultBindingMode": "TwoWay",
-          "defaultCountMode": "Inline",
-          "refreshAfterChange": false,
-          "metadataUrlParams": {
-            "sap-value-list": "none"
-          }
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
         }
       }
     },
@@ -355,6 +139,10 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
+        "clearTarget": true,
+        "bypassed": {
+            "target": "TargetServiceMsg"
+        },
         "viewPath": "com.ibs.ibsappivensaanalytical.view",
         "controlAggregation": "pages",
         "controlId": "myPage"
@@ -362,7 +150,7 @@
       "routes": [
         {
           "name": "Default",
-          "pattern": "",
+          "pattern": "",    
           "target": [
             "TargetBase"
           ]
@@ -372,13 +160,6 @@
           "pattern": "Master",
           "target": [
             "Home"
-          ]
-        },
-        {
-          "name": "PODetails",
-          "pattern": "PODetails/{objectStatus}/{objectId}",
-          "target": [
-            "PODetails"
           ]
         },
         {
@@ -396,159 +177,10 @@
           ]
         },
         {
-          "pattern": "DetailASN/{navValue}/{navAsn}",
-          "name": "DetailASN",
-          "target": "DetailASN"
-        },
-        {
-          "pattern": "SESPOList",
-          "name": "SESPOList",
-          "target": "SESPOList"
-        },
-        {
-          "pattern": "SESPODetails/{navValue}/{navSes}",
-          "name": "SESPODetails",
-          "target": "SESPODetails"
-        },
-        {
-          "name": "invcreation",
-          "pattern": "RouteInvoice_Master",
+          "name": "iVenMaster",
+          "pattern": "iVenMaster",    
           "target": [
-            "invcreation"
-          ]
-        },
-        {
-          "name": "Invoice_Detail",
-          "pattern": "Invoice_Detail/{objectStatus}/{objectId}",
-          "target": [
-            "Invoice_Detail"
-          ]
-        },
-        {
-          "name": "po_report",
-          "pattern": "po_report",
-          "target": [
-            "PO_Report"
-          ]
-        },
-        {
-          "name": "PODetailsReport",
-          "pattern": "PODetailsReport/{objectStatus}/{objectId}",
-          "target": [
-            "PODetailsReport"
-          ]
-        },
-        {
-          "name": "po_report_byr",
-          "pattern": "po_report_byr",
-          "target": [
-            "PO_Report_Byr"
-          ]
-        },
-        {
-          "name": "PODetailsReportByr",
-          "pattern": "PODetailsReport/{objectStatus}/{objectId}",
-          "target": [
-            "PODetailsReportByr"
-          ]
-        },
-        {
-          "name": "RFQCreation",
-          "pattern": "RFQCreation",
-          "target": [
-            "RFQView1"
-          ]
-        },
-        {
-          "name": "RFQView2",
-          "pattern": "RFQView2/{PR_NO}",
-          "target": [
-            "RFQView2"
-          ]
-        },
-        {
-          "name": "RFQView3",
-          "pattern": "RFQView3/{QUO_NO}/{ITEM_NO}",
-          "target": [
-            "RFQView3"
-          ]
-        },
-        {
-          "name": "SchedAgreement",
-          "pattern": "SchedAgrPOEntries",
-          "target": [
-            "SchedAgrPOEntries"
-          ]
-        },
-        {
-          "name": "SchedAgrPODetails",
-          "pattern": "SchedAgrPODetails/{objectId}",
-          "target": [
-            "SchedAgrPODetails"
-          ]
-        },
-        {
-          "name": "SAConfirm",
-          "pattern": "SAConfirm/{objectId}",
-          "target": [
-            "SAConfirm"
-          ]
-        },
-        {
-          "name": "InvCreationAI",
-          "pattern": "InvCreationAI",
-          "target": [
-            "InvCreationAI"
-          ]
-        },
-        {
-          "name": "RouteView1",
-          "pattern": "View1",
-          "target": [
-            "TargetView1"
-          ]
-        },
-        {
-          "name": "createView",
-          "pattern": "createView",
-          "target": [
-            "createView"
-          ]
-        },
-        {
-          "name": "DetailPage",
-          "pattern": "DetailPage/{PO_FILE_NO}",
-          "target": [
-            "TargetView1",
-            "TargetDetailPage"
-          ]
-        },
-        {
-          "name": "RouteServiceMsg",
-          "pattern": "ServiceMsg",
-          "target": [
-            "TargetServiceMsg"
-          ]
-        },
-        {
-          "name": "po_status_report",
-          "pattern": "POStatusReportFE",    
-          "target": [
-            "TargetPOStatusReportFE"
-          ]
-        },
-        {
-          "name": "potoinvoice_fiori_rept",
-          "pattern": "POToInvoiceFioriRept",    
-          "target": [
-            "TargetPOToInvoiceFioriRept"
-          ]
-        },
-        {
-          "name": "invoice_payment_rpt",
-          "pattern": "POInvoicePaymentReportFE",    
-          "target": [
-            "TargetPOInvoicePaymentReportFE"
+            "TargetiVenMaster"  
           ]
         }
       ],
@@ -564,10 +196,6 @@
           "viewName": "Master",
           "controlAggregation": "pages"
         },
-        "PODetails": {
-          "viewType": "XML",
-          "viewName": "PODetails"
-        },
         "Page1": {
           "viewType": "XML",
           "viewName": "Page1",
@@ -578,128 +206,13 @@
           "viewName": "Page2",
           "controlAggregation": "pages"
         },
-        "DetailASN": {
+        "TargetiVenMaster":{
           "viewType": "XML",
-          "viewName": "DetailASN"
+          "viewName": "iVenMaster"          
         },
-        "SESPOList": {
+        "TargetServiceMsg":{
           "viewType": "XML",
-          "viewName": "SESPOList"
-        },
-        "SESPODetails": {
-          "viewType": "XML",
-          "viewName": "SESPODetails"
-        },
-        "invcreation": {
-          "viewType": "XML",
-          "viewName": "Invoice_Master"
-        },
-        "Invoice_Detail": {
-          "viewType": "XML",
-          "viewName": "Invoice_Detail"
-        },
-        "PO_Report": {
-          "viewType": "XML",
-          "viewName": "POEntriesReport"
-        },
-        "PODetailsReport": {
-          "viewType": "XML",
-          "viewName": "PODetailsReport"
-        },
-        "PO_Report_Byr": {
-          "viewType": "XML",
-          "viewName": "POEntriesReportByr"
-        },
-        "PODetailsReportByr": {
-          "viewType": "XML",
-          "viewName": "PODetailsReportByr"
-        },
-        "RFQView1": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "RFQView1",
-          "viewName": "RFQView1"
-        },
-        "RFQView2": {
-          "viewType": "XML",
-          "viewName": "RFQView2"
-        },
-        "RFQView3": {
-          "viewType": "XML",
-          "viewName": "RFQView3"
-        },
-        "SchedAgrPOEntries": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "SchedAgrPOEntries",
-          "viewName": "SchedAgrPOEntries"
-        },
-        "SchedAgrPODetails": {
-          "viewType": "XML",
-          "viewName": "SchedAgrPODetails"
-        },
-        "SAConfirm": {
-          "viewType": "XML",
-          "viewName": "SAConfirm"
-        },
-        "InvCreationAI": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "InvCreationAI",
-          "viewName": "InvCreationAI"
-        },
-        "NPOInvCreate": {
-          "viewId": "NPOInvCreate",    
-          "viewName": "pc_inv_submit.NPOInvCreate"
-        },
-        "TargetView1": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "View1",
-          "viewName": "pc_inv_submit.View1",
-          "controlAggregation": "beginColumnPages",
-          "parent": "NPOInvCreate",
-          "controlId": "NPOInvCreate"
-        },
-        "createView": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "createView",
-          "viewName": "pc_inv_submit.createView",
-          "controlAggregation": "beginColumnPages",
-          "parent": "NPOInvCreate",
-          "controlId": "NPOInvCreate"
-        },
-        "TargetDetailPage": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "DetailPage",
-          "viewName": "pc_inv_submit.DetailPage",
-          "controlAggregation": "midColumnPages",
-          "parent": "NPOInvCreate",
-          "controlId": "NPOInvCreate"
-        },
-        "TargetServiceMsg": {
-          "viewType": "XML",
-          "viewName": "pc_inv_submit.ServiceMsg"
-        },
-        "TargetPOStatusReportFE": {
-          "viewType": "XML",
-          "viewName": "POStatusReportFE"
-        },
-        "TargetPOToInvoiceFioriRept":{
-          "viewType": "XML",
-          "viewName": "POToInvoiceFioriRept"          
-        },
-        "TargetPOInvoicePaymentReportFE":{
-          "viewType": "XML",
-          "viewName": "POInvoicePaymentReportFE"          
+          "viewName": "ServiceMsg"               
         }
       }
     },

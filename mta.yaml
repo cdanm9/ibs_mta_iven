@@ -31,18 +31,18 @@ modules:
       - comibsibsappivensaanalytical.zip
       name: comibsibsappivensaanalytical
       target-path: resources/
-    - artifacts:
-      - comibsibsappivenpostatusreportfe.zip
-      name: comibsibsappivenpostatusreportfe
-      target-path: resources/
-    - artifacts:
-      - comibsibsappivenpotoinvoicefiorireptfe.zip
-      name: comibsibsappivenpotoinvoicefiorireptfe
-      target-path: resources/
-    - artifacts:   
-      - comibsibsappiveninvoicepaymentrptfe.zip
-      name: comibsibsappiveninvoicepaymentrptfe
-      target-path: resources/
+    # - artifacts:
+    #   - comibsibsappivenpostatusreportfe.zip
+    #   name: comibsibsappivenpostatusreportfe
+    #   target-path: resources/
+    # - artifacts:
+    #   - comibsibsappivenpotoinvoicefiorireptfe.zip
+    #   name: comibsibsappivenpotoinvoicefiorireptfe
+    #   target-path: resources/
+    # - artifacts:   
+    #   - comibsibsappiveninvoicepaymentrptfe.zip
+    #   name: comibsibsappiveninvoicepaymentrptfe
+    #   target-path: resources/
 - name: comibsibsappivensaanalytical
   type: html5
   path: ibs_app_iven_sa_analytical
@@ -53,36 +53,36 @@ modules:
     - npm install
     - npm run build:cf
     supported-platforms: []
-- name: comibsibsappivenpostatusreportfe
-  type: html5
-  path: ibs_app_iven_po_status_report_fe
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
-- name: comibsibsappivenpotoinvoicefiorireptfe
-  type: html5
-  path: ibs_app_iven_potoinvoice_fiori_rept_fe
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []  
-- name: comibsibsappiveninvoicepaymentrptfe
-  type: html5
-  path: ibs_app_iven_invoice_payment_rpt_fe    
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
+# - name: comibsibsappivenpostatusreportfe
+#   type: html5
+#   path: ibs_app_iven_po_status_report_fe
+#   build-parameters:
+#     build-result: dist
+#     builder: custom
+#     commands:
+#     - npm install
+#     - npm run build:cf
+#     supported-platforms: []
+# - name: comibsibsappivenpotoinvoicefiorireptfe
+#   type: html5
+#   path: ibs_app_iven_potoinvoice_fiori_rept_fe
+#   build-parameters:
+#     build-result: dist
+#     builder: custom
+#     commands:
+#     - npm install
+#     - npm run build:cf
+#     supported-platforms: []  
+# - name: comibsibsappiveninvoicepaymentrptfe
+#   type: html5
+#   path: ibs_app_iven_invoice_payment_rpt_fe    
+#   build-parameters:
+#     build-result: dist
+#     builder: custom
+#     commands:
+#     - npm install
+#     - npm run build:cf
+#     supported-platforms: []
 resources:
 - name: ibs_mta_iven_sa_html_repo_runtime
   type: org.cloudfoundry.managed-service

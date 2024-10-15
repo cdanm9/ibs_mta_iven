@@ -15,14 +15,7 @@ server:
             - /resources
             - /test-resources
           url: https://ui5.sap.com
-        backend:   
-          - path: /DOC_INFO_EXT
-            url: https://xsc7eb9cb36.ap1.hana.ondemand.com
-            destination: HanaDB                
-          - path: /sap  
-            url: http://a17.hana.com
-            client: '009'
-            destination: A17
+        backend:
           - path: /odata       
             url: https://ibs-portal-dev-ibs-portal-dev-vendor-portal-srv.cfapps.us10.hana.ondemand.com/
             destination: IVEN_DATA

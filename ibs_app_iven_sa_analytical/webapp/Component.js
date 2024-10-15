@@ -37,9 +37,7 @@ function (UIComponent, Device, models) {
 
             this.setModel(models.createPropertyModelSES(), "viewModelSES");
 
-            this.setModel(models.createPropertyModelInvCreation(), "oPropertyModelInvCre");  
-
-            jQuery.sap.registerModulePath("com.ibs.ibsappivenpostatusreportfe","/ibs_mta_iven/ibs_app_iven_po_status_report_fe/webapp");         
+            this.setModel(models.createPropertyModelInvCreation(), "oPropertyModelInvCre");     
 
             // this.setModel(models.createAppDetailsModel(), "appInfo");    
         },

@@ -22,8 +22,37 @@
         data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
         data-sap-ui-compatVersion="edge"
         data-sap-ui-async="true"
-        data-sap-ui-frameOptions="trusted"
+        data-sap-ui-frameOptions="allow"
     ></script>
+
+    <script>
+        window["sap-ui-config"] = {
+            frameOptions: 'allow',
+            allowlist:[
+                "https://iframetester.com/",
+                "*",   
+                "https://ibs-portal-dev-ibs-portal-dev-ibs-mta-iven-sa-approuter.cfapps.us10.hana.ondemand.com/",     
+                "https://ibs-portal-dev-ibs-portal-dev-ibs-mta-iven-sa-approuter.cfapps.us10.hana.ondemand.com/comibsibsappivensaanalytical/index.html",
+                "https://ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com/",
+                "https://ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com/site",
+                "https://ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com/8526cdcb-5c31-4934-a365-72dce07a9b8d.ibs_bs_iven_po.comibsibsappiveninvoicepaymentrpt-0.0.1/index.html#/?sap-iapp-state--history=1&sap-iapp-state=3",                    
+                "https://ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com/8526cdcb-5c31-4934-a365-72dce07a9b8d.ibs_bs_iven_po.comibsibsappiveninvoicepaymentrpt-0.0.1/index.html"                 
+            ],
+            frameOptionsConfig: {
+                blockEvents:false,
+                showBlockLayer:false,
+                callback: function(bSuccess) {
+                    if (bSuccess) {
+                        //alert("App is allowed to run!");
+                        console.log("app is allowed to call");
+                    } else {
+                        alert("App is not allowed to run!");
+                    }
+                }
+            }
+        };
+    </script>
+
 </head>
 <body class="sapUiBody sapUiSizeCompact" id="content">
     <div

@@ -15,6 +15,7 @@ sap.ui.define(
         onInit: function() {  
           that=this
           that.oDataModel = this.getOwnerComponent().getModel("checkServiceAvailibilty")    
+          that.oDataAppSaInfoModel = this.getOwnerComponent().getModel("appSaInfo")    
           that.idNavigationList=this.getView().byId("idNavigationList");
           URLListValidator.add("https", "ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com", undefined, "/8526cdcb-5c31-4934-a365-72dce07a9b8d.ibs_bs_iven_po.comibsibsappiveninvoicepaymentrpt-0.0.1/index.html");
           URLListValidator.add("https", "ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com");
@@ -61,20 +62,6 @@ sap.ui.define(
                 }
             });
           };   
-            
-
-          // that.idNavigationList.onAfterRendering = function () {
-          //   sap.tnt.NavigationList.prototype.onAfterRendering.apply(this, arguments);
-          //   var iRowCount = 0;     
-          //   that.idNavigationList.getItems().forEach(function (oItem) {
-          //       if(iRowCount%2==0) {
-          //         oItem.$().find("a").css("background-color", "cornflowerblue");  
-          //       }else{
-          //         oItem.$().find("a").css("background-color", "mediumblue");                   
-          //       }    
-          //       iRowCount++     
-          //   });
-          // };
         },
         _getUserID:function(){
           var appId = this.getOwnerComponent().getManifestEntry("/sap.app/id");
@@ -121,20 +108,34 @@ sap.ui.define(
                 MessageBox.error("Error while reading User Attributes");
               }
             });
-          });  
-
-      
-
+          });    
         },
-        _getAppInfo: function(){
+        _getAppInfo:  function(){
           let sBindingFnPath="/getAllAppInfo(...)"
-          let oAppODataPath = that.oDataModel.bindContext(sBindingFnPath);   
-          oAppODataPath.execute().then(function (exec) {       
-            let oAppInfoData = oAppODataPath.getBoundContext().getObject(); 
+          let oAppODataPath =  that.oDataAppSaInfoModel.bindContext(sBindingFnPath);   
+          oAppODataPath.execute().then(function (exec) {           
+            let oAppInfoData = oAppODataPath.getBoundContext().getObject();
+            
+            let i=0;
+            for(i in oAppInfoData.value){
+              if(oAppInfoData.value[i].APP_TYPE=='APP'||oAppInfoData.value[i].APP_TYPE=='LNK'||oAppInfoData.value[i].APP_TYPE=='PLG'){
+                oAppInfoData.value[i].APP_URL=oAppInfoData.value[i].TO_SUBAPPINFO[0].S_APP_URL
+                oAppInfoData.value[i].TO_SUBAPPINFO=[]
+              }else  
+                oAppInfoData.value[i].APP_URL=null          
+            } 
+            that.oAppPlugin=oAppInfoData.value.filter(function(oAppInfo){
+              return oAppInfo.APP_TYPE=='PLG'  
+            })      
+            oAppInfoData.value=oAppInfoData.value.filter(function(oAppInfo){
+              return oAppInfo.APP_TYPE!='PLG'    
+            })
+                
+            that.oAppInfoDetails=oAppInfoData?.value
             that.getOwnerComponent().getModel("appInfo").setProperty("/AppList",oAppInfoData?.value)  
           }.bind(this), function (oError) { 
             MessageBox.error("Failed to read "+sBindingFnPath+" function");
-          });       
+          });           
         },
         handleRouteMatched: function (oEvent) {       
           
@@ -150,21 +151,21 @@ sap.ui.define(
             function () {    
               var data = ContextBinding.getBoundContext().getObject();   
               const { cloudSrv, onPremiseSrv } = data?.value[0];
-              if ((oCloud && cloudSrv) || (oPremise && onPremiseSrv)) {        
-                sap.ui.core.UIComponent.getRouterFor(that).navTo("Page1");       
+              if ((oCloud && cloudSrv) || (oPremise && onPremiseSrv)) {
+                var oAppViewModel=new JSONModel(that.oAppInfoDetails[0]);   
+                that.getOwnerComponent().setModel(oAppViewModel,"alAppView");    
+                that.getOwnerComponent().getRouter().navTo("iVenMaster");            
               } else {   
                 sap.ui.core.UIComponent.getRouterFor(that).navTo("RouteServiceMsg");   
               }   
           }.bind(this), function (oError) { 
             sap.ui.core.UIComponent.getRouterFor(that).navTo("RouteServiceMsg");
-          });   
+          });       
 
           var oUserMenuData = {
             userListMenu: [      
-                // { icon: "sap-icon://sys-find", title: "App Finder", type: "Active" },
-                // { icon: "sap-icon://action-settings", title: "Settings", type: "Active" },
-                { icon: "sap-icon://customer", title: "Simulate User Login", type: "Active" },
-                // { icon: "sap-icon://hint", title: "About", type: "Active" },         
+                { icon: "sap-icon://customer", title: "Simulate User Login", type: "Active" },      
+                { icon: "sap-icon://settings", title: "Manage Site", type: "Active" },         
                 { icon: "sap-icon://log", title: "Sign Out", type: "Active" }      
             ]
           };
@@ -182,9 +183,15 @@ sap.ui.define(
         },     
         onItemSelect: function(oEvent){
           debugger
-          var userSelected = oEvent.getParameter("item").getKey();       
-          // var userSelected = oEvent.mParameters.item.mProperties.key;      
-          this.getOwnerComponent().getRouter().navTo(userSelected);
+          var oItem=oEvent.getParameter("item")
+          var oBindingContext=oItem.getBindingContext("appInfo")
+          var oObject=oBindingContext.getObject()
+          var oAppViewModel=new JSONModel(oObject)   
+          that.getOwnerComponent().setModel(oAppViewModel,"alAppView");
+          if(oEvent?.getParameter("item")?.getItems()?.length)
+            this.getOwnerComponent().getRouter().navTo("iVenMaster");   
+          else
+            this.getOwnerComponent().getRouter().navTo("iVenMaster");
         },
         onPress: function(oEvent) {
           var oEventSource = oEvent.getSource(),
@@ -196,8 +203,6 @@ sap.ui.define(
             this._oPopover.openBy(oEventSource);
           }
         },
-        onPopoverClose: function () {
-        }, 
         //User Simulation Start
         onListItemPress: function (oEvent) {     
           let oSource=oEvent.getSource()
@@ -207,7 +212,12 @@ sap.ui.define(
           else if(sTitle=='Sign Out'){
             // sap.m.URLHelper.redirect("/logoff.html", false);         
             sap.m.URLHelper.redirect("/do/logout", false);        
-          }                    
+          }else if(sTitle=='Manage Site'){   
+            let oAppViewModel=new JSONModel(that.oAppPlugin[0]);        
+            that.getOwnerComponent().setModel(oAppViewModel,"alAppView");    
+            that.getOwnerComponent().getRouter().navTo("iVenMaster");
+          }
+
         },
         _openLoginFragment:function(){
           if (!that.oDialog) {
@@ -256,7 +266,7 @@ sap.ui.define(
 
             var oData = oModel.getData();
             localStorage.put("mySessionData", oData);                
-            MessageToast.show("User login details saved.");   
+            MessageToast.show("User login details saved.");               
             this.oDialog.close();
         },
 

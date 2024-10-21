@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="appSaInfoService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="MasterIvenAppInfo" EntityType="appSaInfoService.MasterIvenAppInfo">
+                    <NavigationPropertyBinding Path="TO_APP_TYPE" Target="MasterAppType"/>
+                    <NavigationPropertyBinding Path="TO_SUBAPPINFO" Target="MasterIvenSubAppInfo"/>
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="MasterIvenAppInfo"/>
+                </EntitySet>
+                <EntitySet Name="MasterIvenSubAppInfo" EntityType="appSaInfoService.MasterIvenSubAppInfo">
+                    <NavigationPropertyBinding Path="TO_MAPPINFO" Target="MasterIvenAppInfo"/>
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="MasterIvenSubAppInfo"/>
+                </EntitySet>
+                <EntitySet Name="MasterAppType" EntityType="appSaInfoService.MasterAppType"/>
+                <EntitySet Name="MasterRoleCollections" EntityType="appSaInfoService.MasterRoleCollections"/>
+                <EntitySet Name="MasterIvenSAInfo" EntityType="appSaInfoService.MasterIvenSAInfo"/>
+                <FunctionImport Name="getAllAppInfo" Function="appSaInfoService.getAllAppInfo"/>
+            </EntityContainer>
+            <EntityType Name="MasterIvenAppInfo">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int64"/>
+                <Property Name="APP_TEXT" Type="Edm.String" MaxLength="100"/>
+                <Property Name="APP_ICON_URI" Type="Edm.String" MaxLength="250"/>
+                <Property Name="APP_ICON" Type="Edm.String" MaxLength="100"/>
+                <Property Name="APP_ROLE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="APP_TYPE" Type="Edm.String" MaxLength="100"/>
+                <NavigationProperty Name="TO_APP_TYPE" Type="appSaInfoService.MasterAppType">
+                    <ReferentialConstraint Property="APP_TYPE" ReferencedProperty="APP_CODE"/>
+                </NavigationProperty>
+                <NavigationProperty Name="TO_SUBAPPINFO" Type="Collection(appSaInfoService.MasterIvenSubAppInfo)" Partner="TO_MAPPINFO">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="appSaInfoService.DraftAdministrativeData" ContainsTarget="true"/>
+                <NavigationProperty Name="SiblingEntity" Type="appSaInfoService.MasterIvenAppInfo"/>
+            </EntityType>
+            <EntityType Name="MasterIvenSubAppInfo">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="S_APP_TEXT" Type="Edm.String" MaxLength="100"/>
+                <Property Name="S_APP_ICON" Type="Edm.String" MaxLength="100"/>
+                <Property Name="S_APP_ICON_URI" Type="Edm.String" MaxLength="100"/>
+                <Property Name="S_APP_URL" Type="Edm.String" MaxLength="2000"/>
+                <NavigationProperty Name="TO_MAPPINFO" Type="appSaInfoService.MasterIvenAppInfo" Partner="TO_SUBAPPINFO">
+                    <ReferentialConstraint Property="TO_MAPPINFO_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="TO_MAPPINFO_ID" Type="Edm.Guid"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="appSaInfoService.DraftAdministrativeData" ContainsTarget="true"/>
+                <NavigationProperty Name="SiblingEntity" Type="appSaInfoService.MasterIvenSubAppInfo"/>
+            </EntityType>
+            <EntityType Name="MasterAppType">
+                <Key>
+                    <PropertyRef Name="APP_CODE"/>
+                </Key>
+                <Property Name="APP_CODE" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="APP_DESC" Type="Edm.String" MaxLength="500"/>
+            </EntityType>
+            <EntityType Name="MasterRoleCollections">
+                <Key>
+                    <PropertyRef Name="name"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="100" Nullable="false"/>
+                <Property Name="description" Type="Edm.String" MaxLength="500"/>
+                <Property Name="isReadOnly" Type="Edm.Boolean"/>
+            </EntityType>
+            <EntityType Name="MasterIvenSAInfo">
+                <Key>
+                    <PropertyRef Name="APP_CODE"/>
+                </Key>
+                <Property Name="APP_CODE" Type="Edm.String" MaxLength="100" Nullable="false"/>
+                <Property Name="APP_NAME" Type="Edm.String" MaxLength="250"/>
+                <Property Name="LOGO_TYPE" Type="Edm.String"/>
+                <Property Name="LOGO" Type="Edm.Stream"/>
+                <Property Name="LOGO_NAME" Type="Edm.String" MaxLength="200"/>
+                <Property Name="LOGO_URL" Type="Edm.String" MaxLength="200"/>
+            </EntityType>
+            <EntityType Name="DraftAdministrativeData">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean"/>
+            </EntityType>
+            <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="appSaInfoService.MasterIvenAppInfo"/>
+                <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+                <ReturnType Type="appSaInfoService.MasterIvenAppInfo"/>
+            </Action>
+            <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="appSaInfoService.MasterIvenSubAppInfo"/>
+                <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+                <ReturnType Type="appSaInfoService.MasterIvenSubAppInfo"/>
+            </Action>
+            <Action Name="draftActivate" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="appSaInfoService.MasterIvenAppInfo"/>
+                <ReturnType Type="appSaInfoService.MasterIvenAppInfo"/>
+            </Action>
+            <Action Name="draftEdit" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="appSaInfoService.MasterIvenAppInfo"/>
+                <Parameter Name="PreserveChanges" Type="Edm.Boolean"/>
+                <ReturnType Type="appSaInfoService.MasterIvenAppInfo"/>
+            </Action>
+            <Function Name="getAllAppInfo" IsBound="false" IsComposable="false">
+                <ReturnType Type="Collection(Edm.String)" Nullable="false"/>
+            </Function>
+            <Annotations Target="appSaInfoService.MasterIvenAppInfo">
+                <Annotation Term="Common.SideEffects" Qualifier="IconView">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="SourceProperties">
+                            <Collection>
+                                <PropertyPath>APP_ICON_URI</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetProperties">
+                            <Collection>
+                                <Path>APP_ICON</Path>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.SideEffects" Qualifier="SubIconView">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="SourceEntities">
+                            <Collection>
+                                <NavigationPropertyPath>TO_SUBAPPINFO</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetEntities">
+                            <Collection>
+                                <NavigationPropertyPath>TO_SUBAPPINFO</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="appSaInfoService.EntityContainer/MasterIvenAppInfo">
+                <Annotation Term="Common.SideEffects" Qualifier="IconView">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="SourceProperties">
+                            <Collection>
+                                <PropertyPath>APP_ICON_URI</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetProperties">
+                            <Collection>
+                                <Path>APP_ICON</Path>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.SideEffects" Qualifier="SubIconView">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="SourceEntities">
+                            <Collection>
+                                <NavigationPropertyPath>TO_SUBAPPINFO</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetEntities">
+                            <Collection>
+                                <NavigationPropertyPath>TO_SUBAPPINFO</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftRoot">
+                    <Record Type="Common.DraftRootType">
+                        <PropertyValue Property="ActivationAction" String="appSaInfoService.draftActivate"/>
+                        <PropertyValue Property="EditAction" String="appSaInfoService.draftEdit"/>
+                        <PropertyValue Property="PreparationAction" String="appSaInfoService.draftPrepare"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenAppInfo/SR_NO">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenAppInfo/APP_ICON">
+                <Annotation Term="UI.IsImageURL" Bool="true"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenAppInfo/IsActiveEntity">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenAppInfo/HasActiveEntity">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenAppInfo/HasDraftEntity">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenAppInfo/DraftAdministrativeData">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.EntityContainer/MasterIvenSubAppInfo">
+                <Annotation Term="Common.DraftNode">
+                    <Record Type="Common.DraftNodeType">
+                        <PropertyValue Property="PreparationAction" String="appSaInfoService.draftPrepare"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenSubAppInfo/S_APP_ICON">
+                <Annotation Term="UI.IsImageURL" Bool="true"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenSubAppInfo/IsActiveEntity">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenSubAppInfo/HasActiveEntity">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenSubAppInfo/HasDraftEntity">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenSubAppInfo/DraftAdministrativeData">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenSAInfo/LOGO_TYPE">
+                <Annotation Term="Core.IsMediaType" Bool="true"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.MasterIvenSAInfo/LOGO">
+                <Annotation Term="Core.MediaType" Path="LOGO_TYPE"/>
+                <Annotation Term="Core.ContentDisposition">
+                    <Record Type="Core.ContentDispositionType">
+                        <PropertyValue Property="Filename" Path="LOGO_NAME"/>
+                        <PropertyValue Property="Type" String="inline"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="appSaInfoService.DraftAdministrativeData">
+                <Annotation Term="Common.Label" String="Draft Administrative Data"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.DraftAdministrativeData/DraftUUID">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Draft (Technical ID)"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.DraftAdministrativeData/CreationDateTime">
+                <Annotation Term="Common.Label" String="Draft Created On"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.DraftAdministrativeData/CreatedByUser">
+                <Annotation Term="Common.Label" String="Draft Created By"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.DraftAdministrativeData/DraftIsCreatedByMe">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Draft Created By Me"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.DraftAdministrativeData/LastChangeDateTime">
+                <Annotation Term="Common.Label" String="Draft Last Changed On"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.DraftAdministrativeData/LastChangedByUser">
+                <Annotation Term="Common.Label" String="Draft Last Changed By"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.DraftAdministrativeData/InProcessByUser">
+                <Annotation Term="Common.Label" String="Draft In Process By"/>
+            </Annotations>
+            <Annotations Target="appSaInfoService.DraftAdministrativeData/DraftIsProcessedByMe">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+                <Annotation Term="Common.Label" String="Draft In Process By Me"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

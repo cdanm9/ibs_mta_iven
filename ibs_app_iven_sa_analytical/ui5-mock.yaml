@@ -1,5 +1,3 @@
-# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
-
 specVersion: "3.1"
 metadata:
   name: com.ibs.ibsappivensaanalytical
@@ -9,16 +7,17 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertError: false
         ui5:
           path:
             - /resources
             - /test-resources
           url: https://ui5.sap.com
         backend:
-          - path: /odata       
-            url: https://ibs-portal-dev-ibs-portal-dev-vendor-portal-srv.cfapps.us10.hana.ondemand.com/
+          - path: /odata
+            url: https://ibs-portal-dev-ibs-portal-dev-vendor-portal-srv.cfapps.us10.hana.ondemand.com
             destination: IVEN_DATA
+            authenticationType: OAuth2UserTokenExchange
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -31,7 +30,15 @@ server:
         mountPath: /
         services:
           - urlPath: /sap/opu/odata/sap/ZIVN_PO_CONFIRMATION_SRV
-            metadataPath: ./webapp/localService/metadata.xml
-            mockdataPath: ./webapp/localService/data
-            generateMockData: true    
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/metadata.xml
+            mockdataRootPath: ./webapp/localService/data
+          - urlPath: /odata/v4/app-sa-info/
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/appInfoSa/metadata.xml
+            mockdataRootPath: ./webapp/localService/appInfoSa/mockdata
+          - urlPath: /odata/v4/addtional-process/
+            metadataPath: ./webapp/localService/checkServiceAvailibilty/metadata.xml
+            mockdataPath: ./webapp/localService/checkServiceAvailibilty/mockdata
+            generateMockData: true
         annotations: []

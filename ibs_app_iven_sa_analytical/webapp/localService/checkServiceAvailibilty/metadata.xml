@@ -1,0 +1,1661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
+        <edmx:Include Alias="Communication" Namespace="com.sap.vocabularies.Communication.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml">
+        <edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="addtionalProcessService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="MasterClientInfo" EntityType="addtionalProcessService.MasterClientInfo"/>
+                <EntitySet Name="MasterIvenUsers" EntityType="addtionalProcessService.MasterIvenUsers">
+                    <NavigationPropertyBinding Path="TO_ENTITY_CODE" Target="MasterEntityCode"/>
+                </EntitySet>
+                <EntitySet Name="RequestInfo" EntityType="addtionalProcessService.RequestInfo">
+                    <NavigationPropertyBinding Path="TO_STATUS" Target="MasterStatus"/>
+                    <NavigationPropertyBinding Path="TO_ADDRESS" Target="RegFormAddress"/>
+                    <NavigationPropertyBinding Path="TO_CONTACTS" Target="RegFormContacts"/>
+                    <NavigationPropertyBinding Path="TO_BANKS" Target="RegFormBanks"/>
+                    <NavigationPropertyBinding Path="TO_FINANCE" Target="RegFormFinancial"/>
+                    <NavigationPropertyBinding Path="TO_OWNERS" Target="RegFormOwners"/>
+                    <NavigationPropertyBinding Path="TO_PRODUCT_SERVICES" Target="RegFormProdServ"/>
+                    <NavigationPropertyBinding Path="TO_CAPACITY" Target="RegFormCapacity"/>
+                    <NavigationPropertyBinding Path="TO_CUSTOMERS" Target="RegFormCustomers"/>
+                    <NavigationPropertyBinding Path="TO_OEM" Target="RegFormOEM"/>
+                    <NavigationPropertyBinding Path="TO_MANDATORY_FIELDS" Target="MasterFormFieldsMandatory"/>
+                    <NavigationPropertyBinding Path="TO_VISIBLE_FIELDS" Target="MasterFormFieldsVisible"/>
+                    <NavigationPropertyBinding Path="TO_UPDATED_FIELDS" Target="MasterFormFieldsUpdated"/>
+                    <NavigationPropertyBinding Path="TO_DISCLOSURE_FIELDS" Target="RegFormDiscInfo"/>
+                    <NavigationPropertyBinding Path="TO_RELATIVES" Target="RegFormDiscRelatives"/>
+                    <NavigationPropertyBinding Path="TO_QA_CERTIFICATES" Target="RegFormDiscQaCertif"/>
+                    <NavigationPropertyBinding Path="TO_ATTACH_FIELDS" Target="RegFormAttachFields"/>
+                    <NavigationPropertyBinding Path="TO_ATTACHMENTS" Target="RegFormAttachments"/>
+                    <NavigationPropertyBinding Path="TO_REQUEST_TYPE" Target="MasterRequestType"/>
+                    <NavigationPropertyBinding Path="TO_ENTITY_CODE" Target="MasterEntityCode"/>
+                    <NavigationPropertyBinding Path="TO_REQUEST_ACTIVE_STATUS" Target="RequestActiveStatus"/>
+                    <NavigationPropertyBinding Path="TO_HIERARCHY" Target="MASTER_APPROVAL_HIERARCHY_FE"/>
+                </EntitySet>
+                <EntitySet Name="MasterIbanCountry" EntityType="addtionalProcessService.MasterIbanCountry"/>
+                <EntitySet Name="RegSupplierLog" EntityType="addtionalProcessService.RegSupplierLog"/>
+                <EntitySet Name="ViewRequestActiveStatus" EntityType="addtionalProcessService.ViewRequestActiveStatus">
+                    <NavigationPropertyBinding Path="TO_STATUS" Target="MasterStatus"/>
+                </EntitySet>
+                <EntitySet Name="RegFormCMS" EntityType="addtionalProcessService.RegFormCMS"/>
+                <EntitySet Name="RegFormDiscQaCertif" EntityType="addtionalProcessService.RegFormDiscQaCertif"/>
+                <EntitySet Name="MasterCountry" EntityType="addtionalProcessService.MasterCountry"/>
+                <EntitySet Name="MasterStatus" EntityType="addtionalProcessService.MasterStatus"/>
+                <EntitySet Name="RegFormAddress" EntityType="addtionalProcessService.RegFormAddress">
+                    <NavigationPropertyBinding Path="TO_COUNTRY" Target="MasterCountry"/>
+                    <NavigationPropertyBinding Path="TO_REGION" Target="MasterRegion"/>
+                </EntitySet>
+                <EntitySet Name="RegFormContacts" EntityType="addtionalProcessService.RegFormContacts">
+                    <NavigationPropertyBinding Path="TO_COUNTRY" Target="MasterCountry"/>
+                    <NavigationPropertyBinding Path="TO_REGION" Target="MasterRegion"/>
+                </EntitySet>
+                <EntitySet Name="RegFormBanks" EntityType="addtionalProcessService.RegFormBanks">
+                    <NavigationPropertyBinding Path="TO_COUNTRY" Target="MasterCountry"/>
+                </EntitySet>
+                <EntitySet Name="RegFormFinancial" EntityType="addtionalProcessService.RegFormFinancial"/>
+                <EntitySet Name="RegFormOwners" EntityType="addtionalProcessService.RegFormOwners">
+                    <NavigationPropertyBinding Path="TO_COUNTRY" Target="MasterCountry"/>
+                </EntitySet>
+                <EntitySet Name="RegFormProdServ" EntityType="addtionalProcessService.RegFormProdServ"/>
+                <EntitySet Name="RegFormCapacity" EntityType="addtionalProcessService.RegFormCapacity">
+                    <NavigationPropertyBinding Path="TO_COUNTRY" Target="MasterCountry"/>
+                </EntitySet>
+                <EntitySet Name="RegFormCustomers" EntityType="addtionalProcessService.RegFormCustomers"/>
+                <EntitySet Name="RegFormOEM" EntityType="addtionalProcessService.RegFormOEM"/>
+                <EntitySet Name="MasterFormFieldsMandatory" EntityType="addtionalProcessService.MasterFormFieldsMandatory"/>
+                <EntitySet Name="MasterFormFieldsVisible" EntityType="addtionalProcessService.MasterFormFieldsVisible"/>
+                <EntitySet Name="MasterFormFieldsUpdated" EntityType="addtionalProcessService.MasterFormFieldsUpdated"/>
+                <EntitySet Name="RegFormDiscInfo" EntityType="addtionalProcessService.RegFormDiscInfo"/>
+                <EntitySet Name="RegFormDiscRelatives" EntityType="addtionalProcessService.RegFormDiscRelatives"/>
+                <EntitySet Name="RegFormAttachFields" EntityType="addtionalProcessService.RegFormAttachFields"/>
+                <EntitySet Name="RegFormAttachments" EntityType="addtionalProcessService.RegFormAttachments"/>
+                <EntitySet Name="MasterRequestType" EntityType="addtionalProcessService.MasterRequestType"/>
+                <EntitySet Name="MasterEntityCode" EntityType="addtionalProcessService.MasterEntityCode"/>
+                <EntitySet Name="MasterTelecode" EntityType="addtionalProcessService.MasterTelecode">
+                    <NavigationPropertyBinding Path="TO_COUNTRY" Target="MasterCountry"/>
+                </EntitySet>
+                <EntitySet Name="MasterPostalcode" EntityType="addtionalProcessService.MasterPostalcode"/>
+                <EntitySet Name="MasterRegion" EntityType="addtionalProcessService.MasterRegion"/>
+                <EntitySet Name="RequestActiveStatus" EntityType="addtionalProcessService.RequestActiveStatus"/>
+                <EntitySet Name="RegEventsLog" EntityType="addtionalProcessService.RegEventsLog"/>
+                <EntitySet Name="MasteriVenAttachments" EntityType="addtionalProcessService.MasteriVenAttachments"/>
+                <EntitySet Name="DataMigrationFieldConfiguration" EntityType="addtionalProcessService.DataMigrationFieldConfiguration"/>
+                <EntitySet Name="ViewDataMigrationFields" EntityType="addtionalProcessService.ViewDataMigrationFields"/>
+                <EntitySet Name="EmailActionlog" EntityType="addtionalProcessService.EmailActionlog"/>
+                <EntitySet Name="EmailConfig" EntityType="addtionalProcessService.EmailConfig"/>
+                <EntitySet Name="MASTER_APPROVAL_HIERARCHY_FE" EntityType="addtionalProcessService.MASTER_APPROVAL_HIERARCHY_FE">
+                    <NavigationPropertyBinding Path="TO_ENTITY_CODE" Target="MasterEntityCode"/>
+                </EntitySet>
+                <ActionImport Name="VendorInternalRequest" Action="addtionalProcessService.VendorInternalRequest"/>
+                <ActionImport Name="VendorDataMigration" Action="addtionalProcessService.VendorDataMigration"/>
+                <FunctionImport Name="getDataMigrationConfiguration" Function="addtionalProcessService.getDataMigrationConfiguration"/>
+                <ActionImport Name="DataMigrationConfiguration" Action="addtionalProcessService.DataMigrationConfiguration"/>
+                <FunctionImport Name="checkServiceAvailability" Function="addtionalProcessService.checkServiceAvailability"/>
+                <FunctionImport Name="triggerEmailBulk" Function="addtionalProcessService.triggerEmailBulk"/>
+            </EntityContainer>
+            <EntityType Name="MasterClientInfo">
+                <Key>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="EMAIL_NOTIF_1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="EMAIL_NOTIF_2" Type="Edm.String" MaxLength="100"/>
+                <Property Name="EMAIL_NOTIF_3" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CONTACT_ID_1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CONTACT_ID_2" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CONTACT_ID_3" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CLIENT_FULL_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CLIENT_SHORT_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CLIENT_COUNTRY" Type="Edm.String" MaxLength="100"/>
+                <Property Name="EMAIL_CC" Type="Edm.String" MaxLength="1000"/>
+            </EntityType>
+            <EntityType Name="MasterIvenUsers">
+                <Key>
+                    <PropertyRef Name="SR_NO"/>
+                    <PropertyRef Name="EMAIL"/>
+                </Key>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="USER_ID" Type="Edm.String" MaxLength="50"/>
+                <Property Name="USER_ROLE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="USER_NAME" Type="Edm.String" MaxLength="500"/>
+                <Property Name="EMAIL" Type="Edm.String" MaxLength="150" Nullable="false"/>
+                <Property Name="COMPANY_CODE" Type="Edm.String" MaxLength="500"/>
+                <Property Name="EMP_NO" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CREATED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="UPDATED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="ACTIVE" Type="Edm.String" MaxLength="1"/>
+                <NavigationProperty Name="TO_ENTITY_CODE" Type="addtionalProcessService.MasterEntityCode">
+                    <ReferentialConstraint Property="COMPANY_CODE" ReferencedProperty="BUKRS"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="RequestInfo">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SAP_VENDOR_CODE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="IVEN_VENDOR_CODE" Type="Edm.Int64"/>
+                <Property Name="STATUS" Type="Edm.Int32"/>
+                <Property Name="REGISTERED_ID" Type="Edm.String" MaxLength="100"/>
+                <Property Name="ENTITY_CODE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="REQUEST_TYPE" Type="Edm.Int32"/>
+                <Property Name="CREATION_TYPE" Type="Edm.Int32"/>
+                <Property Name="VENDOR_NAME1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="VENDOR_NAME2" Type="Edm.String" MaxLength="100"/>
+                <Property Name="VENDOR_CODE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="APPROVER_LEVEL" Type="Edm.Int32"/>
+                <Property Name="APPROVER_ROLE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="REQUESTER_ID" Type="Edm.String" MaxLength="100"/>
+                <Property Name="SUPPL_TYPE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="SUPPL_TYPE_DESC" Type="Edm.String" MaxLength="50"/>
+                <Property Name="BP_TYPE_CODE" Type="Edm.String" MaxLength="4"/>
+                <Property Name="BP_TYPE_DESC" Type="Edm.String" MaxLength="100"/>
+                <Property Name="REQUEST_RESENT" Type="Edm.String" MaxLength="5"/>
+                <Property Name="MDG_CR_NO" Type="Edm.String" MaxLength="15"/>
+                <Property Name="LAST_ACTIVE_REQ_NO" Type="Edm.Int64"/>
+                <Property Name="SECONDARY_EMAILS_ID" Type="Edm.String" MaxLength="500"/>
+                <Property Name="WEBSITE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="LEGAL_STRUCTURE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="LEGAL_STRUCTURE_OTHER" Type="Edm.String" MaxLength="100"/>
+                <Property Name="ESTAB_YEAR" Type="Edm.String" MaxLength="4"/>
+                <Property Name="NO_OF_EMP" Type="Edm.Int32"/>
+                <Property Name="NO_OF_ENGG" Type="Edm.Int32"/>
+                <Property Name="NO_OF_QUALITY" Type="Edm.Int32"/>
+                <Property Name="NO_OF_PROD" Type="Edm.Int32"/>
+                <Property Name="NO_OF_ADMIN" Type="Edm.Int32"/>
+                <Property Name="NO_OF_OTHERS" Type="Edm.Int32"/>
+                <Property Name="BUSINESS_TYPE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="TRADE_LIC_NO" Type="Edm.String" MaxLength="50"/>
+                <Property Name="TRADE_LIC_NO_DATE" Type="Edm.Date"/>
+                <Property Name="VAT_REG_NUMBER" Type="Edm.String" MaxLength="25"/>
+                <Property Name="VAT_REG_DATE" Type="Edm.Date"/>
+                <Property Name="SUPPL_CATEGORY" Type="Edm.String" MaxLength="5000"/>
+                <Property Name="SUPPL_CATEGORY_DESC" Type="Edm.String" MaxLength="5000"/>
+                <Property Name="ACTIVITY_TYPE" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ORDER_SIZE_MIN" Type="Edm.String" MaxLength="50"/>
+                <Property Name="ORDER_SIZE_MAX" Type="Edm.String" MaxLength="50"/>
+                <Property Name="TOTAL_PROD_CAPACITY" Type="Edm.String" MaxLength="20"/>
+                <Property Name="LAST_SAVED_STEP" Type="Edm.Int32"/>
+                <Property Name="COMPLETED_BY" Type="Edm.String" MaxLength="100"/>
+                <Property Name="COMPLETED_BY_POSITION" Type="Edm.String" MaxLength="50"/>
+                <Property Name="ACK_VALIDATION" Type="Edm.String" MaxLength="5"/>
+                <Property Name="SUBMISSION_DATE" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="LAST_UPDATED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="OT_PARENT_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="OT_FOLDER1_ID" Type="Edm.String" MaxLength="25"/>
+                <Property Name="OT_FOLDER2_ID" Type="Edm.String" MaxLength="25"/>
+                <Property Name="OT_FOLDER3_ID" Type="Edm.String" MaxLength="25"/>
+                <Property Name="OT_FOLDER4_ID" Type="Edm.String" MaxLength="25"/>
+                <Property Name="VAT_CHECK" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ICV_SCORE" Type="Edm.Decimal" Scale="variable"/>
+                <Property Name="ICV_DATE" Type="Edm.Date"/>
+                <Property Name="ICV_CHECK" Type="Edm.String" MaxLength="1"/>
+                <Property Name="NDA_TYPE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="REMINDER_COUNT" Type="Edm.Int32"/>
+                <Property Name="BUYER_ASSIGN_CHECK" Type="Edm.String" MaxLength="1"/>
+                <Property Name="CREATED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="COMMENT" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="LEGACY_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PROCESS_LEVEL" Type="Edm.String" MaxLength="10"/>
+                <NavigationProperty Name="TO_STATUS" Type="addtionalProcessService.MasterStatus">
+                    <ReferentialConstraint Property="STATUS" ReferencedProperty="CODE"/>
+                </NavigationProperty>
+                <NavigationProperty Name="TO_ADDRESS" Type="Collection(addtionalProcessService.RegFormAddress)"/>
+                <NavigationProperty Name="TO_CONTACTS" Type="Collection(addtionalProcessService.RegFormContacts)"/>
+                <NavigationProperty Name="TO_BANKS" Type="Collection(addtionalProcessService.RegFormBanks)"/>
+                <NavigationProperty Name="TO_FINANCE" Type="Collection(addtionalProcessService.RegFormFinancial)"/>
+                <NavigationProperty Name="TO_OWNERS" Type="Collection(addtionalProcessService.RegFormOwners)"/>
+                <NavigationProperty Name="TO_PRODUCT_SERVICES" Type="Collection(addtionalProcessService.RegFormProdServ)"/>
+                <NavigationProperty Name="TO_CAPACITY" Type="Collection(addtionalProcessService.RegFormCapacity)"/>
+                <NavigationProperty Name="TO_CUSTOMERS" Type="Collection(addtionalProcessService.RegFormCustomers)"/>
+                <NavigationProperty Name="TO_OEM" Type="Collection(addtionalProcessService.RegFormOEM)"/>
+                <NavigationProperty Name="TO_MANDATORY_FIELDS" Type="addtionalProcessService.MasterFormFieldsMandatory">
+                    <ReferentialConstraint Property="ENTITY_CODE" ReferencedProperty="CCODE"/>
+                    <ReferentialConstraint Property="CREATION_TYPE" ReferencedProperty="TYPE"/>
+                </NavigationProperty>
+                <NavigationProperty Name="TO_VISIBLE_FIELDS" Type="addtionalProcessService.MasterFormFieldsVisible">
+                    <ReferentialConstraint Property="ENTITY_CODE" ReferencedProperty="CCODE"/>
+                    <ReferentialConstraint Property="CREATION_TYPE" ReferencedProperty="TYPE"/>
+                </NavigationProperty>
+                <NavigationProperty Name="TO_UPDATED_FIELDS" Type="addtionalProcessService.MasterFormFieldsUpdated">
+                    <ReferentialConstraint Property="REQUEST_NO" ReferencedProperty="REQ_NO"/>
+                </NavigationProperty>
+                <NavigationProperty Name="TO_DISCLOSURE_FIELDS" Type="Collection(addtionalProcessService.RegFormDiscInfo)"/>
+                <NavigationProperty Name="TO_RELATIVES" Type="Collection(addtionalProcessService.RegFormDiscRelatives)"/>
+                <NavigationProperty Name="TO_QA_CERTIFICATES" Type="Collection(addtionalProcessService.RegFormDiscQaCertif)"/>
+                <NavigationProperty Name="TO_ATTACH_FIELDS" Type="Collection(addtionalProcessService.RegFormAttachFields)"/>
+                <NavigationProperty Name="TO_ATTACHMENTS" Type="Collection(addtionalProcessService.RegFormAttachments)"/>
+                <NavigationProperty Name="TO_REQUEST_TYPE" Type="addtionalProcessService.MasterRequestType">
+                    <ReferentialConstraint Property="REQUEST_TYPE" ReferencedProperty="CODE"/>
+                </NavigationProperty>
+                <NavigationProperty Name="TO_ENTITY_CODE" Type="addtionalProcessService.MasterEntityCode">
+                    <ReferentialConstraint Property="ENTITY_CODE" ReferencedProperty="BUKRS"/>
+                </NavigationProperty>
+                <NavigationProperty Name="TO_REQUEST_ACTIVE_STATUS" Type="addtionalProcessService.RequestActiveStatus">
+                    <ReferentialConstraint Property="REQUEST_NO" ReferencedProperty="REQUEST_NO"/>
+                </NavigationProperty>
+                <NavigationProperty Name="TO_HIERARCHY" Type="addtionalProcessService.MASTER_APPROVAL_HIERARCHY_FE"/>
+            </EntityType>
+            <EntityType Name="MasterIbanCountry">
+                <Key>
+                    <PropertyRef Name="LAND1"/>
+                    <PropertyRef Name="LANDX"/>
+                    <PropertyRef Name="LENGTH"/>
+                </Key>
+                <Property Name="LAND1" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="LANDX" Type="Edm.String" MaxLength="25" Nullable="false"/>
+                <Property Name="LENGTH" Type="Edm.Int32" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="RegSupplierLog">
+                <Key>
+                    <PropertyRef Name="SAP_VENDOR_CODE"/>
+                    <PropertyRef Name="EVENT_NO"/>
+                </Key>
+                <Property Name="SAP_VENDOR_CODE" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="EVENT_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="EVENT_CODE" Type="Edm.Int32"/>
+                <Property Name="EVENT_TYPE" Type="Edm.String" MaxLength="20"/>
+                <Property Name="USER_ID" Type="Edm.String" MaxLength="100"/>
+                <Property Name="USER_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="REMARK" Type="Edm.String" MaxLength="100"/>
+                <Property Name="COMMENT" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="UPDATED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="UPDATED_FIELD_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CHANGE_VALUE" Type="Edm.String" MaxLength="5000"/>
+                <Property Name="ORG_VALUE" Type="Edm.String" MaxLength="5000"/>
+                <Property Name="REQUEST_NO" Type="Edm.Int64"/>
+            </EntityType>
+            <EntityType Name="ViewRequestActiveStatus">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SAP_VENDOR_CODE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="IVEN_VENDOR_CODE" Type="Edm.Int64"/>
+                <Property Name="STATUS" Type="Edm.Int32"/>
+                <Property Name="REGISTERED_ID" Type="Edm.String" MaxLength="100"/>
+                <Property Name="ENTITY_CODE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="REQUEST_TYPE" Type="Edm.Int32"/>
+                <Property Name="CREATION_TYPE" Type="Edm.Int32"/>
+                <Property Name="VENDOR_NAME1" Type="Edm.String" MaxLength="100"/>
+                <Property Name="REQUESTER_ID" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CREATED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="ACTIVE" Type="Edm.String" MaxLength="1"/>
+                <Property Name="SUPPL_TYPE_DESC" Type="Edm.String" MaxLength="50"/>
+                <Property Name="BP_TYPE_CODE" Type="Edm.String" MaxLength="4"/>
+                <Property Name="SUPPL_TYPE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="BP_TYPE_DESC" Type="Edm.String" MaxLength="100"/>
+                <Property Name="BUYER_ASSIGN_CHECK" Type="Edm.String" MaxLength="1"/>
+                <Property Name="VENDOR_CODE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="LEGACY_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="COMMENT" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="NDA_TYPE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="REMINDER_COUNT" Type="Edm.Int32"/>
+                <NavigationProperty Name="TO_STATUS" Type="addtionalProcessService.MasterStatus">
+                    <ReferentialConstraint Property="STATUS" ReferencedProperty="CODE"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="RegFormCMS">
+                <Key>
+                    <PropertyRef Name="DOC_ID"/>
+                </Key>
+                <Property Name="DOC_ID" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="FILE_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="FILE_MIMETYPE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="FILE_CONTENT" Type="Edm.Binary"/>
+                <Property Name="UPLOADED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="ACTIVE_FLAG" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="RegFormDiscQaCertif">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="CERTI_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CERTI_TYPE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="AVAILABLE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="DONE_BY" Type="Edm.String" MaxLength="100"/>
+            </EntityType>
+            <EntityType Name="MasterCountry">
+                <Key>
+                    <PropertyRef Name="LAND1"/>
+                    <PropertyRef Name="LANDX"/>
+                    <PropertyRef Name="NATIO"/>
+                </Key>
+                <Property Name="LAND1" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="LANDX" Type="Edm.String" MaxLength="15" Nullable="false"/>
+                <Property Name="NATIO" Type="Edm.String" MaxLength="25" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="MasterStatus">
+                <Key>
+                    <PropertyRef Name="CODE"/>
+                </Key>
+                <Property Name="CODE" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="DESCRIPTION" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="RegFormAddress">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="ADDRESS_TYPE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="ADDRESS_DESC" Type="Edm.String" MaxLength="50"/>
+                <Property Name="HOUSE_NUM1" Type="Edm.String" MaxLength="10"/>
+                <Property Name="STREET1" Type="Edm.String" MaxLength="60"/>
+                <Property Name="STREET2" Type="Edm.String" MaxLength="40"/>
+                <Property Name="STREET3" Type="Edm.String" MaxLength="40"/>
+                <Property Name="STREET4" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CITY" Type="Edm.String" MaxLength="100"/>
+                <Property Name="STATE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="COUNTRY" Type="Edm.String" MaxLength="100"/>
+                <Property Name="POSTAL_CODE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CONTACT_NO" Type="Edm.String" MaxLength="30"/>
+                <Property Name="CONTACT_TELECODE" Type="Edm.String" MaxLength="4"/>
+                <Property Name="FAX_NO" Type="Edm.String" MaxLength="10"/>
+                <Property Name="EMAIL" Type="Edm.String" MaxLength="241"/>
+                <Property Name="DISTRICT" Type="Edm.String" MaxLength="35"/>
+                <NavigationProperty Name="TO_COUNTRY" Type="addtionalProcessService.MasterCountry">
+                    <ReferentialConstraint Property="COUNTRY" ReferencedProperty="LAND1"/>
+                </NavigationProperty>
+                <NavigationProperty Name="TO_REGION" Type="addtionalProcessService.MasterRegion">
+                    <ReferentialConstraint Property="COUNTRY" ReferencedProperty="LAND1"/>
+                    <ReferentialConstraint Property="STATE" ReferencedProperty="BLAND"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="RegFormContacts">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="NAME1" Type="Edm.String" MaxLength="35"/>
+                <Property Name="NAME2" Type="Edm.String" MaxLength="35"/>
+                <Property Name="HOUSE_NUM1" Type="Edm.String" MaxLength="10"/>
+                <Property Name="STREET1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="STREET2" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CITY" Type="Edm.String" MaxLength="100"/>
+                <Property Name="STATE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="POSTAL_CODE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="DESIGNATION" Type="Edm.String" MaxLength="50"/>
+                <Property Name="NATIONALITY" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PASSPORT_NO" Type="Edm.String" MaxLength="30"/>
+                <Property Name="EMAIL" Type="Edm.String" MaxLength="241"/>
+                <Property Name="CONTACT_NO" Type="Edm.String" MaxLength="30"/>
+                <Property Name="MOBILE_NO" Type="Edm.String" MaxLength="30"/>
+                <Property Name="CONTACT_TYPE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CONTACT_TELECODE" Type="Edm.String" MaxLength="4"/>
+                <Property Name="MOBILE_TELECODE" Type="Edm.String" MaxLength="4"/>
+                <Property Name="BP_ID" Type="Edm.String" MaxLength="10"/>
+                <NavigationProperty Name="TO_COUNTRY" Type="addtionalProcessService.MasterCountry">
+                    <ReferentialConstraint Property="NATIONALITY" ReferencedProperty="LAND1"/>
+                </NavigationProperty>
+                <NavigationProperty Name="TO_REGION" Type="addtionalProcessService.MasterRegion">
+                    <ReferentialConstraint Property="NATIONALITY" ReferencedProperty="LAND1"/>
+                    <ReferentialConstraint Property="STATE" ReferencedProperty="BLAND"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="RegFormBanks">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="BENEFICIARY" Type="Edm.String" MaxLength="100"/>
+                <Property Name="ACCOUNT_NO" Type="Edm.String" MaxLength="38"/>
+                <Property Name="ACCOUNT_NAME" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ACCOUNT_HOLDER" Type="Edm.String" MaxLength="60"/>
+                <Property Name="BANK_ID" Type="Edm.String" MaxLength="4"/>
+                <Property Name="BANK_KEY" Type="Edm.String" MaxLength="15"/>
+                <Property Name="BANK_COUNTRY" Type="Edm.String" MaxLength="50"/>
+                <Property Name="BRANCH_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="IBAN_NUMBER" Type="Edm.String" MaxLength="34"/>
+                <Property Name="SWIFT_CODE" Type="Edm.String" MaxLength="15"/>
+                <Property Name="BIC_CODE" Type="Edm.String" MaxLength="15"/>
+                <Property Name="ROUTING_CODE" Type="Edm.String" MaxLength="15"/>
+                <Property Name="OTHER_CODE" Type="Edm.String" MaxLength="1"/>
+                <Property Name="OTHER_CODE_NAME" Type="Edm.String" MaxLength="15"/>
+                <Property Name="OTHER_CODE_VAL" Type="Edm.String" MaxLength="15"/>
+                <Property Name="PAYMENT_METHOD" Type="Edm.String" MaxLength="25"/>
+                <Property Name="PAYMENT_METHOD_DESC" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PAYMENT_TERMS" Type="Edm.String" MaxLength="25"/>
+                <Property Name="PAYMENT_TERMS_DESC" Type="Edm.String" MaxLength="30"/>
+                <Property Name="INVOICE_CURRENCY" Type="Edm.String" MaxLength="25"/>
+                <Property Name="VAT_REG_NUMBER" Type="Edm.String" MaxLength="25"/>
+                <Property Name="VAT_REG_DATE" Type="Edm.Date"/>
+                <Property Name="DUNS_NUMBER" Type="Edm.String" MaxLength="10"/>
+                <Property Name="BANK_CURRENCY" Type="Edm.String" MaxLength="5"/>
+                <Property Name="BANK_NO" Type="Edm.String" MaxLength="15"/>
+                <Property Name="PAYMENT_TYPE" Type="Edm.String" MaxLength="10"/>
+                <NavigationProperty Name="TO_COUNTRY" Type="addtionalProcessService.MasterCountry">
+                    <ReferentialConstraint Property="BANK_COUNTRY" ReferencedProperty="LAND1"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="RegFormFinancial">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="FIN_YEAR" Type="Edm.Int32"/>
+                <Property Name="TOTAL_REVENUE" Type="Edm.Double"/>
+                <Property Name="NET_PROFIT_LOSS" Type="Edm.Double"/>
+                <Property Name="TOTAL_ASSETS" Type="Edm.Double"/>
+                <Property Name="TOTAL_EQUITY" Type="Edm.Double"/>
+                <Property Name="CURRENCY" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="RegFormOwners">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="NATIONALITY" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CONTACT_NO" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CONTACT_TELECODE" Type="Edm.String" MaxLength="4"/>
+                <Property Name="PASSPORT_NO" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ACTIVITY_TYPE" Type="Edm.String" MaxLength="30"/>
+                <Property Name="OWNERSHIP_PERCENT" Type="Edm.Double"/>
+                <NavigationProperty Name="TO_COUNTRY" Type="addtionalProcessService.MasterCountry">
+                    <ReferentialConstraint Property="NATIONALITY" ReferencedProperty="LAND1"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="RegFormProdServ">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="TYPE"/>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="TYPE" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="PROD_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="PROD_DESCRIPTION" Type="Edm.String" MaxLength="200"/>
+                <Property Name="PROD_CATEGORY" Type="Edm.String" MaxLength="200"/>
+                <Property Name="PROD_CATEGORY_DEC" Type="Edm.String" MaxLength="100"/>
+            </EntityType>
+            <EntityType Name="RegFormCapacity">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="CITY" Type="Edm.String" MaxLength="100"/>
+                <Property Name="COUNTRY" Type="Edm.String" MaxLength="100"/>
+                <Property Name="PLANT_MANF_CAPABILITY" Type="Edm.String" MaxLength="5"/>
+                <Property Name="PROD_CAPACITY" Type="Edm.Double"/>
+                <Property Name="TIME_TO_SERVICE" Type="Edm.String" MaxLength="50"/>
+                <NavigationProperty Name="TO_COUNTRY" Type="addtionalProcessService.MasterCountry">
+                    <ReferentialConstraint Property="COUNTRY" ReferencedProperty="LAND1"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="RegFormCustomers">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="CUSTOMER_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CUSTOMER_SHARE" Type="Edm.Double"/>
+            </EntityType>
+            <EntityType Name="RegFormOEM">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="SR_NO"/>
+                    <PropertyRef Name="OEM_TYPE"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="OEM_TYPE" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="COMPANY_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="COUNTRY" Type="Edm.String" MaxLength="100"/>
+                <Property Name="OEM_CATEGORY" Type="Edm.String" MaxLength="100"/>
+            </EntityType>
+            <EntityType Name="MasterFormFieldsMandatory">
+                <Key>
+                    <PropertyRef Name="CCODE"/>
+                    <PropertyRef Name="TYPE"/>
+                </Key>
+                <Property Name="CCODE" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="TYPE" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="S1G1T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F14" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F15" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F16" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F14" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F15" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G3T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T3F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T4F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T5F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T6F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T7F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T8F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T9F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G5T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G5T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G5T3F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G5T4F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T2F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T2F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T2F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T3F13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T3F14" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T4F15" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F14" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T3F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T4F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T5F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G3T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G3T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G4T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G4T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G4T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T2F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T2F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T2F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G1D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G2D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G3D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G4D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G5D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G7D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G8D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G9D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G9D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G9D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G9D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G10D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G10D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G11D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G15D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G15D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G15D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G15D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G16D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G17D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G17D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G18D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G18D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G18D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G18D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G19D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G19D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A3F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A4F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A5F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A5F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A5F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A5F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A6F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A7F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A7F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A9F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A10F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A11F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A12F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A13F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A14F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A15F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A16F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A17F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A18F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A19F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A20F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A21F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A22F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S7G1D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S7G1D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S7G1D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S7G1D4" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="MasterFormFieldsVisible">
+                <Key>
+                    <PropertyRef Name="CCODE"/>
+                    <PropertyRef Name="TYPE"/>
+                </Key>
+                <Property Name="CCODE" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="TYPE" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="S1G1T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F14" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F15" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F16" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F14" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F15" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G3T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T3F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T4F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T5F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T6F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T7F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T8F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T9F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G5T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G5T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G5T3F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G5T4F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T2F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T2F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T2F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T3F13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T3F14" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T4F15" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F14" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T3F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T4F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T5F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G3T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G3T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G4T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G4T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G4T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T2F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T2F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T2F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G1D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G2D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G3D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G4D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G5D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G7D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G8D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G9D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G9D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G9D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G9D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G10D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G10D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G11D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G15D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G15D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G15D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G15D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G16D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G17D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G17D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G18D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G18D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G18D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G18D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G19D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G19D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A3F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A4F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A5F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A5F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A5F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A5F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A6F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A7F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A7F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A9F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A10F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A11F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A12F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A13F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A14F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A15F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A16F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A17F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A18F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A19F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A20F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A21F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A22F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S7G1D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S7G1D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S7G1D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S7G1D4" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="MasterFormFieldsUpdated">
+                <Key>
+                    <PropertyRef Name="REQ_NO"/>
+                </Key>
+                <Property Name="REQ_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="S1G1T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F14" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F15" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T1F16" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F14" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F15" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G1T2F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T1F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G2T2F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G3T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T3F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T4F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T5F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T6F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T7F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T8F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G4T9F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G5T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G5T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G5T3F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S1G5T4F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T1F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T2F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T2F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T2F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T3F13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T3F14" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T4F15" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G1T5F14" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T3F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T4F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G2T5F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S2G3T1F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G1T1F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G2T2F6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G3T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G3T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G4T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G4T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G4T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T1F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T1F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T1F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T2F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T2F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S3G5T2F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G1D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G2D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G3D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G4D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G5D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G7D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G8D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G9D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G9D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G9D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G9D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G10D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G10D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G11D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G12D10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G13D6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D5" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D6" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D7" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D8" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D9" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D10" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D11" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D12" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G14D13" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G15D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G15D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G15D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G15D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G16D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G17D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G17D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G18D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G18D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G18D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G18D4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G19D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S4G19D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A1F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A2F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A3F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A4F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A5F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A5F3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A5F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A5F4" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A6F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A7F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A7F2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A9F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A10F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A11F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A12F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A13F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A14F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A15F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A16F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A17F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A18F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A19F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A20F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A21F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S5A22F1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S7G1D1" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S7G1D2" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S7G1D3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="S7G1D4" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="RegFormDiscInfo">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="INTEREST_CONFLICT" Type="Edm.String" MaxLength="5"/>
+                <Property Name="INTEREST_CONFLICT_TEXT" Type="Edm.String" MaxLength="100"/>
+                <Property Name="ANY_LEGAL_CASES" Type="Edm.String" MaxLength="5"/>
+                <Property Name="ANY_LEGAL_CASES_TEXT" Type="Edm.String" MaxLength="100"/>
+                <Property Name="AKN_SIGNATURE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="AKN_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="AKN_DESIGNATION" Type="Edm.String" MaxLength="100"/>
+                <Property Name="AKN_DATE" Type="Edm.Date"/>
+                <Property Name="AKN_COMPANY_STAMP" Type="Edm.String" MaxLength="100"/>
+                <Property Name="ACADEMIC_DISCOUNT" Type="Edm.String" MaxLength="5"/>
+                <Property Name="RELATIVE_WORKING" Type="Edm.String" MaxLength="5"/>
+                <Property Name="VALID_SIGNATORY_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="VALID_DESIGNATION" Type="Edm.String" MaxLength="100"/>
+                <Property Name="REACH_COMPLIANCE" Type="Edm.String" MaxLength="5"/>
+                <Property Name="CLP_COMPLIANCE" Type="Edm.String" MaxLength="5"/>
+                <Property Name="APPLY_ITAR_REG" Type="Edm.String" MaxLength="5"/>
+                <Property Name="SUPPLY_ITAR_EAR" Type="Edm.String" MaxLength="5"/>
+                <Property Name="APPLY_FCPA" Type="Edm.String" MaxLength="5"/>
+                <Property Name="US_ORIGIN_SUPPL" Type="Edm.String" MaxLength="5"/>
+                <Property Name="ERP_MGMT_SYSTEM" Type="Edm.String" MaxLength="5"/>
+                <Property Name="ERP_MGMT_SYSTEM_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="INDUSRIAL_DESIGN_SW" Type="Edm.String" MaxLength="5"/>
+                <Property Name="INDUSRIAL_DESIGN_SW_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="COUNTERFIET_PARTS_PCD" Type="Edm.String" MaxLength="5"/>
+                <Property Name="QUALITY_AGREEMENT" Type="Edm.String" MaxLength="5"/>
+                <Property Name="MANUFACTURING_PCD" Type="Edm.String" MaxLength="5"/>
+                <Property Name="TECH_SPEC_MFG_SRV" Type="Edm.String" MaxLength="5"/>
+                <Property Name="PLAN_COLLECTION" Type="Edm.String" MaxLength="5"/>
+                <Property Name="ANALYSIS_RISKMGMT_PROC" Type="Edm.String" MaxLength="5"/>
+                <Property Name="CONFIG_CTRL_SYSTEM" Type="Edm.String" MaxLength="5"/>
+                <Property Name="CTRL_PLANNING_PROC" Type="Edm.String" MaxLength="5"/>
+                <Property Name="CONT_IMPROVEMENT_PROG" Type="Edm.String" MaxLength="5"/>
+                <Property Name="EPI_QUALITY_SUPPL_REQ" Type="Edm.String" MaxLength="5"/>
+                <Property Name="SUPPL_EVAL_PROC" Type="Edm.String" MaxLength="5"/>
+                <Property Name="NON_CONF_ANALYSIS" Type="Edm.String" MaxLength="5"/>
+                <Property Name="TECH_SPEC_MATERIAL" Type="Edm.String" MaxLength="5"/>
+                <Property Name="MATERIAL_INSPECTION_TESTS" Type="Edm.String" MaxLength="5"/>
+                <Property Name="CTRL_ORDERS_DOC_PROC" Type="Edm.String" MaxLength="5"/>
+                <Property Name="TECHNICAL_DOC_PROC" Type="Edm.String" MaxLength="5"/>
+                <Property Name="QUALIFIED_STAFF" Type="Edm.String" MaxLength="5"/>
+                <Property Name="QUALIFICATION_ARRAY" Type="Edm.String" MaxLength="5"/>
+                <Property Name="PROC_FOR_INCOMING" Type="Edm.String" MaxLength="5"/>
+                <Property Name="MFG_INSPECTION_TESTS" Type="Edm.String" MaxLength="5"/>
+                <Property Name="INTERAL_QUAL_AUDITS" Type="Edm.String" MaxLength="5"/>
+                <Property Name="MEASURING_EQUIP_CALIB" Type="Edm.String" MaxLength="5"/>
+                <Property Name="NON_CONF_TREATMENT_PROC" Type="Edm.String" MaxLength="5"/>
+                <Property Name="REPTITIVE_CAUSES_PROC" Type="Edm.String" MaxLength="5"/>
+                <Property Name="IDENTIFICATION_METHOD" Type="Edm.String" MaxLength="5"/>
+                <Property Name="MAINTENANCE_SCHEDULES" Type="Edm.String" MaxLength="5"/>
+                <Property Name="WORK_INSTRUCTION_METHODS" Type="Edm.String" MaxLength="5"/>
+                <Property Name="DOCUMENTED_PROC" Type="Edm.String" MaxLength="5"/>
+                <Property Name="PLANNING_CONTROL_SYSTEM" Type="Edm.String" MaxLength="5"/>
+                <Property Name="CRITERIA_COLLECT_PROC" Type="Edm.String" MaxLength="5"/>
+                <Property Name="COMP_BASED_WMS" Type="Edm.String" MaxLength="5"/>
+                <Property Name="ESTAB_CRITERIA" Type="Edm.String" MaxLength="5"/>
+                <Property Name="DEFINED_POLICIES" Type="Edm.String" MaxLength="5"/>
+                <Property Name="CUSTOMER_SERVICE" Type="Edm.String" MaxLength="5"/>
+                <Property Name="MASS_SERIES_PROD" Type="Edm.String" MaxLength="5"/>
+                <Property Name="TECH_SUPPORT" Type="Edm.String" MaxLength="5"/>
+                <Property Name="SFTY_ENVI_POLICY" Type="Edm.String" MaxLength="5"/>
+                <Property Name="ENVI_FRIENDLY_PROD" Type="Edm.String" MaxLength="5"/>
+                <Property Name="SUSTAINABILITY_PROG" Type="Edm.String" MaxLength="5"/>
+                <Property Name="COMPLY_LABOR_REG" Type="Edm.String" MaxLength="5"/>
+                <Property Name="REQUIRE_EUC" Type="Edm.String" MaxLength="5"/>
+                <Property Name="EXPORT_CNTRL" Type="Edm.String" MaxLength="5"/>
+            </EntityType>
+            <EntityType Name="RegFormDiscRelatives">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="RELATIONSHIP" Type="Edm.String" MaxLength="100"/>
+            </EntityType>
+            <EntityType Name="RegFormAttachFields">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="IS_UAE_COMPANY" Type="Edm.String" MaxLength="5"/>
+                <Property Name="ISSUE_ELEC_TAX_INV" Type="Edm.String" MaxLength="100"/>
+                <Property Name="SOLE_DIST_MFG_SER" Type="Edm.String" MaxLength="5"/>
+                <Property Name="PASSPORT_OF_AUTH_SIGNATORY" Type="Edm.String" MaxLength="5"/>
+                <Property Name="PASSPORT_REPR_AUTH_PERSON" Type="Edm.String" MaxLength="5"/>
+            </EntityType>
+            <EntityType Name="RegFormAttachments">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="ATTACH_CODE" Type="Edm.Int32"/>
+                <Property Name="ATTACH_GROUP" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ATTACH_DESC" Type="Edm.String" MaxLength="100"/>
+                <Property Name="ATTACH_VALUE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="EXPIRY_DATE" Type="Edm.Date"/>
+                <Property Name="FILE_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="FILE_TYPE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="FILE_MIMETYPE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="FILE_CONTENT" Type="Edm.Binary"/>
+                <Property Name="UPLOADED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="OT_DOC_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="OT_LAST_DOC_ID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="UPDATE_FLAG" Type="Edm.String" MaxLength="1"/>
+                <Property Name="DELETE_FLAG" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ATTACH_SHORT_DEC" Type="Edm.String" MaxLength="50"/>
+                <Property Name="ATTACH_FOR" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="MasterRequestType">
+                <Key>
+                    <PropertyRef Name="CODE"/>
+                </Key>
+                <Property Name="CODE" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="DESCRIPTION" Type="Edm.String" MaxLength="50"/>
+                <Property Name="SUPPLIER_TYPE" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="MasterEntityCode">
+                <Key>
+                    <PropertyRef Name="BUKRS"/>
+                </Key>
+                <Property Name="BUKRS" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="BUTXT" Type="Edm.String" MaxLength="50"/>
+                <Property Name="ORT01" Type="Edm.String" MaxLength="25"/>
+                <Property Name="WAERS" Type="Edm.String" MaxLength="5"/>
+            </EntityType>
+            <EntityType Name="MasterTelecode">
+                <Key>
+                    <PropertyRef Name="LAND1"/>
+                </Key>
+                <Property Name="LAND1" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="TELEFTO" Type="Edm.String" MaxLength="4"/>
+                <NavigationProperty Name="TO_COUNTRY" Type="addtionalProcessService.MasterCountry">
+                    <ReferentialConstraint Property="LAND1" ReferencedProperty="LAND1"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="MasterPostalcode">
+                <Key>
+                    <PropertyRef Name="LAND1"/>
+                </Key>
+                <Property Name="LAND1" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="REGEX" Type="Edm.String" MaxLength="250"/>
+                <Property Name="REGEX_EXP" Type="Edm.String" MaxLength="250"/>
+            </EntityType>
+            <EntityType Name="MasterRegion">
+                <Key>
+                    <PropertyRef Name="LAND1"/>
+                    <PropertyRef Name="BLAND"/>
+                    <PropertyRef Name="BEZEI"/>
+                </Key>
+                <Property Name="LAND1" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="BLAND" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="BEZEI" Type="Edm.String" MaxLength="20" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="RequestActiveStatus">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="ACTIVE" Type="Edm.String" MaxLength="1"/>
+                <Property Name="TYPE" Type="Edm.Int32"/>
+                <Property Name="UPDATED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="IVEN_VENDOR_CODE" Type="Edm.Int64"/>
+            </EntityType>
+            <EntityType Name="RegEventsLog">
+                <Key>
+                    <PropertyRef Name="REQUEST_NO"/>
+                    <PropertyRef Name="EVENT_NO"/>
+                </Key>
+                <Property Name="REQUEST_NO" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="EVENT_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="EVENT_CODE" Type="Edm.Int32"/>
+                <Property Name="EVENT_TYPE" Type="Edm.String" MaxLength="20"/>
+                <Property Name="USER_ID" Type="Edm.String" MaxLength="100"/>
+                <Property Name="USER_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="REMARK" Type="Edm.String" MaxLength="100"/>
+                <Property Name="COMMENT" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="CREATED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="MasteriVenAttachments">
+                <Key>
+                    <PropertyRef Name="SR_NO"/>
+                    <PropertyRef Name="ENTITY_CODE"/>
+                    <PropertyRef Name="ATTACH_CODE"/>
+                </Key>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="ENTITY_CODE" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="ATTACH_CODE" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="ATTACH_GROUP" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ATTACH_DESC" Type="Edm.String" MaxLength="100"/>
+                <Property Name="FILE_NAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="FILE_TYPE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="FILE_MIMETYPE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="FILE_CONTENT" Type="Edm.Binary"/>
+                <Property Name="UPLOADED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="ATTACH_TYPE_CODE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ATTACH_TYPE_DESC" Type="Edm.String" MaxLength="100"/>
+            </EntityType>
+            <EntityType Name="DataMigrationFieldConfiguration">
+                <Key>
+                    <PropertyRef Name="FIELD_ID"/>
+                    <PropertyRef Name="GROUP"/>
+                </Key>
+                <Property Name="FIELD_ID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="GROUP" Type="Edm.String" MaxLength="100" Nullable="false"/>
+                <Property Name="IS_MANDATORY" Type="Edm.String" MaxLength="1"/>
+                <Property Name="IS_VISIBLE" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="ViewDataMigrationFields">
+                <Key>
+                    <PropertyRef Name="FIELD_ID"/>
+                </Key>
+                <Property Name="FIELD_ID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="GROUP" Type="Edm.String" MaxLength="100"/>
+                <Property Name="IS_MANDATORY" Type="Edm.String" MaxLength="1"/>
+                <Property Name="IS_VISIBLE" Type="Edm.String" MaxLength="1"/>
+                <Property Name="DESCRIPTION" Type="Edm.String" MaxLength="500"/>
+            </EntityType>
+            <EntityType Name="EmailActionlog">
+                <Key>
+                    <PropertyRef Name="LOG_ID"/>
+                </Key>
+                <Property Name="LOG_ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="STATUS" Type="Edm.Int32"/>
+                <Property Name="STATUS_DSC" Type="Edm.String" MaxLength="50"/>
+                <Property Name="LOG" Type="Edm.String"/>
+                <Property Name="CREATED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="CREATED_DATE" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="USER_ID" Type="Edm.String" MaxLength="50"/>
+                <Property Name="TO_EMAIL" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="CC_EMAIL" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="SUBJECT" Type="Edm.String" MaxLength="100"/>
+                <Property Name="BODY" Type="Edm.String"/>
+                <Property Name="TYPE" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="EmailConfig">
+                <Key>
+                    <PropertyRef Name="SR_NO"/>
+                </Key>
+                <Property Name="SR_NO" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="HOST" Type="Edm.String" MaxLength="100"/>
+                <Property Name="PORT" Type="Edm.Int32"/>
+                <Property Name="SECURE" Type="Edm.Boolean"/>
+                <Property Name="SENDER_EMAIL" Type="Edm.String" MaxLength="100"/>
+                <Property Name="USERNAME" Type="Edm.String" MaxLength="100"/>
+                <Property Name="PASSWORD" Type="Edm.String" MaxLength="100"/>
+                <Property Name="CREATED_ON" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="MASTER_APPROVAL_HIERARCHY_FE">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="APPR_TYPE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ENTITY_CODE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="USER_ID" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="APPROVER_LEVEL" Type="Edm.Int32"/>
+                <Property Name="USER_ROLE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ACCESS_EDIT" Type="Edm.Boolean" DefaultValue="false"/>
+                <Property Name="ACCESS_APPROVE" Type="Edm.Boolean" DefaultValue="false"/>
+                <Property Name="ACCESS_SENDBACK" Type="Edm.Boolean" DefaultValue="false"/>
+                <Property Name="ACCESS_REJECT" Type="Edm.Boolean" DefaultValue="false"/>
+                <NavigationProperty Name="TO_ENTITY_CODE" Type="addtionalProcessService.MasterEntityCode">
+                    <ReferentialConstraint Property="ENTITY_CODE" ReferencedProperty="BUKRS"/>
+                </NavigationProperty>
+                <Property Name="TO_ENTITY_TYPE_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <ComplexType Name="User_Details">
+                <Property Name="USER_ROLE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="USER_ID" Type="Edm.String" MaxLength="50"/>
+            </ComplexType>
+            <ComplexType Name="sapVendorCodeDetails">
+                <Property Name="ADDRESS_CODE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CONTACTS_CODE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="BANK_CODE" Type="Edm.String" MaxLength="10"/>
+            </ComplexType>
+            <Action Name="VendorInternalRequest" IsBound="false">
+                <Parameter Name="action" Type="Edm.String"/>
+                <Parameter Name="stepNo" Type="Edm.Int32"/>
+                <Parameter Name="comment" Type="Edm.String"/>
+                <Parameter Name="srNo" Type="Edm.Int32"/>
+                <Parameter Name="attachCode" Type="Edm.Int32"/>
+                <Parameter Name="ndaStatus" Type="Edm.String"/>
+                <Parameter Name="reqHeader" Type="Collection(addtionalProcessService.RequestInfo)" Nullable="false"/>
+                <Parameter Name="addressData" Type="Collection(addtionalProcessService.RegFormAddress)" Nullable="false"/>
+                <Parameter Name="contactsData" Type="Collection(addtionalProcessService.RegFormContacts)" Nullable="false"/>
+                <Parameter Name="bankData" Type="Collection(addtionalProcessService.RegFormBanks)" Nullable="false"/>
+                <Parameter Name="financeData" Type="Collection(addtionalProcessService.RegFormFinancial)" Nullable="false"/>
+                <Parameter Name="ownersData" Type="Collection(addtionalProcessService.RegFormOwners)" Nullable="false"/>
+                <Parameter Name="prodServData" Type="Collection(addtionalProcessService.RegFormProdServ)" Nullable="false"/>
+                <Parameter Name="capacityData" Type="Collection(addtionalProcessService.RegFormCapacity)" Nullable="false"/>
+                <Parameter Name="customerData" Type="Collection(addtionalProcessService.RegFormCustomers)" Nullable="false"/>
+                <Parameter Name="oemData" Type="Collection(addtionalProcessService.RegFormOEM)" Nullable="false"/>
+                <Parameter Name="discFieldsData" Type="Collection(addtionalProcessService.RegFormDiscInfo)" Nullable="false"/>
+                <Parameter Name="discRelativesData" Type="Collection(addtionalProcessService.RegFormDiscRelatives)" Nullable="false"/>
+                <Parameter Name="discQaCertiData" Type="Collection(addtionalProcessService.RegFormDiscQaCertif)" Nullable="false"/>
+                <Parameter Name="attachmentFieldsData" Type="Collection(addtionalProcessService.RegFormAttachFields)" Nullable="false"/>
+                <Parameter Name="attachmentData" Type="Collection(addtionalProcessService.RegFormAttachments)" Nullable="false"/>
+                <Parameter Name="updatedFields" Type="Collection(Edm.String)" Nullable="false"/>
+                <Parameter Name="eventsData" Type="Collection(addtionalProcessService.RegEventsLog)" Nullable="false"/>
+                <Parameter Name="supplierLogData" Type="Collection(addtionalProcessService.RegSupplierLog)" Nullable="false"/>
+                <Parameter Name="userDetails" Type="addtionalProcessService.User_Details"/>
+                <ReturnType Type="Collection(Edm.String)" Nullable="false"/>
+            </Action>
+            <Action Name="VendorDataMigration" IsBound="false">
+                <Parameter Name="action" Type="Edm.String"/>
+                <Parameter Name="reqHeader" Type="Collection(addtionalProcessService.RequestInfo)" Nullable="false"/>
+                <Parameter Name="addressData" Type="Collection(addtionalProcessService.RegFormAddress)" Nullable="false"/>
+                <Parameter Name="contactsData" Type="Collection(addtionalProcessService.RegFormContacts)" Nullable="false"/>
+                <Parameter Name="bankData" Type="Collection(addtionalProcessService.RegFormBanks)" Nullable="false"/>
+                <Parameter Name="sapCodeData" Type="Collection(addtionalProcessService.sapVendorCodeDetails)" Nullable="false"/>
+                <Parameter Name="userDetails" Type="addtionalProcessService.User_Details"/>
+                <ReturnType Type="Collection(Edm.String)" Nullable="false"/>
+            </Action>
+            <Function Name="getDataMigrationConfiguration" IsBound="false" IsComposable="false">
+                <ReturnType Type="Collection(Edm.String)" Nullable="false"/>
+            </Function>
+            <Action Name="DataMigrationConfiguration" IsBound="false">
+                <Parameter Name="action" Type="Edm.String"/>
+                <Parameter Name="DMFieldConfiguration" Type="Collection(addtionalProcessService.DataMigrationFieldConfiguration)" Nullable="false"/>
+                <Parameter Name="DMLimit" Type="Edm.Int32"/>
+                <Parameter Name="userDetails" Type="addtionalProcessService.User_Details"/>
+                <ReturnType Type="Collection(Edm.String)" Nullable="false"/>
+            </Action>
+            <Function Name="checkServiceAvailability" IsBound="false" IsComposable="false">
+                <Parameter Name="cloudSrv" Type="Edm.Boolean"/>
+                <Parameter Name="onPremiseSrv" Type="Edm.Boolean"/>
+                <ReturnType Type="Collection(Edm.String)" Nullable="false"/>
+            </Function>
+            <Function Name="triggerEmailBulk" IsBound="false" IsComposable="false">
+                <ReturnType Type="Collection(Edm.String)" Nullable="false"/>
+            </Function>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/REQUEST_NO">
+                <Annotation Term="Common.Label" String="REQUEST_NO: REQUEST_NO"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/SAP_VENDOR_CODE">
+                <Annotation Term="Common.Label" String="SAP_VENDOR_CODE: SAP_VENDOR_CODE"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/IVEN_VENDOR_CODE">
+                <Annotation Term="Common.Label" String="IVEN_VENDOR_CODE: IVEN_VENDOR_CODE"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/STATUS">
+                <Annotation Term="Common.Label" String="STATUS: STATUS"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/REGISTERED_ID">
+                <Annotation Term="Common.Label" String="REGISTERED_ID: REGISTERED_ID"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/ENTITY_CODE">
+                <Annotation Term="Common.Label" String="ENTITY_CODE: ENTITY_CODE"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/REQUEST_TYPE">
+                <Annotation Term="Common.Label" String="REQUEST_TYPE: REQUEST_TYPE"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/CREATION_TYPE">
+                <Annotation Term="Common.Label" String="CREATION_TYPE: CREATION_TYPE"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/VENDOR_NAME1">
+                <Annotation Term="Common.Label" String="VENDOR_NAME1: VENDOR_NAME1"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/REQUESTER_ID">
+                <Annotation Term="Common.Label" String="REQUESTER_ID: REQUESTER_ID"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/CREATED_ON">
+                <Annotation Term="Common.Label" String="CREATED_ON: CREATED_ON"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/ACTIVE">
+                <Annotation Term="Common.Label" String="ACTIVE: ACTIVE"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/SUPPL_TYPE_DESC">
+                <Annotation Term="Common.Label" String="SUPPL_TYPE_DESC: SUPPL_TYPE_DESC"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/BP_TYPE_CODE">
+                <Annotation Term="Common.Label" String="BP_TYPE_CODE: BP_TYPE_CODE"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/SUPPL_TYPE">
+                <Annotation Term="Common.Label" String="SUPPL_TYPE: SUPPL_TYPE"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/BP_TYPE_DESC">
+                <Annotation Term="Common.Label" String="BP_TYPE_DESC: BP_TYPE_DESC"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/BUYER_ASSIGN_CHECK">
+                <Annotation Term="Common.Label" String="BUYER_ASSIGN_CHECK: BUYER_ASSIGN_CHECK"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/VENDOR_CODE">
+                <Annotation Term="Common.Label" String="VENDOR_CODE: VENDOR_CODE"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/LEGACY_ID">
+                <Annotation Term="Common.Label" String="LEGACY_ID: LEGACY_ID"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/COMMENT">
+                <Annotation Term="Common.Label" String="COMMENT: COMMENT"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/NDA_TYPE">
+                <Annotation Term="Common.Label" String="NDA_TYPE: NDA_TYPE"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewRequestActiveStatus/REMINDER_COUNT">
+                <Annotation Term="Common.Label" String="REMINDER_COUNT: REMINDER_COUNT"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewDataMigrationFields/FIELD_ID">
+                <Annotation Term="Common.Label" String="FIELD_ID: FIELD_ID"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewDataMigrationFields/GROUP">
+                <Annotation Term="Common.Label" String="GROUP: GROUP"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewDataMigrationFields/IS_MANDATORY">
+                <Annotation Term="Common.Label" String="IS_MANDATORY: IS_MANDATORY"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewDataMigrationFields/IS_VISIBLE">
+                <Annotation Term="Common.Label" String="IS_VISIBLE: IS_VISIBLE"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.ViewDataMigrationFields/DESCRIPTION">
+                <Annotation Term="Common.Label" String="DESCRIPTION: DESCRIPTION"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.MASTER_APPROVAL_HIERARCHY_FE/APPR_TYPE">
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.MASTER_APPROVAL_HIERARCHY_FE/ENTITY_CODE">
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.MASTER_APPROVAL_HIERARCHY_FE/USER_ID">
+                <Annotation Term="Communication.IsEmailAddress" Bool="true"/>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.MASTER_APPROVAL_HIERARCHY_FE/APPROVER_LEVEL">
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                <Annotation Term="Validation.Minimum" Int="1"/>
+                <Annotation Term="Validation.Maximum" Int="1000"/>
+            </Annotations>
+            <Annotations Target="addtionalProcessService.MASTER_APPROVAL_HIERARCHY_FE/USER_ROLE">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

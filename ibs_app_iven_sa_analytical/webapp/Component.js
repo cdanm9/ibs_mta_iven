@@ -24,22 +24,9 @@ function (UIComponent, Device, models) {
             // call the base component's init function
             UIComponent.prototype.init.apply(this, arguments);
 
-            // enable routing
             this.getRouter().initialize();
 
-            // set the device model
-            this.setModel(models.createDeviceModel(), "device");
-
-            // set the property model
-            this.setModel(models.createPropertyModel(), "oPropertyModel");   
-
-            this.setModel(models.createPropertyModelASN(), "viewModel");  
-
-            this.setModel(models.createPropertyModelSES(), "viewModelSES");
-
-            this.setModel(models.createPropertyModelInvCreation(), "oPropertyModelInvCre");     
-
-            // this.setModel(models.createAppDetailsModel(), "appInfo");    
+            this.setModel(models.createDeviceModel(), "device");   
         },
 
         getContentDensityClass: function () {
@@ -54,7 +41,7 @@ function (UIComponent, Device, models) {
                     // "cozy" in case of touch support; default for most sap.m controls, but needed for desktop-first controls like sap.ui.table.Table
                     this._sContentDensityClass = "sapUiSizeCozy";
                 }
-            }
+            }   
             return this._sContentDensityClass;
         }
     });

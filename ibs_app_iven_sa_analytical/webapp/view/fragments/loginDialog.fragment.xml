@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
     <Dialog id="loginDialog" type="Message" contentWidth="50px" afterClose="onDialogClose">
-        <customHeader>
+        <customHeader>   
             <Bar>
                 <contentRight>  
                     <core:Icon src="sap-icon://decline" useIconTooltip="false" hoverColor="#f33334" press="onClosePress"/>

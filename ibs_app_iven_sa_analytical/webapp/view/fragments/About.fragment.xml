@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+    <Dialog id="userProfile" type="Message" title="User Profile" class="sapUiSizeCompact" afterClose="onCloseUserProfile"  >              
+        <content>
+            <f:SimpleForm
+                id="SimpleFormDisplay480_12120Dual"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                adjustLabelSpan="true"
+                labelSpanL="3"  
+                labelSpanM="3"  
+                labelSpanS="12"  
+                columnsL="3"    
+                columnsM="2"    
+                singleContainerFullSize="false"
+                class="sapUiSizeCompact">
+                
+                <f:content>   
+                    <Label text="First Name " class="sapUiSizeCompact" />
+                    <Text text="{appInfo>/UserFirstName}" class="sapUiSizeCompact"/>
+                        
+                    <Label text="Last Name " class="sapUiSizeCompact" />
+                    <Text text="{appInfo>/UserLastName}" class="sapUiSizeCompact"/>
+
+                    <Label text="Full Name " class="sapUiSizeCompact" />
+                    <Text text="{appInfo>/UserFullName}" class="sapUiSizeCompact"/>
+
+                    <Label text="E-Mail " class="sapUiSizeCompact" />
+                    <Text text="{appInfo>/UserEMail}" class="sapUiSizeCompact"/>
+                    
+                </f:content>
+            </f:SimpleForm>
+
+        </content>
+        <endButton>
+        <Button text="Close" type="Reject" press="onCloseUserProfile"></Button>   
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>   

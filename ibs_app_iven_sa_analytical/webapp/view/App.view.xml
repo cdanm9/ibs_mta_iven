@@ -19,10 +19,10 @@
 					</layoutData>
 				</Button>         
 				<Image height="1.5rem"
-					   class="sapUiSmallMarginBegin"   
-					   src="image/Nihilent.jpg" />                                 
-				<Title level="H1" text="iVen (Vendor Management)" wrapping="false" id="idiVenPO">
-					<layoutData>
+					   class="sapUiSmallMarginBegin"      
+					   src="{appSAHeader>/0/LOGO_URL}" press="onWelcomePage"/>                                           
+				<Title level="H1" text="{appSAHeader>/0/APP_NAME}" wrapping="false" id="idiVenPO">        
+					<layoutData>   
 						<OverflowToolbarLayoutData priority="Disappear"/>
 					</layoutData>
 				</Title>
@@ -30,7 +30,7 @@
 				<ToolbarSpacer width="1.125rem"/>  
                 <Avatar id="myAvatar"    
                     initials="{appInfo>/UserInitials}" 
-                    displaySize="XS"
+                    displaySize="XS"   
                     showBorder="true"
                     class="sapUiTinyMargin"          
                     press="onPress">     

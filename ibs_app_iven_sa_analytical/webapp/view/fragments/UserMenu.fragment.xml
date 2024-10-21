@@ -3,8 +3,8 @@
 	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout">
 	<List items="{
-		path: 'uLMenu>/userListMenu'
+		path: 'uLMenu>/'    
 		}">    
-		<StandardListItem icon="{uLMenu>icon}" title="{uLMenu>title}" type="{uLMenu>type}" press="onListItemPress" />
+		<StandardListItem icon="{uLMenu>APP_ICON}" title="{uLMenu>APP_TEXT}" type="Active" press="onListItemPress" />
 	</List>
 </core:FragmentDefinition>

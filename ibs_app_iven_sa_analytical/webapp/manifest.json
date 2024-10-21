@@ -15,22 +15,13 @@
       "version": "1.14.1",
       "toolsId": "691858fa-96ab-4947-beb7-36b92cf20d68"
     },
-    "dataSources": {
-      "mainService": {
-        "uri": "/sap/opu/odata/sap/ZIVN_PO_CONFIRMATION_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      },    
+    "dataSources": { 
       "checkServiceAvailibiltyService": {
         "uri": "/odata/v4/addtional-process/",
         "type": "OData",
         "settings": {
           "annotations": [],
-          "localUri": "localService/doc-info-ext/metadata.xml",
+          "localUri": "localService/checkServiceAvailibilty/metadata.xml",
           "odataVersion": "4.0"
         }   
       },
@@ -39,7 +30,7 @@
         "type": "OData",
         "settings": {
           "annotations": [],
-          "localUri": "localService/doc-info-ext/metadata.xml",
+          "localUri": "localService/appInfoSa/metadata.xml",
           "odataVersion": "4.0"
         }   
       }
@@ -88,23 +79,6 @@
         "settings": {
           "bundleName": "com.ibs.ibsappivensaanalytical.i18n.i18n"
         }
-      },
-      "oDataModel2": {
-        "dataSource": "mainService",
-        "preload": true,
-        "settings": {}
-      },
-      "products": {
-        "type": "sap.ui.model.json.JSONModel",
-        "uri": "model/products.json"
-      },
-      "purchase": {
-        "type": "sap.ui.model.json.JSONModel",
-        "uri": "model/purchase.json"
-      },
-      "managed": {
-        "type": "sap.ui.model.json.JSONModel",
-        "uri": "model/managed.json"
       },
       "checkServiceAvailibilty": {
         "preload": true,
@@ -156,24 +130,10 @@
           ]
         },
         {
-          "name": "Master",
-          "pattern": "Master",
+          "name": "iVenWelcome",
+          "pattern": "iVenWelcome",
           "target": [
-            "Home"
-          ]
-        },
-        {
-          "name": "Page1",
-          "pattern": "Page1",
-          "target": [
-            "Page1"
-          ]
-        },
-        {
-          "name": "Page2",
-          "pattern": "Page2",
-          "target": [
-            "Page2"
+            "TargetiVenWelcome"
           ]
         },
         {
@@ -181,6 +141,13 @@
           "pattern": "iVenMaster",    
           "target": [
             "TargetiVenMaster"  
+          ]
+        },
+        {
+          "name": "RouteServiceMsg",  
+          "pattern": "TargetServiceMsg",    
+          "target": [
+            "TargetServiceMsg"  
           ]
         }
       ],
@@ -191,28 +158,17 @@
           "viewId": "App",
           "viewName": "App"
         },
-        "Home": {
-          "viewType": "XML",
-          "viewName": "Master",
-          "controlAggregation": "pages"
-        },
-        "Page1": {
-          "viewType": "XML",
-          "viewName": "Page1",
-          "controlAggregation": "pages"
-        },
-        "Page2": {
-          "viewType": "XML",
-          "viewName": "Page2",
-          "controlAggregation": "pages"
-        },
         "TargetiVenMaster":{
           "viewType": "XML",
-          "viewName": "iVenMaster"          
+          "viewName": "iVenMaster"         
+        },
+        "TargetiVenWelcome":{
+          "viewType": "XML",
+          "viewName": "iVenWelcome"                     
         },
         "TargetServiceMsg":{
           "viewType": "XML",
-          "viewName": "ServiceMsg"               
+          "viewName": "ServiceMsg"                  
         }
       }
     },

@@ -25,10 +25,11 @@ server:
       configuration:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         backend:
-          - path: /odata       
-            url: https://ibs-portal-dev-ibs-portal-dev-vendor-portal-srv.cfapps.us10.hana.ondemand.com/
+          - path: /odata
+            url: https://ibs-portal-dev-ibs-portal-dev-vendor-portal-srv.cfapps.us10.hana.ondemand.com
             destination: IVEN_DATA
-          
+            authenticationType: OAuth2UserTokenExchange
+
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:

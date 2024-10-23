@@ -1,0 +1,12 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.ibs.ibsappivensaanalytical.controller.Help" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>   
+			<Page title="{appUserManual>/0/APP_NAME}" showHeader="false" >       
+				<content>      
+                    <PDFViewer title="{appUserManual>/0/APP_NAME}" showDownloadButton="false" source="{appUserManual>/0/LOGO_URL}" ></PDFViewer>   
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

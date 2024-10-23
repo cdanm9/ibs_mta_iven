@@ -35,7 +35,7 @@ sap.ui.define([
 				  let oWelcomePage=new JSONModel(aWelcomeApps)            
 				  that.getView().setModel(oWelcomePage,"appWelcomePage")    
 			}); 
-		  },
+		}
 	});
 
 });

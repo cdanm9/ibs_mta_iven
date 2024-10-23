@@ -149,6 +149,13 @@
           "target": [
             "TargetServiceMsg"  
           ]
+        },
+        {
+          "name": "iVenHelp",  
+          "pattern": "iVenHelpPage",   
+          "target": [
+            "TargetiVenHelp"  
+          ]
         }
       ],
       "targets": {
@@ -169,6 +176,10 @@
         "TargetServiceMsg":{
           "viewType": "XML",
           "viewName": "ServiceMsg"                  
+        },
+        "TargetiVenHelp":{
+          "viewType": "XML",
+          "viewName": "Help"                  
         }
       }
     },

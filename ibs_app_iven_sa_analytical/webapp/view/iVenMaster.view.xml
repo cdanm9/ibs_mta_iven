@@ -4,8 +4,6 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
     <Page id="idIvenMasterPage" title="{= ${alAppView>/S_APP_TEXT} ? ${alAppView>/S_APP_TEXT} : ${alAppView>/APP_TEXT} }">       
-    <!-- <content>      
-        <html:iframe x-frame-options='ALLOWALL' id ="idiFrameiVen" height="100%" width="100%" src="{alAppView>/S_APP_URL}"> </html:iframe>              
-    </content>         -->   
+ 
     </Page>
-</mvc:View>   
+</mvc:View>       

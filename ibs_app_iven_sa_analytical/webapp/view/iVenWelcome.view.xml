@@ -10,13 +10,13 @@
 			}" class="sapUiContentPadding" loop="true">   
                 <Image densityAware="true" src="{appWelcomePage>LOGO_URL}" width="auto" height="auto" >
                 <detailBox>
-						<LightBox>
+						<LightBox>    
 							<LightBoxItem
 								imageSrc="{appWelcomePage>LOGO_URL}"
 								alt="sap-icon://error"   
 								title="Welcome"
 								subtitle="iVen" />  
-						</LightBox>
+						</LightBox>   
 					</detailBox>       
                 </Image>    
             </Carousel> 

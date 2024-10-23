@@ -27,7 +27,8 @@
 					</layoutData>
 				</Title>
 				<ToolbarSpacer />                     
-				<ToolbarSpacer width="1.125rem"/>  
+				<ToolbarSpacer width="1.125rem"/> 
+				<Button icon="sap-icon://sys-help" iconDensityAware="true" activeIcon="true" press="onHelpBtn" ></Button> 
                 <Avatar id="myAvatar"    
                     initials="{appInfo>/UserInitials}" 
                     displaySize="XS"   

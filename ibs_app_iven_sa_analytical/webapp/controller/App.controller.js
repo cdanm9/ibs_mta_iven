@@ -14,7 +14,7 @@ sap.ui.define(
       let that,localStorage;
       return BaseController.extend("com.ibs.ibsappivensaanalytical.controller.App", {
         onInit: function() {  
-          that=this
+          that=this;    
           that.oDataModel = this.getOwnerComponent().getModel("checkServiceAvailibilty")    
           that.oDataAppSaInfoModel = this.getOwnerComponent().getModel("appSaInfo")    
           that.idNavigationList=this.getView().byId("idNavigationList");
@@ -328,6 +328,9 @@ sap.ui.define(
         onDialogClose: function () {
           this.oDialog.destroy(); // Destroy dialog after close
           this.oDialog = null; // Reset dialog reference
+        },
+        onHelpBtn: function(oEvent){
+          this.getOwnerComponent().getRouter().navTo("iVenHelp");   
         }
         //User Simulation End
       });

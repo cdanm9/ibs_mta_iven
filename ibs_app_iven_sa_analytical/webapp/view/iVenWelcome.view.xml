@@ -5,21 +5,8 @@
     xmlns:core="sap.ui.core">
     <Page id="idWelcomePage" title="{appWelcomePage>/0/APP_NAME}">    
         <content>
-            <Carousel pages="{
-				path: 'appWelcomePage>/'
-			}" class="sapUiContentPadding" loop="true">   
-                <Image densityAware="true" src="{appWelcomePage>LOGO_URL}" width="auto" height="auto" >
-                <detailBox>
-						<LightBox>    
-							<LightBoxItem
-								imageSrc="{appWelcomePage>LOGO_URL}"
-								alt="sap-icon://error"   
-								title="Welcome"
-								subtitle="iVen" />  
-						</LightBox>   
-					</detailBox>       
-                </Image>    
+            <Carousel id="idCarousel" class="sapUiContentPadding" loop="true">    
             </Carousel> 
-        </content>
+        </content>   
     </Page>
 </mvc:View>  

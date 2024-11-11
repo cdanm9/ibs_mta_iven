@@ -30,12 +30,19 @@ sap.ui.define([
 			sUrl=oAppViewModel.getProperty("/S_APP_URL")
 			if(!sUrl)   
 				sUrl=oAppViewModel.getProperty("/APP_URL")   
-			let oHTMLContent = new sap.ui.core.HTML({
+			let oHTMLContent = new sap.ui.core.HTML("idHTML",{
 				content: "<iframe x-frame-options='ALLOWALL' id='idiFrameiVen' height='100%' width='100%' src='"+sUrl+"'></iframe>"      
-			});   
-			oPage.addContent(oHTMLContent);     
-			let oOwnerComponent=that.getOwnerComponent();
-			let oRouter=oOwnerComponent.getRouter().navTo("Default");  
+			});  
+			oPage.addContent(oHTMLContent); 
+			
+
+			// let oIframe = that.byId("idHTML").getDomRef();
+			// let oLoginData=window.oLogin
+			
+			// oIframe.onload = () => {
+			// 	oIframe.contentWindow.postMessage(oLoginData, "*"); 
+			// };
+			let oRouter=that._oOwnerComponent.getRouter().navTo("Default");  
 			
         }
 	});

@@ -4,7 +4,7 @@
 		<pages>   
 			<Page title="{appUserManual>/0/APP_NAME}" showHeader="false" >       
 				<content>      
-                    <PDFViewer title="{appUserManual>/0/APP_NAME}" showDownloadButton="false" source="{appUserManual>/0/LOGO_URL}" ></PDFViewer>   
+                    <PDFViewer title="{appUserManual>/0/APP_NAME}" showDownloadButton="false" source="{appUserManual>/0/LOGO_URL}" isTrustedSource="true" ></PDFViewer>      
 				</content>
 			</Page>
 		</pages>

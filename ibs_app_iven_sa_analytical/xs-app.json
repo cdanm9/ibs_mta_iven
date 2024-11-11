@@ -35,7 +35,7 @@
       "service": "html5-apps-repo-rt",      
       "authenticationType": "none"   
     },
-    {
+    {   
       "source": "^index.html$",
       "service": "html5-apps-repo-rt",
       "authenticationType": "xsuaa",

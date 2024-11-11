@@ -22,7 +22,7 @@ sap.ui.define([
 		},
 		_getAppUserManual:function(){
 			let oList = that.oDataAppSaInfoModel.bindList("/MasterIvenSAInfo",undefined,[],[
-			  new Filter("APP_CODE", FilterOperator.Contains, "IVEN_HLP")   
+			  new Filter("APP_CODE", FilterOperator.Contains, "HLP")   
 			],{});   
 			oList.requestContexts().then((odata) => { 
 				  let aHelpApps = [],i=0; 

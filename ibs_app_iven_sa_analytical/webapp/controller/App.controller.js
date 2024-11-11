@@ -7,9 +7,10 @@ sap.ui.define(
         "sap/ui/model/json/JSONModel",
         "sap/m/MessageBox",
         "sap/m/MessageToast",
-        "sap/base/security/URLListValidator"     
-    ],  
-    function(BaseController,Fragment,Filter,FilterOperator,JSONModel,MessageBox,MessageToast,URLListValidator) {   
+        "sap/base/security/URLListValidator",
+        "sap/ui/util/Storage"     
+    ],    
+    function(BaseController,Fragment,Filter,FilterOperator,JSONModel,MessageBox,MessageToast,URLListValidator,Storage) {   
       "use strict";
       let that,localStorage;
       return BaseController.extend("com.ibs.ibsappivensaanalytical.controller.App", {
@@ -21,7 +22,12 @@ sap.ui.define(
           URLListValidator.add("https", "ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com", undefined, "/8526cdcb-5c31-4934-a365-72dce07a9b8d.ibs_bs_iven_po.comibsibsappiveninvoicepaymentrpt-0.0.1/index.html");
           URLListValidator.add("https", "ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com");
           URLListValidator.add(undefined, "ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com");
+          URLListValidator.add("https", "ibs-portal-dev.launchpad.cfapps.us10.hana.ondemand.com", undefined, "/8526cdcb-5c31-4934-a365-72dce07a9b8d.ibs_bs_iven_po.comibsibsappiveninvoicepaymentrpt-0.0.1/index.html");
+          URLListValidator.add("https", "ibs-portal-dev-ibs-portal-dev-ibs-mta-iven-sa-approuter.cfapps.us10.hana.ondemand.com/comibsibsappivensaanalytical/odata/v4/app-sa-info/MasterIvenSAInfo(ID=d0f10c33-8ab4-4daf-9d82-ee57e9c8414a,IsActiveEntity=true)/LOGO");
+          URLListValidator.add("https", "ibs-portal-dev-ibs-portal-dev-ibs-mta-iven-sa-approuter.cfapps.us10.hana.ondemand.com",undefined,"/comibsibsappivensaanalytical/odata/v4/app-sa-info/MasterIvenSAInfo(ID=d0f10c33-8ab4-4daf-9d82-ee57e9c8414a,IsActiveEntity=true)/LOGO");
+          URLListValidator.add("https://ibs-portal-dev-ibs-portal-dev-ibs-mta-iven-sa-approuter.cfapps.us10.hana.ondemand.com/comibsibsappivensaanalytical/odata/v4/app-sa-info/MasterIvenSAInfo(ID=d0f10c33-8ab4-4daf-9d82-ee57e9c8414a,IsActiveEntity=true)/LOGO");      
           
+             
           
           let oAppDetails = {    
             UserFullName:"",    
@@ -34,7 +40,7 @@ sap.ui.define(
           this.oView = this.getView();
           this.oMyAvatar = this.oView.byId("myAvatar");
           this._oPopover = Fragment.load({
-            id: this.oView.getId(),   
+            id: this.oView.getId(),      
             name: "com.ibs.ibsappivensaanalytical.view.fragments.UserPopover",    
             controller: this
           }).then(function(oPopover) {
@@ -43,17 +49,21 @@ sap.ui.define(
           }.bind(this));
           jQuery.sap.require("jquery.sap.storage");
           localStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session);  
+
           this.handleRouteMatched();     
 
           that._getAppInfo();
           that._getUserID();
           that._navigationListItem();
           that._getAppSAInfo()
-          that._checkServiceAvailability()
+          // that._checkServiceAvailability()
+          // that._fetchiFrame();
+
         },
+        
         _getAppSAInfo:function(){
           let oList = that.oDataAppSaInfoModel.bindList("/MasterIvenSAInfo",undefined,[],[
-            new Filter("APP_CODE", FilterOperator.EQ, "IVEN_SA")   
+            new Filter("APP_CODE", FilterOperator.EQ, "LGO")   
           ],{});   
           oList.requestContexts().then((odata) => { 
                 let aMasterApps = [],i=0; 
@@ -123,12 +133,13 @@ sap.ui.define(
         _getAppInfo:  function(){
           let sBindingFnPath="/getAllAppInfo(...)"
           let oAppODataPath =  that.oDataAppSaInfoModel.bindContext(sBindingFnPath);   
-          oAppODataPath.execute().then(function (exec) {           
+          oAppODataPath.execute().then(function (exec) {  
+            that.getOwnerComponent().getRouter().navTo("iVenWelcome");   
             let oAppInfoData = oAppODataPath.getBoundContext().getObject();
             let oResponse=oAppInfoData.value
             let i=0;
             if(!oResponse.length){       
-              that.getOwnerComponent().getRouter().navTo("iVenWelcome");
+              
               that.oAppPlugin=oResponse
               that.userMenuList(oResponse)  
               return 0
@@ -150,7 +161,8 @@ sap.ui.define(
 
             that.userMenuList(oResponse)
 
-          }.bind(this), function (oError) {    
+          }.bind(this), function (oError) {   
+            sap.ui.core.UIComponent.getRouterFor(that).navTo("RouteServiceMsg"); 
             MessageBox.error("Failed to read "+sBindingFnPath+" function");   
           });           
         },
@@ -165,37 +177,46 @@ sap.ui.define(
         },
         handleRouteMatched: function (oEvent) {    
           // debugger
+          // if (oStorage.get("mySessionData")) {
+          //   var oData = oStorage.get("mySessionData");
+          //   sLoginId = oData.Collection[0].id;
+          //   sLoginType = oData.Collection[0].type;
+          //   that._user();
+          //           that.readData();
+          // } else {
+          //   //get user attributes  
+          //     this._getLoginDetails();
+          // }
           
         },
-        _checkServiceAvailability:function(){  
-          let oCloud = true;  
-          let oPremise = true;       
-          // var url = that.appModulePath + "/odata/v4/addtional-process/checkServiceAvailability(cloudSrv=" + oCloud + ",onPremiseSrv=" + oPremise + ")";
-          let ContextBinding = that.oDataModel.bindContext("/checkServiceAvailability(...)");               
-          ContextBinding.setParameter("cloudSrv", oCloud) 
-          ContextBinding.setParameter("onPremiseSrv", oPremise) 
-          ContextBinding.execute().then( 
-            function () {       
-              var data = ContextBinding.getBoundContext().getObject();   
-              const { cloudSrv, onPremiseSrv } = data?.value[0];
-              if ((oCloud && cloudSrv) || (oPremise && onPremiseSrv)) {
-                if(that.oAppInfoDetails.length){
-                  if(that.oAppInfoDetails[0].APP_TYPE=='GRP'){
-                    that.oAppInfoDetails[0]=that.oAppInfoDetails[0]?.TO_SUBAPPINFO[0]        
-                  }  
-                  let oAppViewModel=new JSONModel(that.oAppInfoDetails[0]);   
-                  that.getOwnerComponent().setModel(oAppViewModel,"alAppView");    
-                  that.getOwnerComponent().getRouter().navTo("iVenMaster");   
-                }else         
-                  that.getOwnerComponent().getRouter().navTo("iVenWelcome");         
-                               
-              } else {   
-                sap.ui.core.UIComponent.getRouterFor(that).navTo("RouteServiceMsg");   
-              }   
-          }.bind(this), function (oError) { 
-            sap.ui.core.UIComponent.getRouterFor(that).navTo("RouteServiceMsg");
-          }); 
-        },
+        // _checkServiceAvailability:function(){  
+        //   let oCloud = true;  
+        //   let oPremise = true;       
+        //   // var url = that.appModulePath + "/odata/v4/addtional-process/checkServiceAvailability(cloudSrv=" + oCloud + ",onPremiseSrv=" + oPremise + ")";
+        //   let ContextBinding = that.oDataModel.bindContext("/checkServiceAvailability(...)");               
+        //   ContextBinding.setParameter("cloudSrv", oCloud) 
+        //   ContextBinding.setParameter("onPremiseSrv", oPremise) 
+        //   ContextBinding.execute().then( 
+        //     function () {       
+        //       var data = ContextBinding.getBoundContext().getObject();   
+        //       const { cloudSrv, onPremiseSrv } = data?.value[0];
+        //       if ((oCloud && cloudSrv) || (oPremise && onPremiseSrv)) {
+        //         // if(that.oAppInfoDetails.length){
+        //         //   if(that.oAppInfoDetails[0].APP_TYPE=='GRP'){
+        //         //     that.oAppInfoDetails[0]=that.oAppInfoDetails[0]?.TO_SUBAPPINFO[0]        
+        //         //   }  
+        //         //   let oAppViewModel=new JSONModel(that.oAppInfoDetails[0]);   
+        //         //   that.getOwnerComponent().setModel(oAppViewModel,"alAppView");    
+        //         //   that.getOwnerComponent().getRouter().navTo("iVenMaster");   
+        //         // }else         
+        //         that.getOwnerComponent().getRouter().navTo("iVenWelcome");                      
+        //       } else {   
+        //         sap.ui.core.UIComponent.getRouterFor(that).navTo("RouteServiceMsg");   
+        //       }   
+        //   }.bind(this), function (oError) { 
+        //     sap.ui.core.UIComponent.getRouterFor(that).navTo("RouteServiceMsg");
+        //   }); 
+        // },
         onLogout:function(oEvent){      
           // sap.m.URLHelper.redirect("https://9da603b4trial.launchpad.cfapps.us10.hana.ondemand.com/a22d66b3-3e78-4e57-ba53-762df11839fe.comibsibsappivensaanalytical.comibsibsappivensaanalytical-0.0.1/logout-page.html", false); 
           sap.m.URLHelper.redirect("/logout-page.html", false);                
@@ -243,7 +264,7 @@ sap.ui.define(
             that.getOwnerComponent().setModel(oAppViewModel,"alAppView");    
             that.getOwnerComponent().getRouter().navTo("iVenMaster");
           }else if(sTitle=='About'){
-            that._openAboutFragment()              
+            that._openAboutFragment()                  
           }
    
         },
@@ -305,10 +326,16 @@ sap.ui.define(
                     "type": this.selEvent
                 }]
             };
+            let oLoginInfo={
+              "id":this.eventInput,
+              "type":this.selEvent  
+            }
+            window.oLogin=oLoginInfo;
+            window.postMessage(this.eventInput,"*") 
 
             var oModel = new JSONModel();
             oModel.setData(data);
-            sap.ui.getCore().setModel(oModel);
+            sap.ui.getCore().setModel(oModel,"mySession");
 
             var oData = oModel.getData();
             localStorage.put("mySessionData", oData);                
@@ -319,10 +346,11 @@ sap.ui.define(
         onClearPress: function () {
           var oModel = new JSONModel({});
           this.oDialog.setModel(oModel);
+          window.oLogin=null;   
           localStorage.clear();
         },
         onWelcomePage:function(){
-          that.getOwnerComponent().getRouter().navTo("iVenWelcome");
+          that.getOwnerComponent().getRouter().navTo("iVenWelcome");    
         },
 
         onDialogClose: function () {
